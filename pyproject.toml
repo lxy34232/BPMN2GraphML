@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bpmn2graphml"
+version = "0.1.0"
+description = "合并多个 BPMN 2.0 文件为 yEd GraphML，并转换回 BPMN"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+bpmn2graphml = "bpmn2graphml.cli:main"
+
+[tool.setuptools]
+packages = ["bpmn2graphml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
