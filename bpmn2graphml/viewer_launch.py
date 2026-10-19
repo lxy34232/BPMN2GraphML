@@ -7,10 +7,14 @@ from __future__ import annotations
 
 import base64
 import html
+import os
 import re
+import sys
 import tempfile
 import webbrowser
 from pathlib import Path
+from urllib.parse import urlparse
+from urllib.request import url2pathname
 
 VIEWER_DIR = Path(__file__).parent / "viewer"
 
@@ -19,7 +23,12 @@ _KEEP = ("data:", "http:", "https:", "//", "file:")
 
 
 def _default_opener(url: str) -> None:
-    webbrowser.open(url)
+    if sys.platform == "win32" and url.startswith("file:"):
+        # 路径含中文（如中文用户名的临时目录）时，ShellExecute 可能按 ANSI 代码页误解码 %xx，
+        # 因此在 Windows 上直接交给 os.startfile 打开原始路径
+        os.startfile(url2pathname(urlparse(url).path))
+    else:
+        webbrowser.open(url)
 
 
 def make_launch_page(bpmn_path: Path, out_dir: Path | None = None) -> Path:

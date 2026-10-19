@@ -18,6 +18,8 @@
   var registry = viewer.get("elementRegistry");
 
   var state = { nodes: [], byId: {}, attr: null, selected: [], loaded: false };
+  var loadSeq = 0;   // 每次打开文件递增；较早的、尚未完成的加载结果一律丢弃
+  var importQueue = Promise.resolve();
   window.b2gViewer = { viewer: viewer, state: state };   // 便于调试与端到端测试
 
   function showMessage(text, isError) {
@@ -45,39 +47,54 @@
   }
 
   function openText(name, text) {
+    var token = ++loadSeq;
     resetView();
     ui.fileName.textContent = name;
     ui.fileName.title = name;
     var doc = new DOMParser().parseFromString(text, "application/xml");
     if (doc.getElementsByTagName("parsererror").length || !doc.documentElement) {
-      viewer.clear();
       showMessage("无法解析「" + name + "」：不是有效的 XML 文件。", true);
-      return Promise.resolve();
+      return clearCanvas(token);
     }
     if (!P.hasDiagram(doc)) {
-      viewer.clear();
       showMessage("「" + name + "」：" + NO_DI_MESSAGE, true);
-      return Promise.resolve();
+      return clearCanvas(token);
     }
-    return viewer.importXML(text).then(function () {
-      ui.message.hidden = true;
-      canvas.zoom("fit-viewport", "auto");
-      state.nodes = P.extractNodes(doc).filter(function (n) { return registry.get(n.id); });
-      state.nodes.forEach(function (n) { state.byId[n.id] = n; });
-      state.loaded = true;
-      var attrs = P.listAttributes(state.nodes);
-      attrs.forEach(function (a) {
-        var opt = document.createElement("option");
-        opt.value = a;
-        opt.textContent = a;
-        ui.attrSelect.appendChild(opt);
-      });
-      setAttr(attrs.indexOf(P.SOURCE_ATTR) >= 0 ? P.SOURCE_ATTR : P.TYPE_ATTR);
-      setControlsEnabled(true);
+    // 导入排队依次进行：较早发起、尚未开始的导入直接跳过，保证画布与面板始终对应最后打开的文件
+    importQueue = importQueue.then(function () {
+      if (token !== loadSeq) return;
+      return viewer.importXML(text).then(function () { onImported(token, doc); });
     }).catch(function (err) {
+      if (token !== loadSeq) return;
       viewer.clear();
       showMessage("无法显示「" + name + "」：" + (err && err.message ? err.message : err), true);
     });
+    return importQueue;
+  }
+
+  function clearCanvas(token) {
+    // 排在进行中的导入之后再清空，避免旧文件稍后画到画布上
+    importQueue = importQueue.then(function () { if (token === loadSeq) viewer.clear(); });
+    return importQueue;
+  }
+
+  function onImported(token, doc) {
+    if (token !== loadSeq) return;
+    resetView();
+    ui.message.hidden = true;
+    canvas.zoom("fit-viewport", "auto");
+    state.nodes = P.extractNodes(doc).filter(function (n) { return registry.get(n.id); });
+    state.nodes.forEach(function (n) { state.byId[n.id] = n; });
+    state.loaded = true;
+    var attrs = P.listAttributes(state.nodes);
+    attrs.forEach(function (a) {
+      var opt = document.createElement("option");
+      opt.value = a;
+      opt.textContent = a;
+      ui.attrSelect.appendChild(opt);
+    });
+    setAttr(attrs.indexOf(P.SOURCE_ATTR) >= 0 ? P.SOURCE_ATTR : P.TYPE_ATTR);
+    setControlsEnabled(true);
   }
 
   function setAttr(attr) {

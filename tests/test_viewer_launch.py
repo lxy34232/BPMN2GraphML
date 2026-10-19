@@ -91,3 +91,27 @@ def test_open_viewer_with_file(tmp_path, monkeypatch):
     page = open_viewer(FIX / "平台建设运行.bpmn", opener=opened.append)
     assert page.name == "view.html" and page.is_file()
     assert opened == [page.as_uri()]
+
+
+def test_chip_row_is_height_limited():
+    # 属性取值很多时（例如编号），标签行不能把流程图挤到高度为 0
+    css = (VIEWER / "app.css").read_text(encoding="utf-8")
+    rule = re.search(r"\.chips\s*\{([^}]*)\}", css).group(1)
+    assert re.search(r"max-height:\s*\S+", rule)
+    assert re.search(r"overflow-y:\s*auto", rule)
+
+
+def test_default_opener_uses_plain_path_on_windows(monkeypatch, tmp_path):
+    # 中文用户名的临时目录：Windows 上用 os.startfile 打开原始路径，避免 ShellExecute 误解码 %xx
+    import os
+    import sys
+
+    import bpmn2graphml.viewer_launch as vl
+    page = tmp_path / "中文目录" / "view.html"
+    page.parent.mkdir()
+    page.write_text("x", encoding="utf-8")
+    started = []
+    monkeypatch.setattr(sys, "platform", "win32")
+    monkeypatch.setattr(os, "startfile", started.append, raising=False)
+    vl._default_opener(page.as_uri())
+    assert started == [str(page)]

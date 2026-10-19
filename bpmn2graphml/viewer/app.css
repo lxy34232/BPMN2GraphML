@@ -71,7 +71,8 @@ body { display: flex; flex-direction: column; }
   background: var(--panel);
 }
 
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+/* 取值很多时（如编号类属性）限制高度并滚动，避免把流程图挤没 */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; max-height: 30vh; overflow-y: auto; }
 
 .chip {
   height: 26px;
