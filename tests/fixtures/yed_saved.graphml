@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yEd 3.25.1-->
+  <key attr.name="bpmn_sources" attr.type="string" for="graph" id="d0"/>
+  <key for="port" id="d1" yfiles.type="portgraphics"/>
+  <key for="port" id="d2" yfiles.type="portgeometry"/>
+  <key for="port" id="d3" yfiles.type="portuserdata"/>
+  <key attr.name="bpmn_id" attr.type="string" for="node" id="d4"/>
+  <key attr.name="bpmn_type" attr.type="string" for="node" id="d5"/>
+  <key attr.name="bpmn_origins" attr.type="string" for="node" id="d6"/>
+  <key attr.name="url" attr.type="string" for="node" id="d7"/>
+  <key attr.name="description" attr.type="string" for="node" id="d8"/>
+  <key for="node" id="d9" yfiles.type="nodegraphics"/>
+  <key for="graphml" id="d10" yfiles.type="resources"/>
+  <key attr.name="bpmn_id" attr.type="string" for="edge" id="d11"/>
+  <key attr.name="bpmn_origins" attr.type="string" for="edge" id="d12"/>
+  <key attr.name="bpmn_endpoints" attr.type="string" for="edge" id="d13"/>
+  <key attr.name="url" attr.type="string" for="edge" id="d14"/>
+  <key attr.name="description" attr.type="string" for="edge" id="d15"/>
+  <key for="edge" id="d16" yfiles.type="edgegraphics"/>
+  <graph edgedefault="directed" id="G">
+    <data key="d0" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "namespaces": {"xsi": "http://www.w3.org/2001/XMLSchema-instance", "bpmn2": "http://www.omg.org/spec/BPMN/20100524/MODEL", "bpmndi": "http://www.omg.org/spec/BPMN/20100524/DI", "dc": "http://www.omg.org/spec/DD/20100524/DC", "di": "http://www.omg.org/spec/DD/20100524/DI"}, "definitions_attrs": {"id": "sample-diagram", "targetNamespace": "http://bpmn.io/schema/bpmn", "{http://www.w3.org/2001/XMLSchema-instance}schemaLocation": "http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"}, "process_attrs": {"id": "Process_1"}, "diagram_id": "BPMNDiagram_1", "plane_id": "BPMNPlane_1"}, {"file": "科技创新平台申报", "namespaces": {"bpmn": "http://www.omg.org/spec/BPMN/20100524/MODEL", "bpmndi": "http://www.omg.org/spec/BPMN/20100524/DI", "dc": "http://www.omg.org/spec/DD/20100524/DC", "di": "http://www.omg.org/spec/DD/20100524/DI", "ext": "http://example.com/ext"}, "definitions_attrs": {"id": "Definitions_sb", "targetNamespace": "http://bpmn.io/schema/bpmn"}, "process_attrs": {"id": "Process_sb", "isExecutable": "false"}, "diagram_id": "BPMNDiagram_sb", "plane_id": "BPMNPlane_sb"}, {"file": "平台建设运行", "namespaces": {"bpmn2": "http://www.omg.org/spec/BPMN/20100524/MODEL"}, "definitions_attrs": {"id": "Definitions_js", "targetNamespace": "http://bpmn.io/schema/bpmn"}, "process_attrs": {"id": "Process_js"}, "diagram_id": "BPMNDiagram_1", "plane_id": "BPMNPlane_1"}]]]></data>
+    <node id="n0">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[exclusiveGateway]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8", "bpmn_type": "exclusiveGateway", "name": "", "attrs": {}, "children_xml": [], "order": 0, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Gateway.withShadow">
+          <y:Geometry height="50.0" width="50.0" x="86.0" y="279.33333333333337"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#E38B00" type="line" width="1.0"/>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="GATEWAY_TYPE_DATA_BASED_EXCLUSIVE"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n1">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_873ebcef-da2c-52ff-4318-d7bb3b59cc1b]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[manualTask]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_873ebcef-da2c-52ff-4318-d7bb3b59cc1b", "bpmn_type": "manualTask", "name": "拟定科技创新平台申报项目", "attrs": {}, "children_xml": [], "order": 1, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="66.66666666666667" width="188.0" x="197.0" y="359.33333333333337"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="148.0" x="20.0" xml:space="preserve" y="23.982747395833314">拟定科技创新平台申报项目</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n2">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[manualTask]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e", "bpmn_type": "manualTask", "name": "部门领导审核", "attrs": {}, "children_xml": [], "order": 2, "source_id": null, "target_id": null}, {"file": "科技创新平台申报", "id": "Task_2", "bpmn_type": "manualTask", "name": "部门领导审核", "attrs": {}, "children_xml": [], "order": 3, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="66.66666666666667" width="140.0" x="221.0" y="456.0000000000001"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="76.0" x="32.0" xml:space="preserve" y="23.982747395833314">部门领导审核</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n3">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_12354ce6-5b67-fc6c-5e49-52763f5c26a9]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[exclusiveGateway]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_12354ce6-5b67-fc6c-5e49-52763f5c26a9", "bpmn_type": "exclusiveGateway", "name": "", "attrs": {}, "children_xml": [], "order": 3, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Gateway.withShadow">
+          <y:Geometry height="50.0" width="50.0" x="86.0" y="552.6666666666667"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#E38B00" type="line" width="1.0"/>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="GATEWAY_TYPE_DATA_BASED_EXCLUSIVE"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n4">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_e68efe62-6af7-7c43-bf10-c0e40f4ef136]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[manualTask]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_e68efe62-6af7-7c43-bf10-c0e40f4ef136", "bpmn_type": "manualTask", "name": "分管副总工/总工审核", "attrs": {}, "children_xml": [], "order": 4, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="66.66666666666667" width="160.0" x="31.0" y="632.8333333333335"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="115.333984375" x="22.3330078125" xml:space="preserve" y="23.98274739583337">分管副总工/总工审核</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n5">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_75f7c673-e319-981a-25a5-f057cbbedf1b]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[exclusiveGateway]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_75f7c673-e319-981a-25a5-f057cbbedf1b", "bpmn_type": "exclusiveGateway", "name": "", "attrs": {}, "children_xml": [], "order": 5, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Gateway.withShadow">
+          <y:Geometry height="50.0" width="50.0" x="86.0" y="729.6666666666667"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#E38B00" type="line" width="1.0"/>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="GATEWAY_TYPE_DATA_BASED_EXCLUSIVE"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_21298a9b-4681-18a2-2219-eec70541056e]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[startEvent]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_21298a9b-4681-18a2-2219-eec70541056e", "bpmn_type": "startEvent", "name": "接收到外部科技创新平台申报通知", "attrs": {}, "children_xml": [], "order": 6, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Event.withShadow">
+          <y:Geometry height="56.0" width="56.0" x="83.0" y="0.0"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#27AE27" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="n" textColor="#000000" verticalTextPosition="bottom" visible="true" width="184.0" x="-64.0" xml:space="preserve" y="-22.701171875">接收到外部科技创新平台申报通知</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.EventCharEnum" name="com.yworks.bpmn.characteristic" value="EVENT_CHARACTERISTIC_START"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="EVENT_TYPE_PLAIN"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n7">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_ad0e4134-19d9-0a85-34c7-57276099aeed]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[manualTask]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_ad0e4134-19d9-0a85-34c7-57276099aeed", "bpmn_type": "manualTask", "name": "提出申报需求", "attrs": {}, "children_xml": [], "order": 7, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="66.66666666666667" width="140.0" x="41.0" y="86.0"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="76.0" x="32.0" xml:space="preserve" y="23.982747395833343">提出申报需求</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n8">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_645ad92f-c58a-1a3e-74c7-49b27bb2ef7c]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[manualTask]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_645ad92f-c58a-1a3e-74c7-49b27bb2ef7c", "bpmn_type": "manualTask", "name": "开展政策研究、进行需求分析", "attrs": {}, "children_xml": [], "order": 8, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="66.66666666666667" width="202.0" x="10.0" y="182.66666666666669"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="160.0" x="21.0" xml:space="preserve" y="23.982747395833343">开展政策研究、进行需求分析</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n9">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_69e928b3-1b43-eb55-f45e-5b884aa5853b]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[manualTask]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_69e928b3-1b43-eb55-f45e-5b884aa5853b", "bpmn_type": "manualTask", "name": "确定科技创新平台申报项目", "attrs": {}, "children_xml": [], "order": 9, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="66.66666666666667" width="188.0" x="17.0" y="809.6666666666667"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="148.0" x="20.0" xml:space="preserve" y="23.98274739583337">确定科技创新平台申报项目</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n10">
+      <data key="d4" xml:space="preserve"><![CDATA[EBPM_a415870f-b933-8eda-4090-c9a246c6a78f]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[manualTask]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_a415870f-b933-8eda-4090-c9a246c6a78f", "bpmn_type": "manualTask", "name": "编制创新平台申报计划", "attrs": {}, "children_xml": [], "order": 10, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="66.66666666666667" width="160.0" x="31.0" y="906.3333333333334"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="124.0" x="18.0" xml:space="preserve" y="23.98274739583337">编制创新平台申报计划</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n11">
+      <data key="d4" xml:space="preserve"><![CDATA[StartEvent_1]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[intermediateThrowEvent]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台申报", "id": "StartEvent_1", "bpmn_type": "startEvent", "name": "启动平台申报", "attrs": {}, "children_xml": [], "order": 0, "source_id": null, "target_id": null}, {"file": "科技创新平台策划", "id": "EBPM_5cd3a4cf-43f3-49b0-1962-356448c0579c", "bpmn_type": "subProcess", "name": "科技创新平台申报", "attrs": {}, "children_xml": [], "order": 11, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Event.withShadow">
+          <y:Geometry height="36.0" width="36.0" x="93.0" y="1003.0"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#888888" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="76.0" x="-20.0" xml:space="preserve" y="40.0">启动平台申报</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.EventCharEnum" name="com.yworks.bpmn.characteristic" value="EVENT_CHARACTERISTIC_INTERMEDIATE_THROWING"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="EVENT_TYPE_PLAIN"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n12">
+      <data key="d4" xml:space="preserve"><![CDATA[Task_1]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[userTask]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台申报", "id": "Task_1", "bpmn_type": "userTask", "name": "填写申报材料", "attrs": {"{http://example.com/ext}owner": "科技管理部"}, "children_xml": ["<ns0:extensionElements xmlns:ns0=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:ns1=\"http://example.com/ext\">\n        <ns1:info level=\"1\" />\n      </ns0:extensionElements>"], "order": 1, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="80.0" width="140.0" x="41.0" y="1071.701171875"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="76.0" x="32.0" xml:space="preserve" y="30.6494140625">填写申报材料</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n13">
+      <data key="d4" xml:space="preserve"><![CDATA[Gateway_1]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[exclusiveGateway]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台申报", "id": "Gateway_1", "bpmn_type": "exclusiveGateway", "name": null, "attrs": {}, "children_xml": [], "order": 2, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Gateway.withShadow">
+          <y:Geometry height="50.0" width="50.0" x="121.0" y="1181.701171875"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#E38B00" type="line" width="1.0"/>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="GATEWAY_TYPE_DATA_BASED_EXCLUSIVE"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n14">
+      <data key="d4" xml:space="preserve"><![CDATA[EndEvent_1]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[intermediateThrowEvent]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "科技创新平台申报", "id": "EndEvent_1", "bpmn_type": "endEvent", "name": "平台申报完成", "attrs": {}, "children_xml": [], "order": 4, "source_id": null, "target_id": null}, {"file": "平台建设运行", "id": "StartEvent_1", "bpmn_type": "startEvent", "name": "平台申报完成", "attrs": {}, "children_xml": [], "order": 0, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Event.withShadow">
+          <y:Geometry height="36.0" width="36.0" x="273.0" y="559.6666666666667"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#888888" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="76.0" x="-20.0" xml:space="preserve" y="40.0">平台申报完成</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.EventCharEnum" name="com.yworks.bpmn.characteristic" value="EVENT_CHARACTERISTIC_INTERMEDIATE_THROWING"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="EVENT_TYPE_PLAIN"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n15">
+      <data key="d4" xml:space="preserve"><![CDATA[Task_1_2]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[task]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "平台建设运行", "id": "Task_1", "bpmn_type": "task", "name": "平台建设", "attrs": {}, "children_xml": [], "order": 1, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="67.0" width="140.0" x="221.0" y="632.6666666666667"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" width="52.0" x="44.0" xml:space="preserve" y="24.1494140625">平台建设</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n16">
+      <data key="d4" xml:space="preserve"><![CDATA[Gateway_1_2]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[parallelGateway]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "平台建设运行", "id": "Gateway_1", "bpmn_type": "parallelGateway", "name": "", "attrs": {}, "children_xml": [], "order": 2, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Gateway.withShadow">
+          <y:Geometry height="50.0" width="50.0" x="266.0" y="729.6666666666667"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#E38B00" type="line" width="1.0"/>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="GATEWAY_TYPE_PARALLEL"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n17">
+      <data key="d4" xml:space="preserve"><![CDATA[EndEvent_1_2]]></data>
+      <data key="d5" xml:space="preserve"><![CDATA[endEvent]]></data>
+      <data key="d6" xml:space="preserve"><![CDATA[[{"file": "平台建设运行", "id": "EndEvent_1", "bpmn_type": "endEvent", "name": "平台建设完成", "attrs": {}, "children_xml": [], "order": 3, "source_id": null, "target_id": null}]]]></data>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Event.withShadow">
+          <y:Geometry height="36.0" width="36.0" x="273.0" y="825.0000000000001"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#C0392B" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="76.0" x="-20.0" xml:space="preserve" y="40.0">平台建设完成</y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.EventCharEnum" name="com.yworks.bpmn.characteristic" value="EVENT_CHARACTERISTIC_END"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffff"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="EVENT_TYPE_PLAIN"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n18">
+      <data key="d4"/>
+      <data key="d5"/>
+      <data key="d6"/>
+      <data key="d8"/>
+      <data key="d9">
+        <y:GenericNode configuration="com.yworks.bpmn.Activity.withShadow">
+          <y:Geometry height="55.0" width="85.0" x="420.25256521739163" y="638.6666666666667"/>
+          <y:Fill color="#FFFFFFE6" color2="#D4D4D4CC" transparent="false"/>
+          <y:BorderStyle color="#123EA2" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="52.0" x="16.5" xml:space="preserve" y="18.1494140625">平台维护<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.TaskTypeEnum" name="com.yworks.bpmn.taskType" value="TASK_TYPE_ABSTRACT"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
+            <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="ACTIVITY_TYPE"/>
+            <y:Property class="com.yworks.yfiles.bpmn.view.ActivityTypeEnum" name="com.yworks.bpmn.activityType" value="ACTIVITY_TYPE_TASK"/>
+          </y:StyleProperties>
+        </y:GenericNode>
+      </data>
+    </node>
+    <edge id="e0" source="n0" target="n1">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_596fbb8f-466f-c9be-ce24-08e0ca1800d6]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_596fbb8f-466f-c9be-ce24-08e0ca1800d6", "bpmn_type": "sequenceFlow", "name": "", "attrs": {}, "children_xml": [], "order": 12, "source_id": "EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8", "target_id": "EBPM_873ebcef-da2c-52ff-4318-d7bb3b59cc1b"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8", "EBPM_873ebcef-da2c-52ff-4318-d7bb3b59cc1b"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-33.33333333333334">
+            <y:Point x="291.0" y="304.33333333333337"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e1" source="n2" target="n3">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_5c23ebee-e7be-34a0-10f7-92e309b82e12]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_5c23ebee-e7be-34a0-10f7-92e309b82e12", "bpmn_type": "sequenceFlow", "name": "", "attrs": {}, "children_xml": [], "order": 13, "source_id": "EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e", "target_id": "EBPM_12354ce6-5b67-fc6c-5e49-52763f5c26a9"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e", "EBPM_12354ce6-5b67-fc6c-5e49-52763f5c26a9"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="-53.0" sy="33.333333333333314" tx="0.0" ty="0.0">
+            <y:Point x="238.0" y="577.6666666666667"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e2" source="n4" target="n5">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_d95dd905-2466-b562-b59f-6a7655d4f548]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_d95dd905-2466-b562-b59f-6a7655d4f548", "bpmn_type": "sequenceFlow", "name": "", "attrs": {}, "children_xml": [], "order": 14, "source_id": "EBPM_e68efe62-6af7-7c43-bf10-c0e40f4ef136", "target_id": "EBPM_75f7c673-e319-981a-25a5-f057cbbedf1b"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_e68efe62-6af7-7c43-bf10-c0e40f4ef136", "EBPM_75f7c673-e319-981a-25a5-f057cbbedf1b"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="33.333333333333314" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e3" source="n6" target="n7">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_6af5808a-35d1-e682-03b7-e42f2db48212]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_6af5808a-35d1-e682-03b7-e42f2db48212", "bpmn_type": "sequenceFlow", "name": "", "attrs": {}, "children_xml": [], "order": 15, "source_id": "EBPM_21298a9b-4681-18a2-2219-eec70541056e", "target_id": "EBPM_ad0e4134-19d9-0a85-34c7-57276099aeed"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_21298a9b-4681-18a2-2219-eec70541056e", "EBPM_ad0e4134-19d9-0a85-34c7-57276099aeed"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-33.333333333333336"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="n7" target="n8">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_e4f63219-193b-1dc8-636c-cc306300d00e]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_e4f63219-193b-1dc8-636c-cc306300d00e", "bpmn_type": "sequenceFlow", "name": "形成创新平台申报需求，反馈科技管理部", "attrs": {}, "children_xml": [], "order": 16, "source_id": "EBPM_ad0e4134-19d9-0a85-34c7-57276099aeed", "target_id": "EBPM_645ad92f-c58a-1a3e-74c7-49b27bb2ef7c"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_ad0e4134-19d9-0a85-34c7-57276099aeed", "EBPM_645ad92f-c58a-1a3e-74c7-49b27bb2ef7c"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="33.33333333333334" tx="0.0" ty="-33.33333333333334"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="220.0" x="-110.0" xml:space="preserve" y="5.649408976236998">形成创新平台申报需求，反馈科技管理部<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="n8" target="n0">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_679aa1a1-56c7-4b17-8e8a-c16597613721]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_679aa1a1-56c7-4b17-8e8a-c16597613721", "bpmn_type": "sequenceFlow", "name": "形成科技创新平台申报策划", "attrs": {}, "children_xml": [], "order": 17, "source_id": "EBPM_645ad92f-c58a-1a3e-74c7-49b27bb2ef7c", "target_id": "EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_645ad92f-c58a-1a3e-74c7-49b27bb2ef7c", "EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="33.33333333333334" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="148.0" x="-74.0" xml:space="preserve" y="5.649419148763059">形成科技创新平台申报策划<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e6" source="n1" target="n2">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_96155149-f4ef-5e3a-7594-53ea337a137d]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_96155149-f4ef-5e3a-7594-53ea337a137d", "bpmn_type": "sequenceFlow", "name": "拟定科技创新平台申报项目", "attrs": {}, "children_xml": [], "order": 18, "source_id": "EBPM_873ebcef-da2c-52ff-4318-d7bb3b59cc1b", "target_id": "EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_873ebcef-da2c-52ff-4318-d7bb3b59cc1b", "EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="33.333333333333314" tx="0.0" ty="-33.333333333333314"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="148.0" x="-74.0" xml:space="preserve" y="5.620117187500114">拟定科技创新平台申报项目<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e7" source="n3" target="n4">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_1d5e588d-9d32-d816-ed1d-1bf9d1e1e01a]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_1d5e588d-9d32-d816-ed1d-1bf9d1e1e01a", "bpmn_type": "sequenceFlow", "name": "审核通过", "attrs": {}, "children_xml": [], "order": 19, "source_id": "EBPM_12354ce6-5b67-fc6c-5e49-52763f5c26a9", "target_id": "EBPM_e68efe62-6af7-7c43-bf10-c0e40f4ef136"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_12354ce6-5b67-fc6c-5e49-52763f5c26a9", "EBPM_e68efe62-6af7-7c43-bf10-c0e40f4ef136"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-33.333333333333314"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="52.0" x="-26.0" xml:space="preserve" y="5.708435058593864">审核通过<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e8" source="n3" target="n0">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_ea9d4cad-60ee-bf38-be14-817d219d55e7]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_ea9d4cad-60ee-bf38-be14-817d219d55e7", "bpmn_type": "sequenceFlow", "name": "审核不通过", "attrs": {}, "children_xml": [], "order": 20, "source_id": "EBPM_12354ce6-5b67-fc6c-5e49-52763f5c26a9", "target_id": "EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_12354ce6-5b67-fc6c-5e49-52763f5c26a9", "EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="64.0" x="-32.0" xml:space="preserve" y="-121.0261840820312">审核不通过<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e9" source="n5" target="n9">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_42ea6411-fde4-04d2-28bd-ae6dd06631bc]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_42ea6411-fde4-04d2-28bd-ae6dd06631bc", "bpmn_type": "sequenceFlow", "name": "审核通过", "attrs": {}, "children_xml": [], "order": 21, "source_id": "EBPM_75f7c673-e319-981a-25a5-f057cbbedf1b", "target_id": "EBPM_69e928b3-1b43-eb55-f45e-5b884aa5853b"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_75f7c673-e319-981a-25a5-f057cbbedf1b", "EBPM_69e928b3-1b43-eb55-f45e-5b884aa5853b"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-33.33333333333337"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="52.0" x="-26.0" xml:space="preserve" y="5.6469523111979925">审核通过<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e10" source="n5" target="n0">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_08de718e-5197-1ac8-77c1-1fe16c51527c]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_08de718e-5197-1ac8-77c1-1fe16c51527c", "bpmn_type": "sequenceFlow", "name": "审核不通过", "attrs": {}, "children_xml": [], "order": 22, "source_id": "EBPM_75f7c673-e319-981a-25a5-f057cbbedf1b", "target_id": "EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_75f7c673-e319-981a-25a5-f057cbbedf1b", "EBPM_2783b857-45a5-40e5-84d6-3b98c770a0b8"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="16.0" y="754.6666666666667"/>
+            <y:Point x="16.0" y="304.33333333333337"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="64.0" x="-101.99755859375" xml:space="preserve" y="-234.51727294921875">审核不通过<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e11" source="n9" target="n10">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_e27e4854-7e04-8b46-37f2-554ef4e0a21d]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_e27e4854-7e04-8b46-37f2-554ef4e0a21d", "bpmn_type": "sequenceFlow", "name": "确定成科技创新平台申报项目", "attrs": {}, "children_xml": [], "order": 23, "source_id": "EBPM_69e928b3-1b43-eb55-f45e-5b884aa5853b", "target_id": "EBPM_a415870f-b933-8eda-4090-c9a246c6a78f"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_69e928b3-1b43-eb55-f45e-5b884aa5853b", "EBPM_a415870f-b933-8eda-4090-c9a246c6a78f"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="33.33333333333337" tx="0.0" ty="-33.33333333333337"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="160.0" x="-80.0" xml:space="preserve" y="5.649434407552121">确定成科技创新平台申报项目<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e12" source="n10" target="n11">
+      <data key="d11" xml:space="preserve"><![CDATA[EBPM_7a6586a2-9327-45b5-1efe-1a37c88d8586]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台策划", "id": "EBPM_7a6586a2-9327-45b5-1efe-1a37c88d8586", "bpmn_type": "sequenceFlow", "name": "形成创新平台申报计划", "attrs": {}, "children_xml": [], "order": 24, "source_id": "EBPM_a415870f-b933-8eda-4090-c9a246c6a78f", "target_id": "EBPM_5cd3a4cf-43f3-49b0-1962-356448c0579c"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_a415870f-b933-8eda-4090-c9a246c6a78f", "StartEvent_1"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="33.33333333333337" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="124.0" x="-62.0" xml:space="preserve" y="5.6494140625">形成创新平台申报计划<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e13" source="n11" target="n12">
+      <data key="d11" xml:space="preserve"><![CDATA[Flow_1]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台申报", "id": "Flow_1", "bpmn_type": "sequenceFlow", "name": null, "attrs": {}, "children_xml": [], "order": 5, "source_id": "StartEvent_1", "target_id": "Task_1"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["StartEvent_1", "Task_1"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-40.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e14" source="n12" target="n13">
+      <data key="d11" xml:space="preserve"><![CDATA[Flow_2]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台申报", "id": "Flow_2", "bpmn_type": "sequenceFlow", "name": null, "attrs": {}, "children_xml": [], "order": 6, "source_id": "Task_1", "target_id": "Gateway_1"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["Task_1", "Gateway_1"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="-35.0" sy="40.0" tx="0.0" ty="0.0">
+            <y:Point x="76.0" y="1206.701171875"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e15" source="n13" target="n2">
+      <data key="d11" xml:space="preserve"><![CDATA[Flow_3]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台申报", "id": "Flow_3", "bpmn_type": "sequenceFlow", "name": "通过", "attrs": {}, "children_xml": [], "order": 7, "source_id": "Gateway_1", "target_id": "Task_2"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["Gateway_1", "EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="46.666666666666686" ty="33.333333333333314">
+            <y:Point x="376.0" y="1206.701171875"/>
+            <y:Point x="376.0" y="537.6666666666667"/>
+            <y:Point x="337.6666666666667" y="537.6666666666667"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="28.0" x="190.984130859375" xml:space="preserve" y="-343.86783854166663">通过<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e16" source="n13" target="n12">
+      <data key="d11" xml:space="preserve"><![CDATA[Flow_4]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台申报", "id": "Flow_4", "bpmn_type": "sequenceFlow", "name": "退回", "attrs": {}, "children_xml": [], "order": 8, "source_id": "Gateway_1", "target_id": "Task_1"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["Gateway_1", "Task_1"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="35.0" ty="40.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="centered" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="28.0" x="-14.0" xml:space="preserve" y="-24.34814453125">退回<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e17" source="n2" target="n14">
+      <data key="d11" xml:space="preserve"><![CDATA[Flow_5]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "科技创新平台申报", "id": "Flow_5", "bpmn_type": "sequenceFlow", "name": null, "attrs": {}, "children_xml": [], "order": 9, "source_id": "Task_2", "target_id": "EndEvent_1"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e", "EndEvent_1"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="33.333333333333314" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e18" source="n14" target="n15">
+      <data key="d11" xml:space="preserve"><![CDATA[Flow_1_2]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "平台建设运行", "id": "Flow_1", "bpmn_type": "sequenceFlow", "name": null, "attrs": {}, "children_xml": [], "order": 4, "source_id": "StartEvent_1", "target_id": "Task_1"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["EndEvent_1", "Task_1_2"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-33.5"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e19" source="n15" target="n16">
+      <data key="d11" xml:space="preserve"><![CDATA[Flow_2_2]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "平台建设运行", "id": "Flow_2", "bpmn_type": "sequenceFlow", "name": null, "attrs": {}, "children_xml": [], "order": 5, "source_id": "Task_1", "target_id": "Gateway_1"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["Task_1_2", "Gateway_1_2"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="33.5" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e20" source="n16" target="n17">
+      <data key="d11" xml:space="preserve"><![CDATA[Flow_3_2]]></data>
+      <data key="d12" xml:space="preserve"><![CDATA[[{"file": "平台建设运行", "id": "Flow_3", "bpmn_type": "sequenceFlow", "name": null, "attrs": {}, "children_xml": [], "order": 6, "source_id": "Gateway_1", "target_id": "EndEvent_1"}]]]></data>
+      <data key="d13" xml:space="preserve"><![CDATA[["Gateway_1_2", "EndEvent_1_2"]]]></data>
+      <data key="d15"/>
+      <data key="d16">
+        <y:GenericEdge configuration="com.yworks.bpmn.Connection">
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="delta"/>
+          <y:StyleProperties>
+            <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="CONNECTION_TYPE_SEQUENCE_FLOW"/>
+          </y:StyleProperties>
+        </y:GenericEdge>
+      </data>
+    </edge>
+    <edge id="e21" source="n14" target="n18">
+      <data key="d11"/>
+      <data key="d12"/>
+      <data key="d13"/>
+      <data key="d15"/>
+      <data key="d16">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="462.75256521739163" y="577.6666666666667"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+  <data key="d10">
+    <y:Resources/>
+  </data>
+</graphml>

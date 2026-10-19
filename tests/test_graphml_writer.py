@@ -100,3 +100,21 @@ def test_xml_declaration_double_quoted(tmp_path):
     merged, _ = merge([read_bpmn(p) for p in fixture_paths()])
     write_graphml(merged, tmp_path / "m.graphml")
     assert (tmp_path / "m.graphml").read_bytes().startswith(b'<?xml version="1.0" encoding="UTF-8"?>')
+
+
+def test_tasks_use_yed325_activity_format(written):
+    # yEd 3.25 保存时使用 type=ACTIVITY_TYPE + activityType；旧值会被转换且 taskType 被重置为 ABSTRACT
+    props = _props(_node_by_bpmn_id(written, "EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e"))
+    assert props["com.yworks.bpmn.type"] == "ACTIVITY_TYPE"
+    assert props["com.yworks.bpmn.activityType"] == "ACTIVITY_TYPE_TASK"
+    assert props["com.yworks.bpmn.taskType"] == "TASK_TYPE_MANUAL"
+
+
+def test_reads_yed325_activity_variants():
+    act = "com.yworks.bpmn.Activity.withShadow"
+    base = {"com.yworks.bpmn.type": "ACTIVITY_TYPE", "com.yworks.bpmn.activityType": "ACTIVITY_TYPE_TASK"}
+    assert bpmn_type_from_yed(act, {**base, "com.yworks.bpmn.taskType": "TASK_TYPE_USER"}) == "userTask"
+    assert bpmn_type_from_yed(act, {**base, "com.yworks.bpmn.taskType": "TASK_TYPE_ABSTRACT"}) == "task"
+    assert bpmn_type_from_yed(act, {**base, "com.yworks.bpmn.marker1": "BPMN_MARKER_CLOSED"}) == "subProcess"
+    assert bpmn_type_from_yed(act, {**base, "com.yworks.bpmn.activityType": "ACTIVITY_TYPE_CALL_ACTIVITY"}) == "callActivity"
+    assert bpmn_type_from_yed(act, {"com.yworks.bpmn.type": "ACTIVITY_TYPE_SUBPROCESS_PLAIN"}) == "subProcess"

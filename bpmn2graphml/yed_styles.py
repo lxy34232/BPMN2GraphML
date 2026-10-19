@@ -1,6 +1,10 @@
 """BPMN 元素类型 ⇄ yEd 自带 BPMN 图形样式（yEd 3.25 经典 graphml 格式）。
 
-取值来自 yEd 自带示例和 yed.jar 中的枚举；改动只需维护此文件。
+取值已用 yEd 3.25.1 真实保存的文件核实（tests/fixtures/yed_saved.graphml）：
+任务写成 type=ACTIVITY_TYPE + activityType + taskType；若写旧值
+ACTIVITY_TYPE_STATELESS_TASK_PLAIN，yEd 会转换并把 taskType 重置为 ABSTRACT。
+子流程的 marker 属性类名无法确认，仍写旧值 ACTIVITY_TYPE_SUBPROCESS_PLAIN，由 yEd 转换。
+改动只需维护此文件。
 """
 from __future__ import annotations
 
@@ -14,8 +18,11 @@ CONNECTION = "com.yworks.bpmn.Connection"
 TYPE_PROP = "com.yworks.bpmn.type"
 TASK_TYPE_PROP = "com.yworks.bpmn.taskType"
 CHAR_PROP = "com.yworks.bpmn.characteristic"
+ACTIVITY_TYPE_PROP = "com.yworks.bpmn.activityType"
+MARKER_PROPS = tuple(f"com.yworks.bpmn.marker{i}" for i in range(1, 5))
 TYPE_CLASS = "com.yworks.yfiles.bpmn.view.BPMNTypeEnum"
 TASK_TYPE_CLASS = "com.yworks.yfiles.bpmn.view.TaskTypeEnum"
+ACTIVITY_TYPE_CLASS = "com.yworks.yfiles.bpmn.view.ActivityTypeEnum"
 CHAR_CLASS = "com.yworks.yfiles.bpmn.view.EventCharEnum"
 SEQUENCE_FLOW = "CONNECTION_TYPE_SEQUENCE_FLOW"
 
@@ -69,8 +76,12 @@ class YedStyle:
 
 
 def yed_style_for(bpmn_type: str) -> YedStyle:
-    if bpmn_type in ("subProcess", "callActivity"):
+    if bpmn_type == "subProcess":
         props = ((TYPE_CLASS, TYPE_PROP, "ACTIVITY_TYPE_SUBPROCESS_PLAIN"),)
+        return YedStyle(ACTIVITY, props + _ICON_PROPS, (140.0, 67.0), "#123EA2", True)
+    if bpmn_type == "callActivity":
+        props = ((TYPE_CLASS, TYPE_PROP, "ACTIVITY_TYPE"),
+                 (ACTIVITY_TYPE_CLASS, ACTIVITY_TYPE_PROP, "ACTIVITY_TYPE_CALL_ACTIVITY"))
         return YedStyle(ACTIVITY, props + _ICON_PROPS, (140.0, 67.0), "#123EA2", True)
     if bpmn_type in _GATEWAY_TYPES:
         props = ((TYPE_CLASS, TYPE_PROP, _GATEWAY_TYPES[bpmn_type]),)
@@ -80,7 +91,8 @@ def yed_style_for(bpmn_type: str) -> YedStyle:
                  (CHAR_CLASS, CHAR_PROP, _EVENT_CHARS[bpmn_type]))
         return YedStyle(EVENT, props + _ICON_PROPS, (36.0, 36.0), _EVENT_BORDERS[bpmn_type], False)
     task_type = _TASK_TYPES.get(bpmn_type, "TASK_TYPE_ABSTRACT")
-    props = ((TYPE_CLASS, TYPE_PROP, "ACTIVITY_TYPE_STATELESS_TASK_PLAIN"),
+    props = ((TYPE_CLASS, TYPE_PROP, "ACTIVITY_TYPE"),
+             (ACTIVITY_TYPE_CLASS, ACTIVITY_TYPE_PROP, "ACTIVITY_TYPE_TASK"),
              (TASK_TYPE_CLASS, TASK_TYPE_PROP, task_type))
     return YedStyle(ACTIVITY, props + _ICON_PROPS, (140.0, 67.0), "#123EA2", True)
 
@@ -93,7 +105,12 @@ def bpmn_type_from_yed(configuration: str, props: dict[str, str]) -> str:
     """根据 yEd 节点的 configuration 和样式属性推断 BPMN 类型；未知图形一律视为 task。"""
     kind = props.get(TYPE_PROP, "")
     if configuration.startswith("com.yworks.bpmn.Activity"):
-        if "SUBPROCESS" in kind:
+        activity = props.get(ACTIVITY_TYPE_PROP, "")
+        if activity == "ACTIVITY_TYPE_CALL_ACTIVITY":
+            return "callActivity"
+        markers = {props.get(m, "") for m in MARKER_PROPS}
+        if ("SUBPROCESS" in kind or activity in ("ACTIVITY_TYPE_EVENT_SUB_PROCESS", "ACTIVITY_TYPE_TRANSACTION")
+                or markers & {"BPMN_MARKER_CLOSED", "BPMN_MARKER_OPEN"}):
             return "subProcess"
         reverse = {v: k for k, v in _TASK_TYPES.items()}
         return reverse.get(props.get(TASK_TYPE_PROP, ""), "task")

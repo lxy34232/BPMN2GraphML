@@ -134,3 +134,18 @@ def test_rename_skips_origins_with_other_names(roundtrip):
     g = roundtrip(lambda t: set_label(t, "StartEvent_1", "启动申报（改名）"))
     names = {o.bpmn_type: o.name for o in g.nodes["StartEvent_1"].origins}
     assert names == {"startEvent": "启动申报（改名）", "subProcess": "科技创新平台申报"}
+
+
+def test_real_yed_file(merged):
+    """tests/fixtures/yed_saved.graphml：用户在 yEd 3.25.1 中分层布局、新增任务「平台维护」并连线后保存。"""
+    from conftest import FIX
+    g = read_graphml(FIX / "yed_saved.graphml")
+    assert g.warnings == []
+    assert set(merged.nodes) <= set(g.nodes)
+    for nid, n in merged.nodes.items():
+        assert (g.nodes[nid].bpmn_type, g.nodes[nid].name) == (n.bpmn_type, n.name)
+    (new,) = _new_nodes(g)
+    assert (new.bpmn_type, new.name) == ("task", "平台维护")
+    (edge,) = [e for e in g.edges.values() if not e.origins and e.exported_source is None]
+    assert (edge.source, edge.target) == ("EndEvent_1", new.id)
+    assert [s.file for s in g.sources] == ["科技创新平台策划", "科技创新平台申报", "平台建设运行"]
