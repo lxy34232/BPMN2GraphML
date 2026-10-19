@@ -17,11 +17,13 @@ from .merger import normalize_events
 from .model import (BPMN_NS, BPMNDI_NS, DC_NS, DI_NS, XSI_NS, Bounds, Graph,
                     Point, SourceInfo)
 from .yed_styles import default_size
+from .properties import B2G_NS, SOURCE_PROP, read_b2g_properties, with_b2g_properties
 from .xmlutil import write_xml
 
 SPLIT_MARGIN = 50.0
 _FLOW_REF_ATTRS = ("default",)   # 节点上引用连线 ID 的属性
-_FIXED_NS = {"bpmn2": BPMN_NS, "bpmndi": BPMNDI_NS, "dc": DC_NS, "di": DI_NS, "xsi": XSI_NS}
+_FIXED_NS = {"bpmn2": BPMN_NS, "bpmndi": BPMNDI_NS, "dc": DC_NS, "di": DI_NS, "xsi": XSI_NS,
+             "b2g": B2G_NS}
 _LAST = math.inf
 
 
@@ -165,6 +167,21 @@ def _all_namespaces(graph: Graph) -> dict[str, str]:
     return merged
 
 
+def _merged_children(origins) -> list[str]:
+    """合并节点的子元素：取首个 origin 的，b2g 属性改为所有 origin 的并集，并写入来源流程。"""
+    if not origins:
+        return []
+    sources: list[str] = []
+    others: list[tuple[str, str]] = []
+    for o in origins:
+        props = read_b2g_properties(o.children_xml)
+        own = [v for k, v in props if k == SOURCE_PROP] or [o.file]
+        sources += [s for s in own if s not in sources]
+        others += [p for p in props if p[0] != SOURCE_PROP and p not in others]
+    return with_b2g_properties(origins[0].children_xml,
+                               [(SOURCE_PROP, s) for s in sources] + others)
+
+
 def write_merged_bpmn(graph: Graph, path: str | os.PathLike) -> list[str]:
     g = copy.deepcopy(graph)
     normalize_events(g)
@@ -173,7 +190,7 @@ def write_merged_bpmn(graph: Graph, path: str | os.PathLike) -> list[str]:
     for n in g.nodes.values():
         o = n.origins[0] if n.origins else None
         nodes.append(_NodeEl(n.bpmn_type, n.id, n.name, dict(o.attrs) if o else {},
-                             list(o.children_xml) if o else [], _bounds_of(g, n.id)))
+                             _merged_children(n.origins), _bounds_of(g, n.id)))
         node_file[n.id] = o.file if o else None
     # (文件, 原连线 id) → 合并后的连线 id（ID 冲突改名后引用要跟着改）
     flow_ids = {(o.file, o.id): e.id for e in g.edges.values() for o in e.origins}
