@@ -1,0 +1,146 @@
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --border: #d9dde3;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --accent: #d97706;
+  --accent-soft: #fef3c7;
+  --primary: #2563eb;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", system-ui, sans-serif;
+}
+
+body { display: flex; flex-direction: column; }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  padding: 8px 12px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:hover:not(:disabled) { border-color: #9ca3af; }
+.btn:disabled { color: #b0b6bf; cursor: default; }
+.btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+.file-name {
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+.sep { width: 1px; height: 22px; background: var(--border); }
+.spacer { flex: 1; }
+
+.field { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
+.field select {
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+}
+
+/* 取值很多时（如编号类属性）限制高度并滚动，避免把流程图挤没 */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; max-height: 30vh; overflow-y: auto; }
+
+.chip {
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.chip .count { margin-left: 4px; color: var(--muted); }
+.chip.unset { border-style: dashed; color: var(--muted); }
+.chip.on { background: var(--accent-soft); border-color: var(--accent); color: #92400e; }
+.chip.on .count { color: #b45309; }
+
+.stage { position: relative; flex: 1; min-height: 0; }
+.canvas { position: absolute; inset: 0; }
+
+.message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 560px;
+  padding: 16px 20px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--muted);
+  text-align: center;
+}
+.message.error { border-color: #fca5a5; color: #b91c1c; border-style: solid; }
+
+.drop-hint {
+  position: absolute;
+  inset: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--primary);
+  border-radius: 10px;
+  background: rgba(37, 99, 235, .06);
+  color: var(--primary);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.card {
+  position: absolute;
+  z-index: 10;
+  width: 260px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .12);
+}
+.card h3 { margin: 0 0 6px; font-size: 15px; word-break: break-all; }
+.card dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; margin: 0; }
+.card dt { color: var(--muted); white-space: nowrap; }
+.card dd { margin: 0; word-break: break-all; }
+
+/* 高亮与淡化（bpmn-js 的 canvas marker 会把类加在元素的 <g> 上） */
+.djs-element.b2g-hl .djs-visual > :first-child {
+  stroke: var(--accent) !important;
+  stroke-width: 3px !important;
+  fill: var(--accent-soft) !important;
+}
+.djs-element.b2g-dim { opacity: .22; }

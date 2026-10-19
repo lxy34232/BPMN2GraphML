@@ -18,5 +18,8 @@ bpmn2graphml = "bpmn2graphml.cli:main"
 [tool.setuptools]
 packages = ["bpmn2graphml"]
 
+[tool.setuptools.package-data]
+bpmn2graphml = ["viewer/*", "viewer/vendor/**/*"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -9,6 +9,7 @@ from .bpmn_reader import BpmnReadError
 from .graphml_reader import GraphmlReadError
 from .merger import MergeError
 from .pipeline import bpmn_to_graphml, graphml_to_bpmn, report_path_for
+from .viewer_launch import open_viewer
 
 _ERRORS = (BpmnReadError, GraphmlReadError, MergeError, OSError)
 _BPMN_TYPES = [("BPMN 文件", "*.bpmn *.xml"), ("所有文件", "*.*")]
@@ -50,6 +51,11 @@ class App(ttk.Frame):
         self.notebook.pack(fill="both", expand=True)
         self._build_merge_tab()
         self._build_back_tab()
+        bottom = ttk.Frame(self)
+        bottom.pack(fill="x", pady=(8, 0))
+        self.open_viewer_button = ttk.Button(bottom, text="打开可视化查看器",
+                                             command=lambda: open_viewer())
+        self.open_viewer_button.pack(side="right")
 
     # —— 页签一：BPMN → GraphML ——
     def _build_merge_tab(self) -> None:
@@ -126,8 +132,20 @@ class App(ttk.Frame):
         _path_row(tab, "输出 BPMN：", self.merged_out, self._pick_merged_out)
         ttk.Checkbutton(tab, text="拆分回原文件", variable=self.want_split).pack(anchor="w", pady=(8, 0))
         _path_row(tab, "输出文件夹：", self.split_dir, self._pick_split_dir)
-        ttk.Button(tab, text="转换", command=self._run_back).pack(anchor="e", pady=4)
+        actions = ttk.Frame(tab)
+        actions.pack(fill="x", pady=4)
+        ttk.Button(actions, text="转换", command=self._run_back).pack(side="right")
+        self.view_result_button = ttk.Button(actions, text="在查看器中打开",
+                                             command=self._view_merged)
+        self.view_result_button.pack(side="right", padx=(0, 6))
         self.back_log = _log_box(tab)
+
+    def _view_merged(self) -> None:
+        path = Path(self.merged_out.get()) if self.merged_out.get() else None
+        if path is None or not path.is_file():
+            messagebox.showerror("错误", "请先转换并生成合并后的 BPMN 文件")
+            return
+        open_viewer(path)
 
     def _pick_graphml_in(self) -> None:
         p = filedialog.askopenfilename(title="选择 yEd 保存的 graphml", filetypes=_GRAPHML_TYPES)

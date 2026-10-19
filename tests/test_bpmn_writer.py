@@ -238,3 +238,57 @@ def test_split_without_sources_data_keeps_files(tmp_path):
     for original in fixture_paths():
         before, after = read_bpmn(original), read_bpmn(tmp_path / "s" / original.name)
         assert _semantic(after) == _semantic(before)
+
+
+def _b2g(path, node_id):
+    from bpmn2graphml.properties import read_b2g_properties
+    for el in ET.parse(path).getroot().iter():
+        if el.get("id") == node_id:
+            return read_b2g_properties([ET.tostring(c, encoding="unicode") for c in el])
+    raise KeyError(node_id)
+
+
+def test_merged_writes_source_property(merged_out):
+    out, _ = merged_out()
+    assert _b2g(out, "EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e") == [
+        ("来源流程", "科技创新平台策划"), ("来源流程", "科技创新平台申报")]
+    assert _b2g(out, START) == [("来源流程", "科技创新平台策划")]
+    assert _b2g(out, "StartEvent_1") == [("来源流程", "科技创新平台申报"), ("来源流程", "科技创新平台策划")]
+    task = next(el for el in ET.parse(out).getroot().iter() if el.get("id") == "Task_1")
+    ext = task.find(B + "extensionElements")
+    assert ext.find("{http://example.com/ext}info") is not None
+
+
+def test_merged_unions_b2g_from_all_origins(tmp_path):
+    from bpmn2graphml.properties import with_b2g_properties
+    from helpers import make_graph
+    a = make_graph("A", [("a1", "task", "X")])
+    b = make_graph("B", [("b1", "task", "X")])
+    a.nodes["a1"].origins[0].children_xml = with_b2g_properties([], [("负责人", "张三")])
+    b.nodes["b1"].origins[0].children_xml = with_b2g_properties([], [("负责人", "李四"), ("负责人", "张三")])
+    merged, _ = merge([a, b])
+    write_merged_bpmn(merged, tmp_path / "m.bpmn")
+    assert _b2g(tmp_path / "m.bpmn", "a1") == [
+        ("来源流程", "A"), ("来源流程", "B"), ("负责人", "张三"), ("负责人", "李四")]
+
+
+def test_remerge_keeps_original_sources(tmp_path, merged_out):
+    out, _ = merged_out()
+    again, _ = merge([read_bpmn(out)])
+    write_merged_bpmn(again, tmp_path / "again.bpmn")
+    assert _b2g(tmp_path / "again.bpmn", "EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e") == [
+        ("来源流程", "科技创新平台策划"), ("来源流程", "科技创新平台申报")]
+
+
+def test_new_node_has_no_properties(tmp_path):
+    g = pipeline(tmp_path, lambda t: add_task(t, "nX", "新任务", None, 0, 0))
+    write_merged_bpmn(g, tmp_path / "m.bpmn")
+    (new,) = [n for n in g.nodes.values() if not n.origins]
+    assert _b2g(tmp_path / "m.bpmn", new.id) == []
+
+
+def test_split_output_has_no_b2g(split):
+    from bpmn2graphml.properties import B2G_NS
+    out, _ = split()
+    for p in out.glob("*.bpmn"):
+        assert B2G_NS not in p.read_text(encoding="utf-8")
