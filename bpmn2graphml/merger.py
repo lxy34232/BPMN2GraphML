@@ -9,9 +9,9 @@ import uuid
 from dataclasses import dataclass, field
 
 from .model import Edge, Graph, Node, Origin
+from .yed_styles import default_size
 
 FILE_GAP = 200.0
-_DEFAULT_SIZE = (80.0, 60.0)
 
 Key = tuple[str, str]  # (file, 原 id)
 
@@ -122,7 +122,7 @@ def _layout_positions(graphs: list[Graph]) -> dict[Key, tuple[float, float, floa
                 x, y, w, h = n.bounds
                 positions[(file, n.id)] = (x - min_x + offset, y, w, h)
             else:
-                w, h = _DEFAULT_SIZE
+                w, h = default_size(n.bpmn_type)
                 positions[(file, n.id)] = (offset + (k % 5) * 200, (k // 5) * 150, w, h)
                 k += 1
         right = max((p[0] + p[2] for key, p in positions.items() if key[0] == file),
