@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BPMN 属性查看器</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="vendor/bpmn-js/assets/diagram-js.css">
+  <link rel="stylesheet" href="vendor/bpmn-js/assets/bpmn-js.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="toolbar">
+    <label class="btn primary" title="打开一个 BPMN 文件（也可以直接拖进页面）">
+      打开 BPMN<input id="file-input" type="file" accept=".bpmn,.xml" hidden>
+    </label>
+    <span id="file-name" class="file-name">未打开文件</span>
+    <span class="sep"></span>
+    <label class="field">按
+      <select id="attr-select" disabled></select>
+    </label>
+    <div id="chips" class="chips" aria-label="属性取值"></div>
+    <span class="spacer"></span>
+    <button id="clear-btn" class="btn" type="button" disabled>清除筛选</button>
+    <button id="fit-btn" class="btn" type="button" disabled>适应窗口</button>
+  </header>
+  <main id="stage" class="stage">
+    <div id="canvas" class="canvas"></div>
+    <div id="message" class="message">打开或拖入一个 BPMN 文件</div>
+    <aside id="card" class="card" hidden></aside>
+    <div id="drop-hint" class="drop-hint" hidden>松开鼠标以打开文件</div>
+  </main>
+  <script src="vendor/bpmn-js/bpmn-navigated-viewer.production.min.js"></script>
+  <script src="properties.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
