@@ -40,3 +40,54 @@ def test_hidden_attribute_beats_display_rules():
     # .drop-hint 等元素设了 display:flex，会盖过浏览器默认的 [hidden]{display:none}
     css = (VIEWER / "app.css").read_text(encoding="utf-8")
     assert re.search(r"\[hidden\]\s*\{[^}]*display:\s*none\s*!important", css)
+
+
+def _attr(html: str, name: str) -> str:
+    return re.search(rf'{name}="([^"]*)"', html).group(1)
+
+
+def test_launch_page_embeds_utf8_bpmn(tmp_path):
+    import base64
+    import html as htmllib
+
+    from bpmn2graphml.viewer_launch import make_launch_page
+    from conftest import FIX
+    src = FIX / "科技创新平台策划.bpmn"
+    page = make_launch_page(src, tmp_path)
+    text = page.read_text(encoding="utf-8")
+    assert 'id="b2g-preload"' in text
+    assert base64.b64decode(_attr(text, "data-base64")) == src.read_bytes()
+    assert htmllib.unescape(_attr(text, "data-filename")) == "科技创新平台策划.bpmn"
+
+
+def test_launch_page_assets_absolute(tmp_path):
+    from urllib.parse import urlparse
+    from urllib.request import url2pathname
+
+    from bpmn2graphml.viewer_launch import make_launch_page
+    from conftest import FIX
+    text = make_launch_page(FIX / "科技创新平台策划.bpmn", tmp_path).read_text(encoding="utf-8")
+    refs = [r for r in _refs(text) if not r.startswith("data:")]
+    assert len(refs) == 6
+    for ref in refs:
+        assert ref.startswith("file:///"), ref
+        assert Path(url2pathname(urlparse(ref).path)).is_file(), ref
+
+
+def test_open_viewer_without_file():
+    from bpmn2graphml.viewer_launch import VIEWER_DIR, open_viewer
+    opened = []
+    assert open_viewer(opener=opened.append) == VIEWER_DIR / "index.html"
+    assert opened == [(VIEWER_DIR / "index.html").as_uri()]
+
+
+def test_open_viewer_with_file(tmp_path, monkeypatch):
+    import tempfile
+
+    from bpmn2graphml.viewer_launch import open_viewer
+    from conftest import FIX
+    monkeypatch.setattr(tempfile, "tempdir", str(tmp_path))
+    opened = []
+    page = open_viewer(FIX / "平台建设运行.bpmn", opener=opened.append)
+    assert page.name == "view.html" and page.is_file()
+    assert opened == [page.as_uri()]

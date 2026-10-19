@@ -9,6 +9,7 @@ from .bpmn_reader import BpmnReadError
 from .graphml_reader import GraphmlReadError
 from .merger import MergeError
 from .pipeline import bpmn_to_graphml, graphml_to_bpmn, report_path_for
+from .viewer_launch import open_viewer
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -21,6 +22,8 @@ def _parser() -> argparse.ArgumentParser:
     t.add_argument("input", type=Path, help="graphml 文件")
     t.add_argument("--merged", type=Path, help="输出合并后的单个 BPMN 文件")
     t.add_argument("--split", type=Path, help="拆分回原文件，输出到此文件夹")
+    v = sub.add_parser("view", help="在浏览器中打开可视化查看器")
+    v.add_argument("file", nargs="?", type=Path, help="要打开的 BPMN 文件（可选）")
     return p
 
 
@@ -32,6 +35,13 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.command == "tobpmn" and not (args.merged or args.split):
         parser.error("至少需要 --merged 或 --split 之一")
+    if args.command == "view":
+        if args.file is not None and not args.file.is_file():
+            print(f"错误：找不到文件 {args.file}", file=sys.stderr)
+            return 1
+        page = open_viewer(args.file)
+        print(f"已在浏览器中打开查看器：{page}")
+        return 0
     try:
         if args.command == "merge":
             report = bpmn_to_graphml(args.inputs, args.output)

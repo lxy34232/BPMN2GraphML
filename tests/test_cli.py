@@ -52,5 +52,22 @@ def test_gui_builds():
     try:
         app = App(root)
         assert len(app.notebook.tabs()) == 2
+        assert hasattr(app, "view_result_button") and hasattr(app, "open_viewer_button")
     finally:
         root.destroy()
+
+
+def test_cli_view_file(monkeypatch, tmp_path):
+    import tempfile
+
+    import bpmn2graphml.viewer_launch as vl
+    monkeypatch.setattr(tempfile, "tempdir", str(tmp_path))
+    opened = []
+    monkeypatch.setattr(vl, "_default_opener", opened.append)
+    assert main(["view", str(fixture_paths()[0])]) == 0
+    assert len(opened) == 1 and opened[0].endswith("view.html")
+
+
+def test_cli_view_missing(tmp_path, capsys):
+    assert main(["view", str(tmp_path / "nope.bpmn")]) == 1
+    assert "nope.bpmn" in capsys.readouterr().err
