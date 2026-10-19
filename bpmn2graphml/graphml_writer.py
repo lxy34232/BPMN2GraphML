@@ -7,6 +7,7 @@ import xml.etree.ElementTree as ET
 
 from .model import Graph
 from .yed_styles import CONNECTION, SEQUENCE_FLOW, TYPE_CLASS, TYPE_PROP, yed_style_for
+from .xmlutil import write_xml
 
 GRAPHML_NS = "http://graphml.graphdrawing.org/xmlns"
 Y_NS = "http://www.yworks.com/xml/graphml"
@@ -118,6 +119,4 @@ def write_graphml(graph: Graph, path: str | os.PathLike) -> None:
             label.text = edge.name
         _style_properties(ge, ((TYPE_CLASS, TYPE_PROP, SEQUENCE_FLOW),))
 
-    tree = ET.ElementTree(root)
-    ET.indent(tree)
-    tree.write(path, encoding="UTF-8", xml_declaration=True)
+    write_xml(root, path)

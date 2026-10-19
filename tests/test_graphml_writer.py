@@ -94,3 +94,9 @@ def test_edges_sequence_flow(written):
         if lab is not None:
             labels.append(lab.text)
     assert "审核不通过" in labels
+
+
+def test_xml_declaration_double_quoted(tmp_path):
+    merged, _ = merge([read_bpmn(p) for p in fixture_paths()])
+    write_graphml(merged, tmp_path / "m.graphml")
+    assert (tmp_path / "m.graphml").read_bytes().startswith(b'<?xml version="1.0" encoding="UTF-8"?>')
