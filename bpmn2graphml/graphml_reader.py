@@ -36,12 +36,17 @@ def _label_text(graphics: ET.Element | None, tag: str) -> str:
 
 
 def _apply_name(label: str, origins: list[Origin]) -> str | None:
-    """标签与原名称不同即视为改名，写回所有 origin；未改名时保留原值（可能为 None）。"""
+    """标签与原名称不同即视为改名，写回与原名称相同的 origin；未改名时保留原值（可能为 None）。
+
+    名称不同的 origin（例如被展开吸收的子流程，其名称是目标文件名）不受影响。
+    """
     stored = origins[0].name if origins else None
-    if label == (stored or "").strip():
+    old = (stored or "").strip()
+    if label == old:
         return stored
     for o in origins:
-        o.name = label
+        if (o.name or "").strip() == old:
+            o.name = label
     return label if label or origins else None
 
 
@@ -75,8 +80,6 @@ def read_graphml(path: str | os.PathLike) -> Graph:
     if top is None:
         raise GraphmlReadError(f"{path.name}: 文件中没有 graph")
     raw_sources = text(top, "graph", "bpmn_sources")
-    graph.sources = ([SourceInfo.from_dict(s) for s in json.loads(raw_sources)]
-                     if raw_sources else [_default_source()])
 
     used: set[str] = set()
     yed_to_id: dict[str, str] = {}
@@ -134,4 +137,24 @@ def read_graphml(path: str | os.PathLike) -> Graph:
             edge.waypoints = [(float(pt.get("x", 0)), float(pt.get("y", 0)))
                               for pt in p.findall(_Y + "Point")]
         graph.edges[eid] = edge
+
+    if raw_sources:
+        graph.sources = [SourceInfo.from_dict(s) for s in json.loads(raw_sources)]
+    else:
+        graph.sources = _sources_from_origins(graph)
     return graph
+
+
+def _sources_from_origins(graph: Graph) -> list[SourceInfo]:
+    """bpmn_sources 数据丢失时，按 origin 中出现的文件重建（属性取默认值），保证拆分不丢元素。"""
+    files: list[str] = []
+    for el in [*graph.nodes.values(), *graph.edges.values()]:
+        for o in el.origins:
+            if o.file not in files:
+                files.append(o.file)
+    if not files:
+        return [_default_source()]
+    graph.warnings.append("graphml 中缺少 bpmn_sources 数据，已按节点来源重建文件信息"
+                          "（definitions/process 属性使用默认值）")
+    return [SourceInfo(f, {}, {"id": f"Definitions_{i}"}, {"id": f"Process_{i}"},
+                       "BPMNDiagram_1", "BPMNPlane_1") for i, f in enumerate(files, 1)]

@@ -128,3 +128,9 @@ def test_invalid_graphml_raises(tmp_path):
     p.write_text("<<<", encoding="utf-8")
     with pytest.raises(GraphmlReadError, match="bad.graphml"):
         read_graphml(p)
+
+
+def test_rename_skips_origins_with_other_names(roundtrip):
+    g = roundtrip(lambda t: set_label(t, "StartEvent_1", "启动申报（改名）"))
+    names = {o.bpmn_type: o.name for o in g.nodes["StartEvent_1"].origins}
+    assert names == {"startEvent": "启动申报（改名）", "subProcess": "科技创新平台申报"}

@@ -20,6 +20,7 @@ from .yed_styles import default_size
 from .xmlutil import write_xml
 
 SPLIT_MARGIN = 50.0
+_FLOW_REF_ATTRS = ("default",)   # 节点上引用连线 ID 的属性
 _FIXED_NS = {"bpmn2": BPMN_NS, "bpmndi": BPMNDI_NS, "dc": DC_NS, "di": DI_NS, "xsi": XSI_NS}
 _LAST = math.inf
 
@@ -141,6 +142,21 @@ def _write(source: SourceInfo, namespaces: dict[str, str], nodes: list[_NodeEl],
     write_xml(root, path)
 
 
+def _fix_flow_refs(nodes: list[_NodeEl], resolve, warnings: list[str]) -> None:
+    """把节点上引用连线的属性映射到实际写出的连线 ID；目标连线不存在时移除该属性。"""
+    for n in nodes:
+        for attr in _FLOW_REF_ATTRS:
+            old = n.attrs.get(attr)
+            if old is None:
+                continue
+            new = resolve(n, old)
+            if new is None:
+                del n.attrs[attr]
+                warnings.append(f"{n.id} 的 {attr} 指向的连线 {old} 已不存在，已移除该属性")
+            else:
+                n.attrs[attr] = new
+
+
 def _all_namespaces(graph: Graph) -> dict[str, str]:
     merged: dict[str, str] = {}
     for s in graph.sources:
@@ -152,11 +168,16 @@ def _all_namespaces(graph: Graph) -> dict[str, str]:
 def write_merged_bpmn(graph: Graph, path: str | os.PathLike) -> list[str]:
     g = copy.deepcopy(graph)
     normalize_events(g)
-    nodes = []
+    warnings: list[str] = []
+    nodes, node_file = [], {}
     for n in g.nodes.values():
         o = n.origins[0] if n.origins else None
         nodes.append(_NodeEl(n.bpmn_type, n.id, n.name, dict(o.attrs) if o else {},
                              list(o.children_xml) if o else [], _bounds_of(g, n.id)))
+        node_file[n.id] = o.file if o else None
+    # (文件, 原连线 id) → 合并后的连线 id（ID 冲突改名后引用要跟着改）
+    flow_ids = {(o.file, o.id): e.id for e in g.edges.values() for o in e.origins}
+    _fix_flow_refs(nodes, lambda n, old: flow_ids.get((node_file[n.id], old)), warnings)
     flows = []
     for e in g.edges.values():
         o = e.origins[0] if e.origins else None
@@ -165,7 +186,7 @@ def write_merged_bpmn(graph: Graph, path: str | os.PathLike) -> list[str]:
         flows.append(_FlowEl(e.id, e.source, e.target, e.name, dict(o.attrs) if o else {},
                              list(o.children_xml) if o else [], points))
     _write(g.sources[0], _all_namespaces(g), nodes, flows, path)
-    return []
+    return warnings
 
 
 def _home_files(graph: Graph, files: list[str]) -> dict[str, str]:
@@ -238,6 +259,8 @@ def write_split_bpmn(graph: Graph, out_dir: str | os.PathLike) -> list[str]:
                 add_flow(e.id, first_in_file[e.source], first_in_file[e.target], e.name, {}, [], e)
                 written_new_edges.add(e.id)
 
+        written = {fl.id for fl in flows}
+        _fix_flow_refs(nodes, lambda n, old: old if old in written else None, warnings)
         if nodes:
             dx = SPLIT_MARGIN - min(n.bounds[0] for n in nodes)
             dy = SPLIT_MARGIN - min(n.bounds[1] for n in nodes)

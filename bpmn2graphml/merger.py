@@ -153,10 +153,19 @@ def merge(graphs: list[Graph]) -> tuple[Graph, MergeReport]:
             k = parent[k]
         return k
 
-    def absorb(rep: Key, other: Key) -> None:
+    # 每个集合已接入哪些文件的流程：同一文件的两个不同元素绝不能并成一个节点，
+    # 否则会在该文件内造成环路（例如子流程展开后，调用方与目标流程都有「开始」「结束」）
+    wired: dict[Key, set[str]] = {k: {k[0]} for k in nodes}
+
+    def absorb(rep: Key, other: Key) -> bool:
         root_rep, root_other = find(rep), find(other)
-        if root_rep != root_other:
-            parent[root_other] = root_rep
+        if root_rep == root_other:
+            return True
+        if wired[root_rep] & wired[root_other]:
+            return False
+        parent[root_other] = root_rep
+        wired[root_rep] |= wired.pop(root_other)
+        return True
 
     edges: list[_EdgeRec] = []
     for f, g in zip(files, graphs):
@@ -192,8 +201,13 @@ def merge(graphs: list[Graph]) -> tuple[Graph, MergeReport]:
             if not entries:
                 report.warnings.append(f"「{tf}」没有可作为入口的节点，子流程 {n.id} 未展开")
                 continue
-            absorb((tf, entries[0]), sub)
+            if not absorb((tf, entries[0]), sub):
+                report.warnings.append(
+                    f"子流程 {n.id} 的入口 {entries[0]} 已接入「{files[i]}」的流程，子流程未展开")
+                continue
             expanded.add(sub)
+            for x in entries + exits:
+                wired[find((tf, x))].add(files[i])
             report.expansions.append(Expansion(n.id, files[i], tf, entries[0]))
             preds = [r.src for r in edges if r.tgt == sub]
             for extra in entries[1:]:
@@ -221,11 +235,19 @@ def merge(graphs: list[Graph]) -> tuple[Graph, MergeReport]:
         per_file[key[0]] = key
     groups: list[tuple[str, list[Key]]] = []
     for name, per_file in name_groups.items():
-        members = list(per_file.values())
+        candidates = list(per_file.values())
+        if len(candidates) < 2:
+            continue
+        members = candidates[:1]
+        for m in candidates[1:]:
+            if absorb(candidates[0], m):
+                members.append(m)
+            else:
+                report.warnings.append(
+                    f"同名节点「{name}」：{m[0]}:{m[1]} 与 {candidates[0][0]}:{candidates[0][1]} "
+                    f"合并会把同一文件的不同元素并在一起（通常由子流程展开引起），已保持独立")
         if len(members) < 2:
             continue
-        for m in members[1:]:
-            absorb(members[0], m)
         groups.append((name, members))
         kinds = {_family(nodes[m].bpmn_type) for m in members}
         if len(kinds) > 1:

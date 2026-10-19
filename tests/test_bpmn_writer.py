@@ -190,3 +190,51 @@ def test_xml_declaration_double_quoted(split, merged_out):
     m, _ = merged_out()
     for p in [m, *out.glob("*.bpmn")]:
         assert p.read_bytes().startswith(decl), p.name
+
+
+def _gateway_files():
+    from helpers import make_graph
+
+    def mk(file):
+        g = make_graph(file, [("Gateway_1", "exclusiveGateway", None), ("Task_1", "task", f"{file}1"),
+                              ("Task_2", "task", f"{file}2")],
+                       [("Flow_1", "Gateway_1", "Task_1", None), ("Flow_3", "Gateway_1", "Task_2", None)])
+        g.nodes["Gateway_1"].origins[0].attrs["default"] = "Flow_3"
+        return g
+    return merge([mk("A"), mk("B")])[0]
+
+
+def _defaults(path):
+    return {el.get("id"): el.get("default")
+            for el in ET.parse(path).getroot().iter(B + "exclusiveGateway")}
+
+
+def test_merged_default_flow_follows_id_rename(tmp_path):
+    write_merged_bpmn(_gateway_files(), tmp_path / "m.bpmn")
+    assert _defaults(tmp_path / "m.bpmn") == {"Gateway_1": "Flow_3", "Gateway_1_2": "Flow_3_2"}
+
+
+def test_deleted_default_flow_dropped(tmp_path):
+    g = _gateway_files()
+    del g.edges["Flow_3"]
+    warnings = write_merged_bpmn(g, tmp_path / "m.bpmn")
+    assert _defaults(tmp_path / "m.bpmn")["Gateway_1"] is None
+    assert any("Flow_3" in w for w in warnings)
+    warnings = write_split_bpmn(g, tmp_path / "s")
+    assert _defaults(tmp_path / "s" / "A.bpmn") == {"Gateway_1": None}
+    assert _defaults(tmp_path / "s" / "B.bpmn") == {"Gateway_1": "Flow_3"}
+    assert any("Flow_3" in w for w in warnings)
+
+
+def test_split_without_sources_data_keeps_files(tmp_path):
+    def edit(tree):
+        top = tree.getroot().find("{http://graphml.graphdrawing.org/xmlns}graph")
+        for d in top.findall("{http://graphml.graphdrawing.org/xmlns}data"):
+            top.remove(d)
+    g = pipeline(tmp_path, edit)
+    assert any("bpmn_sources" in w for w in g.warnings)
+    write_split_bpmn(g, tmp_path / "s")
+    assert sorted(p.stem for p in (tmp_path / "s").glob("*.bpmn")) == sorted(STEMS)
+    for original in fixture_paths():
+        before, after = read_bpmn(original), read_bpmn(tmp_path / "s" / original.name)
+        assert _semantic(after) == _semantic(before)

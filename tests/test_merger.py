@@ -150,3 +150,21 @@ def test_positions_offset(merged):
     right_1 = max(n.bounds[0] + n.bounds[2] for n in only_from("科技创新平台策划"))
     left_2 = min(n.bounds[0] for n in only_from("科技创新平台申报"))
     assert left_2 >= right_1 + FILE_GAP
+
+
+def test_expansion_does_not_fold_caller_into_target():
+    a = make_graph("A", [("as", "startEvent", "开始"), ("at", "task", "准备"),
+                         ("sub", "subProcess", "B"), ("ag", "exclusiveGateway", ""),
+                         ("ae", "endEvent", "结束")],
+                   [("f1", "as", "at", None), ("f2", "at", "sub", None),
+                    ("f3", "sub", "ag", None), ("f4", "ag", "ae", None)])
+    b = make_graph("B", [("bs", "startEvent", "开始"), ("bt", "task", "做B"),
+                         ("be", "endEvent", "结束")],
+                   [("g1", "bs", "bt", None), ("g2", "bt", "be", None)])
+    g, report = merge([a, b])
+    assert g.nodes["as"].bpmn_type == "startEvent"
+    assert g.nodes["ae"].bpmn_type == "endEvent"
+    assert (g.edges["f1"].source, g.edges["f1"].target) == ("as", "at")
+    assert (g.edges["f2"].target, g.edges["f3"].source, g.edges["f4"].target) == ("bs", "be", "ae")
+    assert any("开始" in w for w in report.warnings)
+    assert any("结束" in w for w in report.warnings)
