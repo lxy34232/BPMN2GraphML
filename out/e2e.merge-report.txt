@@ -1,0 +1,18 @@
+== 同名节点合并 ==
+「部门领导审核」保留 EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e ← 科技创新平台策划:EBPM_81ba6f70-bd8e-b91e-041e-2556f9ce6d8e，科技创新平台申报:Task_2
+「平台申报完成」保留 EndEvent_1 ← 科技创新平台申报:EndEvent_1，平台建设运行:StartEvent_1
+
+== 子流程展开 ==
+科技创新平台策划:EBPM_5cd3a4cf-43f3-49b0-1962-356448c0579c → 展开为文件「科技创新平台申报」，入口 StartEvent_1
+
+== 类型调整 ==
+StartEvent_1: startEvent → intermediateThrowEvent
+EndEvent_1: endEvent → intermediateThrowEvent
+
+== 警告 ==
+ID 冲突：节点 Task_1 在合并结果中改为 Task_1_2
+ID 冲突：节点 Gateway_1 在合并结果中改为 Gateway_1_2
+ID 冲突：节点 EndEvent_1 在合并结果中改为 EndEvent_1_2
+ID 冲突：连线 Flow_1 在合并结果中改为 Flow_1_2
+ID 冲突：连线 Flow_2 在合并结果中改为 Flow_2_2
+ID 冲突：连线 Flow_3 在合并结果中改为 Flow_3_2

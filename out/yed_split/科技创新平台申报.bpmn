@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:ext="http://example.com/ext" id="Definitions_sb" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn2:process id="Process_sb" isExecutable="false">
+    <bpmn2:startEvent id="StartEvent_1" name="启动平台申报">
+      <bpmn2:outgoing>Flow_1</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:userTask id="Task_1" name="填写申报材料" ext:owner="科技管理部">
+      <bpmn2:extensionElements>
+        <ext:info level="1" />
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_1</bpmn2:incoming>
+      <bpmn2:incoming>Flow_4</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_2</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="Gateway_1">
+      <bpmn2:incoming>Flow_2</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_3</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_4</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="Task_2" name="部门领导审核">
+      <bpmn2:incoming>Flow_3</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_5</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:endEvent id="EndEvent_1" name="平台申报完成">
+      <bpmn2:incoming>Flow_5</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_e1a3aade-f3c8-4e07-8820-4cb209bdb300</bpmn2:outgoing>
+    </bpmn2:endEvent>
+    <bpmn2:task id="EBPM_f1dcaa13-27fb-476c-b771-3bac62af18ae" name="平台维护">
+      <bpmn2:incoming>EBPM_e1a3aade-f3c8-4e07-8820-4cb209bdb300</bpmn2:incoming>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_1" />
+    <bpmn2:sequenceFlow id="Flow_2" sourceRef="Task_1" targetRef="Gateway_1" />
+    <bpmn2:sequenceFlow id="Flow_3" sourceRef="Gateway_1" targetRef="Task_2" name="通过" />
+    <bpmn2:sequenceFlow id="Flow_4" sourceRef="Gateway_1" targetRef="Task_1" name="退回" />
+    <bpmn2:sequenceFlow id="Flow_5" sourceRef="Task_2" targetRef="EndEvent_1" />
+    <bpmn2:sequenceFlow id="EBPM_e1a3aade-f3c8-4e07-8820-4cb209bdb300" sourceRef="EndEvent_1" targetRef="EBPM_f1dcaa13-27fb-476c-b771-3bac62af18ae" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_sb">
+    <bpmndi:BPMNPlane id="BPMNPlane_sb" bpmnElement="Process_sb">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="102" y="597" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1_di" bpmnElement="Task_1">
+        <dc:Bounds x="50" y="665.7" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1_di" bpmnElement="Gateway_1">
+        <dc:Bounds x="130" y="775.7" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_2_di" bpmnElement="Task_2">
+        <dc:Bounds x="230" y="50" width="140" height="66.67" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
+        <dc:Bounds x="282" y="153.67" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_f1dcaa13-27fb-476c-b771-3bac62af18ae_di" bpmnElement="EBPM_f1dcaa13-27fb-476c-b771-3bac62af18ae">
+        <dc:Bounds x="429.25" y="232.67" width="85" height="55" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="120" y="633" />
+        <di:waypoint x="120" y="665.7" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="85" y="745.7" />
+        <di:waypoint x="85" y="800.7" />
+        <di:waypoint x="130" y="800.7" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="180" y="800.7" />
+        <di:waypoint x="385" y="800.7" />
+        <di:waypoint x="385" y="131.67" />
+        <di:waypoint x="346.67" y="131.67" />
+        <di:waypoint x="346.67" y="116.67" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="145.79" y="775.7" />
+        <di:waypoint x="155" y="745.7" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="300" y="116.67" />
+        <di:waypoint x="300" y="153.67" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_e1a3aade-f3c8-4e07-8820-4cb209bdb300_di" bpmnElement="EBPM_e1a3aade-f3c8-4e07-8820-4cb209bdb300">
+        <di:waypoint x="318" y="171.67" />
+        <di:waypoint x="471.75" y="171.67" />
+        <di:waypoint x="471.75" y="232.67" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
