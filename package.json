@@ -1,0 +1,11 @@
+{
+  "name": "bpmn2graphml-viewer-tests",
+  "private": true,
+  "description": "仅用于在 Node 中测试 bpmn2graphml/viewer/properties.js",
+  "scripts": {
+    "test": "node --test tests/viewer/*.test.js"
+  },
+  "devDependencies": {
+    "@xmldom/xmldom": "0.8.10"
+  }
+}
