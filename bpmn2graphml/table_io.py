@@ -7,7 +7,9 @@ from __future__ import annotations
 import csv
 import io
 import re
+import xml.etree.ElementTree as ET
 import zipfile
+from datetime import datetime, timedelta
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -183,6 +185,14 @@ def _write_xlsx(path: Path, rows: list[list[str]], readonly_cols: frozenset[int]
 
 # —— xlsx 读取 ——
 
+_REL = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
+_PKG_REL = "{http://schemas.openxmlformats.org/package/2006/relationships}Relationship"
+
+_DATE_FMT_IDS = frozenset({14, 15, 16, 17, 22, 27, 28, 29, 30, 31, 36,
+                           50, 51, 52, 53, 54, 55, 56, 57, 58})
+_FMT_NOISE = re.compile(r'"[^"]*"|\[[^\]]*\]|\\.')
+
+
 def _col_index(ref: str) -> int:
     n = 0
     for ch in ref:
@@ -192,22 +202,100 @@ def _col_index(ref: str) -> int:
     return n - 1
 
 
+def _row_index(ref: str) -> int:
+    digits = "".join(ch for ch in ref if ch.isdigit())
+    return int(digits) - 1
+
+
 def _text_of(el) -> str:
-    return "".join(t.text or "" for t in el.iter(f"{_M}t"))
+    """拼接 <t> 文本，跳过注音 <rPh>。"""
+    parts = []
+    for child in el:
+        if child.tag == f"{_M}t":
+            parts.append(child.text or "")
+        elif child.tag == f"{_M}r":
+            parts.append(_text_of(child))
+    return "".join(parts)
+
+
+def _is_date_format(code: str) -> bool:
+    cleaned = _FMT_NOISE.sub("", code).lower()
+    return "y" in cleaned or "d" in cleaned
+
+
+def _date_styles(styles) -> list[bool]:
+    """cellXfs 下标 → 是否为日期格式。"""
+    if styles is None:
+        return []
+    custom = {int(f.get("numFmtId")): f.get("formatCode", "")
+              for f in styles.iter(f"{_M}numFmt")}
+    xfs = styles.find(f"{_M}cellXfs")
+    result = []
+    for xf in (xfs if xfs is not None else []):
+        fid = int(xf.get("numFmtId", "0"))
+        result.append(fid in _DATE_FMT_IDS or (fid in custom and _is_date_format(custom[fid])))
+    return result
+
+
+def _format_number(v: str, is_date: bool, date1904: bool) -> str:
+    try:
+        x = float(v)
+    except ValueError:
+        return v
+    if is_date:
+        epoch = datetime(1904, 1, 1) if date1904 else datetime(1899, 12, 30)
+        dt = epoch + timedelta(minutes=round(x * 24 * 60))
+        return dt.strftime("%Y-%m-%d %H:%M" if dt.hour or dt.minute else "%Y-%m-%d")
+    if x.is_integer() and abs(x) < 1e15:
+        return str(int(x))
+    return v
+
+
+def _first_sheet_path(z: zipfile.ZipFile, workbook) -> str:
+    sheet = workbook.find(f"{_M}sheets/{_M}sheet")
+    if sheet is None:
+        raise ValueError("工作簿中没有工作表")
+    rels = ET.fromstring(z.read("xl/_rels/workbook.xml.rels"))
+    rid = sheet.get(_REL)
+    target = next(r.get("Target") for r in rels.iter(_PKG_REL) if r.get("Id") == rid)
+    return target.lstrip("/") if target.startswith("/") else "xl/" + target
 
 
 def _read_xlsx(path: Path) -> list[list[str]]:
-    import xml.etree.ElementTree as ET
     with zipfile.ZipFile(path) as z:
-        sheet = ET.fromstring(z.read("xl/worksheets/sheet1.xml"))
+        names = set(z.namelist())
+        workbook = ET.fromstring(z.read("xl/workbook.xml"))
+        sheet = ET.fromstring(z.read(_first_sheet_path(z, workbook)))
+        shared = ([_text_of(si) for si in ET.fromstring(z.read("xl/sharedStrings.xml"))]
+                  if "xl/sharedStrings.xml" in names else [])
+        styles = ET.fromstring(z.read("xl/styles.xml")) if "xl/styles.xml" in names else None
+    pr = workbook.find(f"{_M}workbookPr")
+    date1904 = pr is not None and pr.get("date1904", "0").lower() in ("1", "true")
+    is_date = _date_styles(styles)
+
     rows: list[list[str]] = []
     for row in sheet.iter(f"{_M}row"):
+        r = int(row.get("r")) - 1 if row.get("r") else len(rows)
+        rows += [[] for _ in range(r - len(rows))]
         cells: list[str] = []
         for c in row.findall(f"{_M}c"):
             ref = c.get("r")
             col = _col_index(ref) if ref else len(cells)
             cells += [""] * (col - len(cells))
-            is_ = c.find(f"{_M}is")
-            cells.append(_text_of(is_) if is_ is not None else "")
+            t, v = c.get("t", "n"), c.find(f"{_M}v")
+            raw = v.text or "" if v is not None else ""
+            if t == "s":
+                value = shared[int(raw)] if raw else ""
+            elif t == "inlineStr":
+                is_ = c.find(f"{_M}is")
+                value = _text_of(is_) if is_ is not None else ""
+            elif t == "b":
+                value = "TRUE" if raw == "1" else "FALSE" if raw else ""
+            elif t in ("str", "e"):
+                value = raw
+            else:
+                s = int(c.get("s", "0"))
+                value = _format_number(raw, s < len(is_date) and is_date[s], date1904) if raw else ""
+            cells.append(value)
         rows.append(cells)
     return rows
