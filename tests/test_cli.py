@@ -54,7 +54,9 @@ def test_gui_builds():
     root.withdraw()
     try:
         app = App(root)
-        assert len(app.notebook.tabs()) == 2
+        assert [app.notebook.tab(t, "text") for t in app.notebook.tabs()] == [
+            "BPMN → GraphML", "GraphML → BPMN", "属性表"]
+        assert hasattr(app, "prop_files") and hasattr(app, "props_log")
         assert hasattr(app, "view_result_button") and hasattr(app, "open_viewer_button")
     finally:
         root.destroy()
