@@ -11,6 +11,7 @@ import shutil
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from pathlib import Path
+from xml.sax.saxutils import escape
 
 from .bpmn_reader import BpmnReadError, read_bpmn
 from .merger import expansion_targets
@@ -18,7 +19,6 @@ from .model import BPMN_NS, Graph
 from .properties import (B2G_NS, SOURCE_PROP, TYPE_LABELS, Prop, node_b2g_properties,
                          set_node_b2g_properties, type_label)
 from .table_io import TableError, read_table, write_table
-from .xmlutil import write_xml
 
 NAME_HEADER = "节点名称"
 FILE_HEADER = "所在文件"
@@ -56,6 +56,11 @@ def _local(tag: str) -> str:
     return tag.rsplit("}", 1)[-1]
 
 
+def _norm_name(name: str) -> str:
+    """名称比较键：统一换行符（表格读写会把 \\r\\n 变成 \\n），去首尾空白。"""
+    return re.sub(r"\r\n?", "\n", name).strip()
+
+
 def load_docs(paths: list[Path]) -> list[BpmnDoc]:
     docs: list[BpmnDoc] = []
     seen: set[str] = set()
@@ -68,11 +73,11 @@ def load_docs(paths: list[Path]) -> list[BpmnDoc]:
             parser = ET.XMLParser(target=ET.TreeBuilder(insert_comments=True, insert_pis=True))
             root = ET.parse(path, parser).getroot()
             graph = read_bpmn(path)
-        except (ET.ParseError, OSError) as e:
+        except (ET.ParseError, OSError, ValueError) as e:
             raise PropTableError(f"{path.name}: 无法解析 XML（{e}）") from e
         except BpmnReadError as e:
             raise PropTableError(str(e)) from e
-        nodes = [NodeRef(path.stem, el.get("id", ""), (el.get("name") or "").strip(),
+        nodes = [NodeRef(path.stem, el.get("id", ""), _norm_name(el.get("name") or ""),
                          _local(el.tag), el)
                  for el in root.iter()
                  if isinstance(el.tag, str) and el.tag.startswith(f"{{{BPMN_NS}}}")
@@ -204,11 +209,16 @@ class ImportReport:
     folded: list[str] = field(default_factory=list)
     changes: list[str] = field(default_factory=list)
     ignored_columns: list[str] = field(default_factory=list)
+    unrestored: list[str] = field(default_factory=list)
+    report_error: str | None = None
 
     def to_text(self) -> str:
         lines = [f"表格：{self.table}"]
         if not self.ok:
-            return "\n".join(lines + [f"导入已中止：{self.error}", "未修改任何 BPMN 文件。"])
+            lines.append(f"导入已中止：{self.error}")
+            if not self.unrestored:
+                lines.append("未修改任何 BPMN 文件。")
+            return "\n".join(lines)
         lines.append(f"导入成功：修改了 {len(self.changed_files)} 个文件。")
 
         def section(title: str, items: list[str]) -> None:
@@ -255,7 +265,7 @@ def _parse_table(rows: list[list[str]]):
     seen: dict[str, int] = {}
     for excel_row, r in enumerate(body, start=2):
         cells = [c.strip() for c in r]
-        name = cells[0] if cells else ""
+        name = _norm_name(cells[0]) if cells else ""
         if not name:
             if any(cells[i] for i, _ in cols):
                 raise _Abort(f"第 {excel_row} 行没有节点名称，但填写了属性")
@@ -285,19 +295,71 @@ def _describe(old: list[Prop], new: list[Prop]) -> str:
     return "；".join(parts)
 
 
-def _save(doc: BpmnDoc) -> Path:
-    backup = doc.path.with_name(doc.path.name + ".bak")
-    shutil.copy2(doc.path, backup)
+_XMLNS_DECL = re.compile(r'\sxmlns(?::([\w.\-]+))?="')
+
+
+def _serialize(doc: BpmnDoc) -> bytes:
+    """序列化为 XML 字节。ElementTree 只声明元素名、属性名用到的命名空间；
+    仅在属性值里使用的前缀（如 structureRef="xsd:string"、xsi:type="bpmn:…"）
+    的声明按原文件补回根元素，否则这些值会失去绑定。"""
     for prefix, uri in doc.namespaces:
         try:
             ET.register_namespace(prefix, uri)
         except ValueError:
             pass
     ET.register_namespace("b2g", B2G_NS)
-    tmp = doc.path.with_name(doc.path.name + ".tmp")
-    write_xml(doc.root, tmp)
-    os.replace(tmp, doc.path)
-    return backup
+    ET.indent(doc.root)
+    text = ET.tostring(doc.root, encoding="unicode")
+    end = text.index(">")  # ElementTree 会转义属性值中的 >
+    if text[end - 1] == "/":
+        end -= 1
+    written = set(_XMLNS_DECL.findall(text[:end]))
+    extra = []
+    for prefix, uri in doc.namespaces:
+        if prefix and prefix not in written:
+            written.add(prefix)
+            extra.append(f' xmlns:{prefix}="{escape(uri, {chr(34): "&quot;"})}"')
+    text = text[:end] + "".join(extra) + text[end:]
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n' + text).encode("utf-8")
+
+
+def _write_all(docs: list[BpmnDoc], report: ImportReport) -> list[Path]:
+    """先写出全部临时文件和备份，再逐个替换；替换失败时把已替换的文件恢复原状。"""
+    for d in docs:
+        if not os.access(d.path, os.W_OK):
+            raise _Abort(f"{d.path.name} 是只读文件，无法修改")
+    tmps = [d.path.with_name(d.path.name + ".tmp") for d in docs]
+    backups = [d.path.with_name(d.path.name + ".bak") for d in docs]
+    try:
+        for d, tmp in zip(docs, tmps):
+            tmp.write_bytes(_serialize(d))
+        for d, backup in zip(docs, backups):
+            shutil.copy2(d.path, backup)
+    except OSError as e:
+        for tmp in tmps:
+            tmp.unlink(missing_ok=True)
+        raise _Abort(f"写入失败（{e}）") from e
+    done: list[int] = []
+    for i, d in enumerate(docs):
+        try:
+            os.replace(tmps[i], d.path)
+            done.append(i)
+        except OSError as e:
+            for j in done:
+                try:
+                    shutil.copy2(backups[j], docs[j].path)
+                except OSError:
+                    report.unrestored.append(docs[j].path.name)
+            for tmp in tmps:
+                tmp.unlink(missing_ok=True)
+            msg = f"写入 {d.path.name} 失败（{e}）"
+            if report.unrestored:
+                msg += ("；以下文件已被修改且未能自动恢复，请用同目录下的 .bak 文件手工恢复："
+                        + "、".join(report.unrestored))
+            elif done:
+                msg += "；已修改的文件已恢复原状"
+            raise _Abort(msg) from e
+    return backups
 
 
 def _apply(table: Path, bpmn_paths: list[Path], report: ImportReport) -> None:
@@ -337,14 +399,13 @@ def _apply(table: Path, bpmn_paths: list[Path], report: ImportReport) -> None:
     table_names = {name for name, _ in records}
     report.untouched = [name for name in groups if name not in table_names]
 
-    for doc in docs:
-        if doc.file in changed:
-            report.backups.append(_save(doc))
-            report.changed_files.append((doc.path, changed[doc.file]))
+    to_write = [doc for doc in docs if doc.file in changed]
+    report.backups = _write_all(to_write, report)
+    report.changed_files = [(doc.path, changed[doc.file]) for doc in to_write]
 
 
 def import_table(table: Path, bpmn_paths: list[Path]) -> ImportReport:
-    """把属性表导回 BPMN（就地改写）。数据问题不抛异常，返回 ok=False 的报告。"""
+    """把属性表导回 BPMN（就地改写）。数据与文件问题都不抛异常，返回 ok=False 的报告。"""
     table = Path(table)
     report = ImportReport(table)
     try:
@@ -352,5 +413,11 @@ def import_table(table: Path, bpmn_paths: list[Path]) -> ImportReport:
         report.ok = True
     except _Abort as e:
         report.error = str(e)
-    import_report_path_for(table).write_text(report.to_text(), encoding="utf-8")
+    except OSError as e:
+        report.error = f"读写文件失败（{e}）"
+    path = import_report_path_for(table)
+    try:
+        path.write_text(report.to_text(), encoding="utf-8")
+    except OSError as e:
+        report.report_error = f"无法写入导入报告 {path.name}（{e}）"
     return report

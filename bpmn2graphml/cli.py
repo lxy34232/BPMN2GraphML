@@ -55,7 +55,7 @@ def main(argv: list[str] | None = None) -> int:
         report = import_table(args.table, args.inputs)
         print(report.to_text())
         print()
-        print(f"导入报告：{import_report_path_for(args.table)}")
+        print(report.report_error or f"导入报告：{import_report_path_for(args.table)}")
         return 0 if report.ok else 1
     try:
         if args.command == "props-export":

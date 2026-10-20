@@ -257,7 +257,8 @@ class App(ttk.Frame):
             messagebox.showerror("错误", str(e))
             return
         _show(self.props_log, report.to_text()
-              + f"\n\n导入报告：{import_report_path_for(Path(table))}")
+              + "\n\n" + (report.report_error
+                          or f"导入报告：{import_report_path_for(Path(table))}"))
         if not report.ok:
             messagebox.showerror("导入已中止", report.error)
 

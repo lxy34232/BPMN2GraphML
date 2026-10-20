@@ -53,7 +53,7 @@ def read_table(path: Path) -> list[list[str]]:
         rows = _read_xlsx(path) if suffix == ".xlsx" else _read_csv(path)
     except PermissionError as e:
         raise TableError(f"无法读取 {path.name}：文件可能正在 Excel 中打开，请先关闭该文件") from e
-    except (OSError, zipfile.BadZipFile, KeyError, ValueError) as e:
+    except Exception as e:  # 损坏或不规范的文件可能抛出各种异常，一律当作“无法读取”
         raise TableError(f"无法读取 {path.name}：{e}") from e
     return _normalize(rows)
 

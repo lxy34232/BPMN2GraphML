@@ -290,3 +290,97 @@ def test_report_sections(tmp_path):
         assert part in text
     assert import_report_path_for(table) == tmp_path / "t.import-report.txt"
     assert import_report_path_for(table).read_text(encoding="utf-8") == text
+
+
+# —— 最终审查发现的问题 ——
+
+def test_failed_write_rolls_back_and_reports(tmp_path):
+    import os
+    import stat
+    paths = _copy_fixtures(tmp_path)
+    before = [p.read_bytes() for p in paths]
+    os.chmod(paths[1], stat.S_IREAD)
+    try:
+        write_table(tmp_path / "t.csv", [["节点名称", "负责人"], ["部门领导审核", "张三"]])
+        r = import_table(tmp_path / "t.csv", paths)
+    finally:
+        os.chmod(paths[1], stat.S_IREAD | stat.S_IWRITE)
+    assert not r.ok and paths[1].name in r.error
+    assert [p.read_bytes() for p in paths] == before
+    assert not list(tmp_path.glob("*.tmp"))
+    assert import_report_path_for(tmp_path / "t.csv").exists()
+
+
+def test_report_write_failure_does_not_raise(tmp_path):
+    paths = _copy_fixtures(tmp_path)
+    table = tmp_path / "t.csv"
+    write_table(table, [["节点名称", "负责人"], ["部门领导审核", "张三"]])
+    import_report_path_for(table).mkdir()
+    r = import_table(table, paths)
+    assert r.ok and r.changed_files and r.report_error
+
+
+def test_qname_only_prefixes_kept(tmp_path):
+    [path] = _copy_fixtures(tmp_path, fixture_paths()[2:3])
+    _replace_text(path, 'xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"',
+                  'xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" '
+                  'xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" '
+                  'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
+                  'xmlns:xsd="http://www.w3.org/2001/XMLSchema"')
+    _replace_text(path, "  <bpmn2:process ",
+                  '  <bpmn2:itemDefinition id="Item_1" structureRef="xsd:string"/>\n'
+                  "  <bpmn2:process ")
+    _replace_text(path, '<bpmn2:sequenceFlow id="Flow_2" sourceRef="Task_1" targetRef="Gateway_1"/>',
+                  '<bpmn2:sequenceFlow id="Flow_2" sourceRef="Task_1" targetRef="Gateway_1">'
+                  '<bpmn2:conditionExpression xsi:type="bpmn:tFormalExpression">x</bpmn2:conditionExpression>'
+                  '</bpmn2:sequenceFlow>')
+    write_table(tmp_path / "t.csv", [["节点名称", "负责人"], ["平台建设", "张三"]])
+    assert import_table(tmp_path / "t.csv", [path]).changed_files
+    text = path.read_text(encoding="utf-8")
+    assert 'xmlns:xsd="http://www.w3.org/2001/XMLSchema"' in text
+    assert 'xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"' in text
+    assert 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' in text
+    ET.fromstring(path.read_bytes())
+    assert read_bpmn(path).nodes
+
+
+def test_crlf_name_roundtrip(tmp_path):
+    paths = _copy_fixtures(tmp_path)
+    _replace_text(paths[2], 'name="平台建设"', 'name="平台&#13;&#10;建设"')
+    table = tmp_path / "t.xlsx"
+    export_table(paths, table)
+    rows = read_table(table)
+    rows = [r + (["负责人"] if i == 0 else ["张三" if "建设" in r[0] and "完成" not in r[0] else ""])
+            for i, r in enumerate(rows)]
+    write_table(table, rows)
+    r = import_table(table, paths)
+    assert r.ok and r.not_found == []
+    assert [n for n in load_docs(paths[2:])[0].nodes
+            if node_b2g_properties(n.element) == [("负责人", "张三")]]
+
+
+def test_gbk_declared_bpmn_aborts(tmp_path):
+    bad = tmp_path / "g.bpmn"
+    bad.write_bytes('<?xml version="1.0" encoding="GBK"?><a/>'.encode("gbk"))
+    write_table(tmp_path / "t.csv", [["节点名称", "负责人"], ["x", "张三"]])
+    r = import_table(tmp_path / "t.csv", [bad])
+    assert not r.ok and "g.bpmn" in r.error
+
+
+def test_replace_failure_restores_earlier_files(tmp_path, monkeypatch):
+    import bpmn2graphml.prop_table as pt
+    paths = _copy_fixtures(tmp_path)
+    before = [p.read_bytes() for p in paths]
+    real_replace, calls = pt.os.replace, []
+
+    def flaky(src, dst):
+        calls.append(dst)
+        if len(calls) == 2:
+            raise PermissionError(13, "denied")
+        real_replace(src, dst)
+    monkeypatch.setattr(pt.os, "replace", flaky)
+    write_table(tmp_path / "t.csv", [["节点名称", "负责人"], ["部门领导审核", "张三"]])
+    r = import_table(tmp_path / "t.csv", paths)
+    assert not r.ok and "恢复" in r.error
+    assert [p.read_bytes() for p in paths] == before
+    assert not list(tmp_path.glob("*.tmp"))

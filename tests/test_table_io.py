@@ -146,3 +146,25 @@ def test_escaped_letter_in_format_is_not_date(tmp_path):
               '<cellXfs count="2"><xf numFmtId="0"/><xf numFmtId="170"/></cellXfs>')
     _make_xlsx(p, '<row r="1"><c r="A1" s="1"><v>1.5</v></c></row>', styles=styles)
     assert read_table(p) == [["1.5"]]
+
+
+@pytest.mark.parametrize("parts", [
+    {"xl/workbook.xml": "<workbook"},
+    {"xl/workbook.xml": f'<workbook xmlns="{MAIN}" xmlns:r="{REL_NS}"><sheets>'
+                        '<sheet name="S" sheetId="1" r:id="rIdX"/></sheets></workbook>',
+     "xl/_rels/workbook.xml.rels": '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"/>'},
+])
+def test_corrupt_xlsx_raises_table_error(tmp_path, parts):
+    p = tmp_path / "t.xlsx"
+    with zipfile.ZipFile(p, "w") as z:
+        for name, data in parts.items():
+            z.writestr(name, data)
+    with pytest.raises(TableError, match="t.xlsx"):
+        read_table(p)
+
+
+def test_bad_shared_string_index(tmp_path):
+    p = tmp_path / "t.xlsx"
+    _make_xlsx(p, '<row r="1"><c r="A1" t="s"><v>5</v></c></row>', shared="<si><t>a</t></si>")
+    with pytest.raises(TableError):
+        read_table(p)
