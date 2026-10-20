@@ -5,6 +5,9 @@
 """
 from __future__ import annotations
 
+import os
+import re
+import shutil
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -12,9 +15,10 @@ from pathlib import Path
 from .bpmn_reader import BpmnReadError, read_bpmn
 from .merger import expansion_targets
 from .model import BPMN_NS, Graph
-from .properties import (SOURCE_PROP, TYPE_LABELS, Prop, node_b2g_properties,
-                         type_label)
-from .table_io import write_table
+from .properties import (B2G_NS, SOURCE_PROP, TYPE_LABELS, Prop, node_b2g_properties,
+                         set_node_b2g_properties, type_label)
+from .table_io import TableError, read_table, write_table
+from .xmlutil import write_xml
 
 NAME_HEADER = "节点名称"
 FILE_HEADER = "所在文件"
@@ -174,3 +178,179 @@ def export_table(bpmn_paths: list[Path], out: Path) -> ExportSummary:
 
     write_table(Path(out), table, frozenset(range(1, len(header))))
     return ExportSummary(Path(out), len(table) - 1, columns, conflicts, folded)
+
+
+# —— 导入 ——
+
+class _Abort(Exception):
+    pass
+
+
+def import_report_path_for(table: Path) -> Path:
+    table = Path(table)
+    return table.with_name(table.stem + ".import-report.txt")
+
+
+@dataclass
+class ImportReport:
+    table: Path
+    ok: bool = False
+    error: str | None = None
+    changed_files: list[tuple[Path, int]] = field(default_factory=list)
+    backups: list[Path] = field(default_factory=list)
+    not_found: list[str] = field(default_factory=list)
+    untouched: list[str] = field(default_factory=list)
+    same_file_dupes: list[str] = field(default_factory=list)
+    folded: list[str] = field(default_factory=list)
+    changes: list[str] = field(default_factory=list)
+    ignored_columns: list[str] = field(default_factory=list)
+
+    def to_text(self) -> str:
+        lines = [f"表格：{self.table}"]
+        if not self.ok:
+            return "\n".join(lines + [f"导入已中止：{self.error}", "未修改任何 BPMN 文件。"])
+        lines.append(f"导入成功：修改了 {len(self.changed_files)} 个文件。")
+
+        def section(title: str, items: list[str]) -> None:
+            lines.extend(["", f"== {title} =="] + (items or ["（无）"]))
+
+        section("修改的文件", [f"{p}：更新 {n} 个节点（备份：{b}）"
+                               for (p, n), b in zip(self.changed_files, self.backups)])
+        section("表中找不到对应节点的名称", self.not_found)
+        section("表中没有的节点（未改动）", self.untouched)
+        section("同一文件中同名、一并写入的节点", self.same_file_dupes)
+        section("归入开始事件那一行的子流程", self.folded)
+        section("属性变化", self.changes)
+        section("被忽略的列（只读参考列）", self.ignored_columns)
+        return "\n".join(lines)
+
+
+def _split(cell: str) -> list[str]:
+    return _unique(v.strip() for v in re.split(r"[;；]", cell) if v.strip())
+
+
+def _parse_table(rows: list[list[str]]):
+    """返回（属性列名，[(行名, 每列取值列表)]，被忽略的列）。"""
+    if not rows:
+        raise _Abort("表格是空的")
+    header = [h.strip() for h in rows[0]]
+    body = rows[1:]
+    cols: list[tuple[int, str]] = []
+    ignored: list[str] = []
+    for i in range(1, len(header)):
+        h = header[i]
+        if h in READONLY_HEADERS:
+            ignored.append(h)
+        elif not h:
+            if any(r[i].strip() for r in body):
+                raise _Abort(f"第 {i + 1} 列表头为空，但下面有数据")
+        elif h in [name for _, name in cols]:
+            raise _Abort(f"表头「{h}」重复")
+        else:
+            cols.append((i, h))
+    if not cols:
+        raise _Abort("表中没有属性列。按“以表格为准”，导入这张表会清空所有节点的属性，因此已中止；"
+                     "如果确实要清空，请保留表头、只把格子清空")
+    records: list[tuple[str, list[list[str]]]] = []
+    seen: dict[str, int] = {}
+    for excel_row, r in enumerate(body, start=2):
+        cells = [c.strip() for c in r]
+        name = cells[0] if cells else ""
+        if not name:
+            if any(cells[i] for i, _ in cols):
+                raise _Abort(f"第 {excel_row} 行没有节点名称，但填写了属性")
+            continue
+        if name in seen:
+            raise _Abort(f"节点名称「{name}」在表中出现了多行（第 {seen[name]}、{excel_row} 行）")
+        seen[name] = excel_row
+        records.append((name, [_split(cells[i]) for i, _ in cols]))
+    if not records:
+        raise _Abort("表中没有数据行")
+    return [name for _, name in cols], records, ignored
+
+
+def _ordered(props: list[Prop]) -> dict[str, list[str]]:
+    out: dict[str, list[str]] = {}
+    for k, v in props:
+        out.setdefault(k, []).append(v)
+    return out
+
+
+def _describe(old: list[Prop], new: list[Prop]) -> str:
+    om, nm = _ordered(old), _ordered(new)
+    parts = [f"新增 {k}={'、'.join(v)}" for k, v in nm.items() if k not in om]
+    parts += [f"修改 {k}：{'、'.join(om[k])} → {'、'.join(v)}"
+              for k, v in nm.items() if k in om and set(om[k]) != set(v)]
+    parts += [f"删除 {k}" for k in om if k not in nm]
+    return "；".join(parts)
+
+
+def _save(doc: BpmnDoc) -> Path:
+    backup = doc.path.with_name(doc.path.name + ".bak")
+    shutil.copy2(doc.path, backup)
+    for prefix, uri in doc.namespaces:
+        try:
+            ET.register_namespace(prefix, uri)
+        except ValueError:
+            pass
+    ET.register_namespace("b2g", B2G_NS)
+    tmp = doc.path.with_name(doc.path.name + ".tmp")
+    write_xml(doc.root, tmp)
+    os.replace(tmp, doc.path)
+    return backup
+
+
+def _apply(table: Path, bpmn_paths: list[Path], report: ImportReport) -> None:
+    try:
+        rows = read_table(table)
+    except TableError as e:
+        raise _Abort(str(e)) from e
+    columns, records, report.ignored_columns = _parse_table(rows)
+    try:
+        docs = load_docs(bpmn_paths)
+    except PropTableError as e:
+        raise _Abort(str(e)) from e
+    groups, report.folded = group_rows(docs)
+
+    changed: dict[str, int] = {}
+    for name, values in records:
+        refs = groups.get(name)
+        if not refs:
+            report.not_found.append(name)
+            continue
+        files = [n.file for n in refs]
+        report.same_file_dupes += [f"{name}（{f}）" for f in _unique(files) if files.count(f) > 1]
+        table_props = [(c, v) for c, vs in zip(columns, values) for v in vs]
+        described: list[tuple[str, str]] = []
+        for n in refs:
+            old = node_b2g_properties(n.element)
+            new = [p for p in old if p[0] in READONLY_HEADERS] + table_props
+            if _prop_map(new, skip=()) == _prop_map(old, skip=()):
+                continue
+            set_node_b2g_properties(n.element, new)
+            changed[n.file] = changed.get(n.file, 0) + 1
+            described.append((n.file, _describe(old, new)))
+        if len(described) == len(refs) and len({d for _, d in described}) == 1:
+            report.changes.append(f"{name}：{described[0][1]}")
+        else:
+            report.changes += [f"{name}（{f}）：{d}" for f, d in described]
+    table_names = {name for name, _ in records}
+    report.untouched = [name for name in groups if name not in table_names]
+
+    for doc in docs:
+        if doc.file in changed:
+            report.backups.append(_save(doc))
+            report.changed_files.append((doc.path, changed[doc.file]))
+
+
+def import_table(table: Path, bpmn_paths: list[Path]) -> ImportReport:
+    """把属性表导回 BPMN（就地改写）。数据问题不抛异常，返回 ok=False 的报告。"""
+    table = Path(table)
+    report = ImportReport(table)
+    try:
+        _apply(table, [Path(p) for p in bpmn_paths], report)
+        report.ok = True
+    except _Abort as e:
+        report.error = str(e)
+    import_report_path_for(table).write_text(report.to_text(), encoding="utf-8")
+    return report
