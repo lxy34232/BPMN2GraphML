@@ -1,6 +1,9 @@
+import shutil
+
 import pytest
 
 from bpmn2graphml.cli import main
+from bpmn2graphml.table_io import read_table, write_table
 from conftest import fixture_paths
 
 
@@ -71,3 +74,32 @@ def test_cli_view_file(monkeypatch, tmp_path):
 def test_cli_view_missing(tmp_path, capsys):
     assert main(["view", str(tmp_path / "nope.bpmn")]) == 1
     assert "nope.bpmn" in capsys.readouterr().err
+
+
+def _copies(tmp_path):
+    return [shutil.copy(p, tmp_path / p.name) for p in fixture_paths()]
+
+
+def test_cli_props_roundtrip(tmp_path, capsys):
+    paths = _copies(tmp_path)
+    table = tmp_path / "t.xlsx"
+    assert main(["props-export", *map(str, paths), "-o", str(table)]) == 0
+    assert "已导出" in capsys.readouterr().out
+    rows = read_table(table)  # 新导出的表还没有属性列，先加一列
+    write_table(table, [r + (["负责人"] if i == 0 else ["张三"]) for i, r in enumerate(rows)])
+    assert main(["props-import", str(table), *map(str, paths)]) == 0
+    assert "t.import-report.txt" in capsys.readouterr().out
+
+
+def test_cli_props_import_abort(tmp_path, capsys):
+    (tmp_path / "t.csv").write_text("节点名称\n审核\n", encoding="utf-8")
+    paths = _copies(tmp_path)
+    assert main(["props-import", str(tmp_path / "t.csv"), *map(str, paths)]) == 1
+    assert "导入已中止" in capsys.readouterr().out
+
+
+def test_cli_props_export_bad_input(tmp_path, capsys):
+    bad = tmp_path / "x.bpmn"
+    bad.write_text("hello", encoding="utf-8")
+    assert main(["props-export", str(bad), "-o", str(tmp_path / "t.xlsx")]) == 1
+    assert "x.bpmn" in capsys.readouterr().err
