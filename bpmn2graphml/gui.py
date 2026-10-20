@@ -1,4 +1,4 @@
-"""tkinter 图形界面：两个页签分别对应两个转换方向。"""
+"""tkinter 图形界面：两个转换方向各一个页签，另有“属性表”页签。"""
 from __future__ import annotations
 
 import tkinter as tk
@@ -9,11 +9,15 @@ from .bpmn_reader import BpmnReadError
 from .graphml_reader import GraphmlReadError
 from .merger import MergeError
 from .pipeline import bpmn_to_graphml, graphml_to_bpmn, report_path_for
+from .prop_table import PropTableError, export_table, import_report_path_for, import_table
+from .table_io import TableError
 from .viewer_launch import open_viewer
 
-_ERRORS = (BpmnReadError, GraphmlReadError, MergeError, OSError)
+_ERRORS = (BpmnReadError, GraphmlReadError, MergeError, PropTableError, TableError, OSError)
 _BPMN_TYPES = [("BPMN 文件", "*.bpmn *.xml"), ("所有文件", "*.*")]
 _GRAPHML_TYPES = [("GraphML 文件", "*.graphml"), ("所有文件", "*.*")]
+_TABLE_SAVE_TYPES = [("Excel 工作簿", "*.xlsx"), ("CSV 文件", "*.csv")]
+_TABLE_OPEN_TYPES = [("表格文件", "*.xlsx *.csv"), ("所有文件", "*.*")]
 
 
 def _log_box(parent: tk.Widget) -> tk.Text:
@@ -34,6 +38,17 @@ def _show(text: tk.Text, content: str) -> None:
     text.configure(state="disabled")
 
 
+def _add_bpmn_files(listbox: tk.Listbox) -> None:
+    for p in filedialog.askopenfilenames(title="选择 BPMN 文件", filetypes=_BPMN_TYPES):
+        if p not in listbox.get(0, "end"):
+            listbox.insert("end", p)
+
+
+def _remove_selected(listbox: tk.Listbox) -> None:
+    for i in reversed(listbox.curselection()):
+        listbox.delete(i)
+
+
 def _path_row(parent: tk.Widget, label: str, var: tk.StringVar, browse) -> ttk.Frame:
     row = ttk.Frame(parent)
     row.pack(fill="x", pady=2)
@@ -51,6 +66,7 @@ class App(ttk.Frame):
         self.notebook.pack(fill="both", expand=True)
         self._build_merge_tab()
         self._build_back_tab()
+        self._build_props_tab()
         bottom = ttk.Frame(self)
         bottom.pack(fill="x", pady=(8, 0))
         self.open_viewer_button = ttk.Button(bottom, text="打开可视化查看器",
@@ -77,15 +93,12 @@ class App(ttk.Frame):
         self.merge_log = _log_box(tab)
 
     def _add_files(self) -> None:
-        for p in filedialog.askopenfilenames(title="选择 BPMN 文件", filetypes=_BPMN_TYPES):
-            if p not in self.files.get(0, "end"):
-                self.files.insert("end", p)
+        _add_bpmn_files(self.files)
         if not self.graphml_out.get() and self.files.size():
             self.graphml_out.set(str(Path(self.files.get(0)).with_name("merged.graphml")))
 
     def _remove_files(self) -> None:
-        for i in reversed(self.files.curselection()):
-            self.files.delete(i)
+        _remove_selected(self.files)
 
     def _move(self, delta: int) -> None:
         sel = self.files.curselection()
@@ -186,6 +199,74 @@ class App(ttk.Frame):
             lines.append(f"已拆分到文件夹：{split}")
         lines += ["", "== 警告 =="] + (warnings or ["（无）"])
         _show(self.back_log, "\n".join(lines))
+
+    # —— 页签三：属性表 ——
+    def _build_props_tab(self) -> None:
+        tab = ttk.Frame(self.notebook, padding=8)
+        self.notebook.add(tab, text="属性表")
+        ttk.Label(tab, text="BPMN 文件（导入时会直接修改这些文件，修改前自动备份为 .bak）：").pack(anchor="w")
+        body = ttk.Frame(tab)
+        body.pack(fill="x")
+        self.prop_files = tk.Listbox(body, height=8, selectmode="extended")
+        self.prop_files.pack(side="left", fill="both", expand=True)
+        buttons = ttk.Frame(body)
+        buttons.pack(side="left", fill="y", padx=(6, 0))
+        ttk.Button(buttons, text="添加…", command=lambda: _add_bpmn_files(self.prop_files)).pack(fill="x", pady=1)
+        ttk.Button(buttons, text="移除", command=lambda: _remove_selected(self.prop_files)).pack(fill="x", pady=1)
+        actions = ttk.Frame(tab)
+        actions.pack(fill="x", pady=4)
+        ttk.Button(actions, text="在查看器中打开", command=self._view_prop_file).pack(side="right")
+        ttk.Button(actions, text="导入表格…", command=self._import_props).pack(side="right", padx=(0, 6))
+        ttk.Button(actions, text="导出表格…", command=self._export_props).pack(side="right", padx=(0, 6))
+        self.props_log = _log_box(tab)
+
+    def _prop_paths(self) -> list[Path] | None:
+        paths = [Path(p) for p in self.prop_files.get(0, "end")]
+        if not paths:
+            messagebox.showerror("错误", "请先添加 BPMN 文件")
+            return None
+        return paths
+
+    def _export_props(self) -> None:
+        paths = self._prop_paths()
+        if not paths:
+            return
+        out = filedialog.asksaveasfilename(title="导出属性表", defaultextension=".xlsx",
+                                           filetypes=_TABLE_SAVE_TYPES,
+                                           initialdir=str(paths[0].parent), initialfile="属性表.xlsx")
+        if not out:
+            return
+        try:
+            summary = export_table(paths, Path(out))
+        except _ERRORS as e:
+            messagebox.showerror("错误", str(e))
+            return
+        _show(self.props_log, summary.to_text())
+
+    def _import_props(self) -> None:
+        paths = self._prop_paths()
+        if not paths:
+            return
+        table = filedialog.askopenfilename(title="选择要导入的属性表", filetypes=_TABLE_OPEN_TYPES,
+                                           initialdir=str(paths[0].parent))
+        if not table:
+            return
+        try:
+            report = import_table(Path(table), paths)
+        except _ERRORS as e:
+            messagebox.showerror("错误", str(e))
+            return
+        _show(self.props_log, report.to_text()
+              + f"\n\n导入报告：{import_report_path_for(Path(table))}")
+        if not report.ok:
+            messagebox.showerror("导入已中止", report.error)
+
+    def _view_prop_file(self) -> None:
+        sel = self.prop_files.curselection()
+        if not self.prop_files.size():
+            messagebox.showerror("错误", "请先添加 BPMN 文件")
+            return
+        open_viewer(Path(self.prop_files.get(sel[0] if sel else 0)))
 
 
 def run() -> None:
