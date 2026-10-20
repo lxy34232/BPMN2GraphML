@@ -105,3 +105,19 @@ test("typeLabel", () => {
   assert.equal(P.typeLabel("intermediateThrowEvent"), "中间抛出事件");
   assert.equal(P.typeLabel("fooBar"), "fooBar");
 });
+
+// bpmn-js 只在 DI 上 isMarkerVisible 为真时才画排他网关的 X；源文件常省略该属性
+test("showGatewayMarkers turns on the X for exclusive gateways that leave isMarkerVisible unset", () => {
+  const shape = (type, extra = {}) => ({ $type: "bpmndi:BPMNShape", bpmnElement: { $type: type }, ...extra });
+  const unset = shape("bpmn:ExclusiveGateway");
+  const explicitOff = shape("bpmn:ExclusiveGateway", { isMarkerVisible: false });
+  const task = shape("bpmn:Task");
+  const edge = { $type: "bpmndi:BPMNEdge", bpmnElement: { $type: "bpmn:SequenceFlow" } };
+  const defs = { diagrams: [{ plane: { planeElement: [unset, explicitOff, task, edge] } }, { plane: {} }] };
+
+  assert.equal(P.showGatewayMarkers(defs), 1);
+  assert.equal(unset.isMarkerVisible, true);
+  assert.equal(explicitOff.isMarkerVisible, false);
+  assert.equal(task.isMarkerVisible, undefined);
+  assert.equal(P.showGatewayMarkers({}), 0);
+});

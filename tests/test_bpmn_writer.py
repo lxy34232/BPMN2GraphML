@@ -292,3 +292,20 @@ def test_split_output_has_no_b2g(split):
     out, _ = split()
     for p in out.glob("*.bpmn"):
         assert B2G_NS not in p.read_text(encoding="utf-8")
+
+
+def _marker_flags(path):
+    root = ET.parse(path).getroot()
+    types = {el.get("id"): el.tag for el in root.find(B + "process")}
+    return {s.get("bpmnElement"): (types[s.get("bpmnElement")], s.get("isMarkerVisible"))
+            for s in root.iter(f"{{{BPMNDI_NS}}}BPMNShape")}
+
+
+def test_exclusive_gateways_marker_visible(split, merged_out):
+    # 按规范 isMarkerVisible 缺省为 false，bpmn-js 等严格实现会只画空菱形
+    merged, _ = merged_out()
+    out, _ = split()
+    assert any(tag == B + "exclusiveGateway" for tag, _ in _marker_flags(merged).values())
+    for path in [merged, *out.glob("*.bpmn")]:
+        for tag, flag in _marker_flags(path).values():
+            assert flag == ("true" if tag == B + "exclusiveGateway" else None), (path.name, tag)

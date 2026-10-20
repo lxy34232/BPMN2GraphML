@@ -22,6 +22,11 @@
   var importQueue = Promise.resolve();
   window.b2gViewer = { viewer: viewer, state: state };   // 便于调试与端到端测试
 
+  // 解析完成、渲染之前补上排他网关的 X 标记（见 properties.js 中 showGatewayMarkers）
+  viewer.on("import.parse.complete", function (event) {
+    if (event.definitions) P.showGatewayMarkers(event.definitions);
+  });
+
   function showMessage(text, isError) {
     ui.message.textContent = text;
     ui.message.classList.toggle("error", !!isError);

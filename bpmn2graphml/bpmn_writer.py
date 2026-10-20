@@ -134,6 +134,9 @@ def _write(source: SourceInfo, namespaces: dict[str, str], nodes: list[_NodeEl],
                           bpmnElement=process_id)
     for n in nodes:
         shape = ET.SubElement(plane, f"{{{BPMNDI_NS}}}BPMNShape", id=f"{n.id}_di", bpmnElement=n.id)
+        if n.tag == "exclusiveGateway":
+            # 规范中 isMarkerVisible 缺省为 false，bpmn-js 等严格实现会因此不画 X
+            shape.set("isMarkerVisible", "true")
         x, y, w, h = n.bounds
         ET.SubElement(shape, f"{{{DC_NS}}}Bounds", x=_fmt(x), y=_fmt(y), width=_fmt(w), height=_fmt(h))
     for f in flows:

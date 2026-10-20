@@ -125,10 +125,29 @@
     return ids;
   }
 
+  // bpmn-js 只在 DI 的 isMarkerVisible 为真时才画排他网关中的 X，而很多建模工具导出时省略该属性
+  //（其它查看器默认显示 X）。对未设置该属性的排他网关补上 true；显式写了 false 的保持不变。
+  // definitions 为 bpmn-js 解析得到的 moddle 对象；返回改动的形状数。
+  function showGatewayMarkers(definitions) {
+    var changed = 0;
+    (definitions.diagrams || []).forEach(function (diagram) {
+      var plane = diagram.plane || {};
+      (plane.planeElement || []).forEach(function (el) {
+        if (el.$type === "bpmndi:BPMNShape" && el.bpmnElement &&
+            el.bpmnElement.$type === "bpmn:ExclusiveGateway" && el.isMarkerVisible === undefined) {
+          el.isMarkerVisible = true;
+          changed++;
+        }
+      });
+    });
+    return changed;
+  }
+
   var api = {
     TYPE_ATTR: TYPE_ATTR, UNSET: UNSET, SOURCE_ATTR: SOURCE_ATTR,
     typeLabel: typeLabel, extractNodes: extractNodes, hasDiagram: hasDiagram,
-    listAttributes: listAttributes, valuesOf: valuesOf, buildIndex: buildIndex, matchIds: matchIds
+    listAttributes: listAttributes, valuesOf: valuesOf, buildIndex: buildIndex, matchIds: matchIds,
+    showGatewayMarkers: showGatewayMarkers
   };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.B2GProps = api;
