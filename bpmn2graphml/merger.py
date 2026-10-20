@@ -131,6 +131,27 @@ def _layout_positions(graphs: list[Graph]) -> dict[Key, tuple[float, float, floa
     return positions
 
 
+def expansion_targets(graphs: list[Graph]) -> dict[Key, int]:
+    """会被展开的空子流程：(文件名, 节点 ID) → 目标图在 graphs 中的下标。
+
+    子流程名称等于另一张图的文件名或其 process 名称（文件名优先，先出现者优先）时展开。
+    """
+    files = [g.sources[0].file for g in graphs]
+    by_name: dict[str, int] = {}
+    for i, g in enumerate(graphs):
+        by_name.setdefault(files[i], i)
+        pname = (g.sources[0].process_attrs.get("name") or "").strip()
+        if pname:
+            by_name.setdefault(pname, i)
+    targets: dict[Key, int] = {}
+    for i, g in enumerate(graphs):
+        for n in g.nodes.values():
+            ti = by_name.get((n.name or "").strip()) if n.expandable else None
+            if ti is not None and ti != i:
+                targets[(files[i], n.id)] = ti
+    return targets
+
+
 def merge(graphs: list[Graph]) -> tuple[Graph, MergeReport]:
     report = MergeReport()
     files = [g.sources[0].file for g in graphs]
@@ -173,53 +194,43 @@ def merge(graphs: list[Graph]) -> tuple[Graph, MergeReport]:
             edges.append(_EdgeRec((f, e.id), (f, e.source), (f, e.target), e.name, list(e.origins)))
 
     # 1. 空子流程展开
-    by_name: dict[str, int] = {}
-    for i, g in enumerate(graphs):
-        by_name.setdefault(files[i], i)
-        pname = (g.sources[0].process_attrs.get("name") or "").strip()
-        if pname:
-            by_name.setdefault(pname, i)
+    file_index = {f: i for i, f in enumerate(files)}
     expanded: set[Key] = set()
-    for i, g in enumerate(graphs):
-        for n in g.nodes.values():
-            if not n.expandable:
-                continue
-            ti = by_name.get((n.name or "").strip())
-            if ti is None or ti == i:
-                continue
-            sub, tg, tf = (files[i], n.id), graphs[ti], files[ti]
-            t_in = {e.target for e in tg.edges.values()}
-            t_out = {e.source for e in tg.edges.values()}
-            entries = [m.id for m in tg.nodes.values() if m.bpmn_type == "startEvent"]
-            if not entries:
-                entries = [m.id for m in tg.nodes.values() if m.id not in t_in]
-                report.warnings.append(f"「{tf}」没有开始事件，子流程 {n.id} 的入线接到无入线的节点")
-            exits = [m.id for m in tg.nodes.values() if m.bpmn_type == "endEvent"]
+    for sub, ti in expansion_targets(graphs).items():
+        i, n = file_index[sub[0]], graphs[file_index[sub[0]]].nodes[sub[1]]
+        tg, tf = graphs[ti], files[ti]
+        t_in = {e.target for e in tg.edges.values()}
+        t_out = {e.source for e in tg.edges.values()}
+        entries = [m.id for m in tg.nodes.values() if m.bpmn_type == "startEvent"]
+        if not entries:
+            entries = [m.id for m in tg.nodes.values() if m.id not in t_in]
+            report.warnings.append(f"「{tf}」没有开始事件，子流程 {n.id} 的入线接到无入线的节点")
+        exits = [m.id for m in tg.nodes.values() if m.bpmn_type == "endEvent"]
+        if not exits:
+            exits = [m.id for m in tg.nodes.values() if m.id not in t_out]
+            report.warnings.append(f"「{tf}」没有结束事件，子流程 {n.id} 的出线从无出线的节点出发")
+        if not entries:
+            report.warnings.append(f"「{tf}」没有可作为入口的节点，子流程 {n.id} 未展开")
+            continue
+        if not absorb((tf, entries[0]), sub):
+            report.warnings.append(
+                f"子流程 {n.id} 的入口 {entries[0]} 已接入「{files[i]}」的流程，子流程未展开")
+            continue
+        expanded.add(sub)
+        for x in entries + exits:
+            wired[find((tf, x))].add(files[i])
+        report.expansions.append(Expansion(n.id, files[i], tf, entries[0]))
+        preds = [r.src for r in edges if r.tgt == sub]
+        for extra in entries[1:]:
+            report.warnings.append(f"「{tf}」有多个入口，{extra} 也连到子流程 {n.id} 的前驱节点")
+            for p in preds:
+                edges.append(_EdgeRec(None, p, (tf, extra), None, []))
+        for r in [r for r in edges if r.src == sub]:
             if not exits:
-                exits = [m.id for m in tg.nodes.values() if m.id not in t_out]
-                report.warnings.append(f"「{tf}」没有结束事件，子流程 {n.id} 的出线从无出线的节点出发")
-            if not entries:
-                report.warnings.append(f"「{tf}」没有可作为入口的节点，子流程 {n.id} 未展开")
-                continue
-            if not absorb((tf, entries[0]), sub):
-                report.warnings.append(
-                    f"子流程 {n.id} 的入口 {entries[0]} 已接入「{files[i]}」的流程，子流程未展开")
-                continue
-            expanded.add(sub)
-            for x in entries + exits:
-                wired[find((tf, x))].add(files[i])
-            report.expansions.append(Expansion(n.id, files[i], tf, entries[0]))
-            preds = [r.src for r in edges if r.tgt == sub]
-            for extra in entries[1:]:
-                report.warnings.append(f"「{tf}」有多个入口，{extra} 也连到子流程 {n.id} 的前驱节点")
-                for p in preds:
-                    edges.append(_EdgeRec(None, p, (tf, extra), None, []))
-            for r in [r for r in edges if r.src == sub]:
-                if not exits:
-                    break
-                for extra in exits[1:]:
-                    edges.append(_EdgeRec(None, (tf, extra), r.tgt, r.name, []))
-                r.src = (tf, exits[0])
+                break
+            for extra in exits[1:]:
+                edges.append(_EdgeRec(None, (tf, extra), r.tgt, r.name, []))
+            r.src = (tf, exits[0])
 
     # 2. 跨文件同名合并
     name_groups: dict[str, dict[str, Key]] = {}

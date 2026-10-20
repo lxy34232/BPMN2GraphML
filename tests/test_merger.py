@@ -1,7 +1,7 @@
 import pytest
 
 from bpmn2graphml.bpmn_reader import read_bpmn
-from bpmn2graphml.merger import FILE_GAP, Expansion, MergeError, merge
+from bpmn2graphml.merger import FILE_GAP, Expansion, MergeError, expansion_targets, merge
 from conftest import fixture_paths
 from helpers import make_graph
 
@@ -168,3 +168,13 @@ def test_expansion_does_not_fold_caller_into_target():
     assert (g.edges["f2"].target, g.edges["f3"].source, g.edges["f4"].target) == ("bs", "be", "ae")
     assert any("开始" in w for w in report.warnings)
     assert any("结束" in w for w in report.warnings)
+
+
+def test_expansion_targets_fixtures():
+    graphs = [read_bpmn(p) for p in fixture_paths()]
+    assert expansion_targets(graphs) == {("科技创新平台策划", SUB): 1}
+
+
+def test_expansion_targets_needs_target_selected():
+    graphs = [read_bpmn(fixture_paths()[0])]
+    assert expansion_targets(graphs) == {}
