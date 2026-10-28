@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:process id="Process_1">
+    <bpmn2:startEvent id="EBPM_b523a713-72e8-a83f-ac9e-0f19f23eaad1" name="科技规划编制任务已下达">
+      <bpmn2:outgoing>EBPM_75bddb4e-5671-cf72-6d73-9b4eb6ac2141</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:manualTask id="EBPM_94a87a89-5752-b6e5-9cc2-4aa8ecc5a39f" name="科技规划需求收集">
+      <bpmn2:incoming>EBPM_75bddb4e-5671-cf72-6d73-9b4eb6ac2141</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_bd590982-f266-a122-6461-1c06d9bdb42e</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_f1d32e72-2d05-7709-a61a-f9ceb01c7268" name="科技规划需求文本结构化">
+      <bpmn2:incoming>EBPM_bd590982-f266-a122-6461-1c06d9bdb42e</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_6aea1640-6ebb-f0d6-51e1-c5b4948f6e03</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_cf757e0e-ab7b-f60d-b596-ddf5884b8959" name="科技规划需求导入归档">
+      <bpmn2:incoming>EBPM_6aea1640-6ebb-f0d6-51e1-c5b4948f6e03</bpmn2:incoming>
+    </bpmn2:userTask>
+    <bpmn2:sequenceFlow id="EBPM_75bddb4e-5671-cf72-6d73-9b4eb6ac2141" sourceRef="EBPM_b523a713-72e8-a83f-ac9e-0f19f23eaad1" targetRef="EBPM_94a87a89-5752-b6e5-9cc2-4aa8ecc5a39f" name="" />
+    <bpmn2:sequenceFlow id="EBPM_bd590982-f266-a122-6461-1c06d9bdb42e" sourceRef="EBPM_94a87a89-5752-b6e5-9cc2-4aa8ecc5a39f" targetRef="EBPM_f1d32e72-2d05-7709-a61a-f9ceb01c7268" name="科技规划需求已收集" />
+    <bpmn2:sequenceFlow id="EBPM_6aea1640-6ebb-f0d6-51e1-c5b4948f6e03" sourceRef="EBPM_f1d32e72-2d05-7709-a61a-f9ceb01c7268" targetRef="EBPM_cf757e0e-ab7b-f60d-b596-ddf5884b8959" name="科技规划需求文本已结构化" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="EBPM_b523a713-72e8-a83f-ac9e-0f19f23eaad1_di" bpmnElement="EBPM_b523a713-72e8-a83f-ac9e-0f19f23eaad1">
+        <dc:Bounds x="109" y="50" width="56" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_94a87a89-5752-b6e5-9cc2-4aa8ecc5a39f_di" bpmnElement="EBPM_94a87a89-5752-b6e5-9cc2-4aa8ecc5a39f">
+        <dc:Bounds x="67" y="206" width="140" height="66.67" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_f1d32e72-2d05-7709-a61a-f9ceb01c7268_di" bpmnElement="EBPM_f1d32e72-2d05-7709-a61a-f9ceb01c7268">
+        <dc:Bounds x="50" y="372.67" width="174" height="66.67" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_cf757e0e-ab7b-f60d-b596-ddf5884b8959_di" bpmnElement="EBPM_cf757e0e-ab7b-f60d-b596-ddf5884b8959">
+        <dc:Bounds x="57" y="539.33" width="160" height="66.67" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="EBPM_75bddb4e-5671-cf72-6d73-9b4eb6ac2141_di" bpmnElement="EBPM_75bddb4e-5671-cf72-6d73-9b4eb6ac2141">
+        <di:waypoint x="137" y="106" />
+        <di:waypoint x="137" y="206" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_bd590982-f266-a122-6461-1c06d9bdb42e_di" bpmnElement="EBPM_bd590982-f266-a122-6461-1c06d9bdb42e">
+        <di:waypoint x="137" y="272.67" />
+        <di:waypoint x="137" y="372.67" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_6aea1640-6ebb-f0d6-51e1-c5b4948f6e03_di" bpmnElement="EBPM_6aea1640-6ebb-f0d6-51e1-c5b4948f6e03">
+        <di:waypoint x="137" y="439.33" />
+        <di:waypoint x="137" y="539.33" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

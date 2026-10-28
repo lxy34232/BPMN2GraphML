@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:process id="Process_1">
+    <bpmn2:userTask id="EBPM_90ad2a60-accb-5bf8-462a-2d7e4a1a9ddb" name="科技发展规划制定">
+      <bpmn2:outgoing>EBPM_715ea500-bc77-3ca8-9a64-28106eb6b4c3</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_00e3038b-52ee-89cd-549c-bdbe75a2bd2d" name="创建科技发展规划与科技发展规划大纲的追溯关系">
+      <bpmn2:incoming>EBPM_715ea500-bc77-3ca8-9a64-28106eb6b4c3</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_095405f7-b25a-673c-0bd5-d7d9adff9b5c</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_edc1e2b3-f140-fdff-4494-cf17938dfa84" name="发布科技发展规划基线">
+      <bpmn2:incoming>EBPM_095405f7-b25a-673c-0bd5-d7d9adff9b5c</bpmn2:incoming>
+    </bpmn2:userTask>
+    <bpmn2:sequenceFlow id="EBPM_715ea500-bc77-3ca8-9a64-28106eb6b4c3" sourceRef="EBPM_90ad2a60-accb-5bf8-462a-2d7e4a1a9ddb" targetRef="EBPM_00e3038b-52ee-89cd-549c-bdbe75a2bd2d" name="科技发展规划已制定" />
+    <bpmn2:sequenceFlow id="EBPM_095405f7-b25a-673c-0bd5-d7d9adff9b5c" sourceRef="EBPM_00e3038b-52ee-89cd-549c-bdbe75a2bd2d" targetRef="EBPM_edc1e2b3-f140-fdff-4494-cf17938dfa84" name="科技发展规划与科技发展规划大纲的追溯关系已创建" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="EBPM_90ad2a60-accb-5bf8-462a-2d7e4a1a9ddb_di" bpmnElement="EBPM_90ad2a60-accb-5bf8-462a-2d7e4a1a9ddb">
+        <dc:Bounds x="144" y="50" width="140" height="66.67" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_00e3038b-52ee-89cd-549c-bdbe75a2bd2d_di" bpmnElement="EBPM_00e3038b-52ee-89cd-549c-bdbe75a2bd2d">
+        <dc:Bounds x="50" y="216.67" width="328" height="66.67" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_edc1e2b3-f140-fdff-4494-cf17938dfa84_di" bpmnElement="EBPM_edc1e2b3-f140-fdff-4494-cf17938dfa84">
+        <dc:Bounds x="134" y="383.33" width="160" height="66.67" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="EBPM_715ea500-bc77-3ca8-9a64-28106eb6b4c3_di" bpmnElement="EBPM_715ea500-bc77-3ca8-9a64-28106eb6b4c3">
+        <di:waypoint x="214" y="116.67" />
+        <di:waypoint x="214" y="216.67" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_095405f7-b25a-673c-0bd5-d7d9adff9b5c_di" bpmnElement="EBPM_095405f7-b25a-673c-0bd5-d7d9adff9b5c">
+        <di:waypoint x="214" y="283.33" />
+        <di:waypoint x="214" y="383.33" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
