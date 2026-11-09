@@ -4,3 +4,7 @@ __pycache__/
 .superpowers/
 .playwright-mcp/
 node_modules/
+
+# 端到端流程的源资料（内部文本，不纳入版本库）
+端到端流程/DOORS/
+端到端流程/*.md

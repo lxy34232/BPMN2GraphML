@@ -10,7 +10,11 @@
   var ui = {
     fileInput: $("file-input"), fileName: $("file-name"), attrSelect: $("attr-select"),
     chips: $("chips"), clearBtn: $("clear-btn"), fitBtn: $("fit-btn"), stage: $("stage"),
-    message: $("message"), card: $("card"), dropHint: $("drop-hint")
+    message: $("message"), card: $("card"), dropHint: $("drop-hint"),
+    printBtn: $("print-btn"), printDialog: $("print-dialog"), printClose: $("print-close"),
+    printPaper: $("print-paper"), printOrientation: $("print-orientation"),
+    printStatus: $("print-status"), printPreview: $("print-preview"), printConfirm: $("print-confirm"),
+    exportSvgBtn: $("export-svg-btn"), exportPngBtn: $("export-png-btn"), exportStatus: $("export-status")
   };
 
   var viewer = new window.BpmnJS({ container: "#canvas" });
@@ -20,6 +24,11 @@
   var state = { nodes: [], byId: {}, attr: null, selected: [], loaded: false };
   var loadSeq = 0;   // 每次打开文件递增；较早的、尚未完成的加载结果一律丢弃
   var importQueue = Promise.resolve();
+  var printSeq = 0;
+  var printImage = null;
+  var printName = "";
+  var exportSeq = 0;
+  var exporting = false;
   window.b2gViewer = { viewer: viewer, state: state };   // 便于调试与端到端测试
 
   // 解析完成、渲染之前补上排他网关的 X 标记（见 properties.js 中 showGatewayMarkers）
@@ -37,9 +46,16 @@
     ui.attrSelect.disabled = !on;
     ui.clearBtn.disabled = !on;
     ui.fitBtn.disabled = !on;
+    ui.printBtn.disabled = !on;
+    ui.exportSvgBtn.disabled = !on || exporting;
+    ui.exportPngBtn.disabled = !on || exporting;
   }
 
   function resetView() {
+    closePrint();
+    ++exportSeq;
+    exporting = false;
+    ui.exportStatus.hidden = true;
     state.nodes = [];
     state.byId = {};
     state.attr = null;
@@ -224,6 +240,125 @@
     applyHighlight();
   });
   ui.fitBtn.addEventListener("click", function () { canvas.zoom("fit-viewport", "auto"); });
+
+  function showExportStatus(text, isError) {
+    ui.exportStatus.textContent = text;
+    ui.exportStatus.classList.toggle("error", !!isError);
+    ui.exportStatus.hidden = false;
+  }
+
+  function downloadBlob(blob, name) {
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = name;
+    document.body.appendChild(link);
+    try { link.click(); }
+    finally {
+      link.remove();
+      // 留出时间让浏览器接管下载，再释放文件内容。
+      window.setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+    }
+  }
+
+  function exportDiagram(format) {
+    if (!state.loaded || exporting) return;
+    var token = ++exportSeq;
+    var name = ui.fileName.textContent.replace(/\.(bpmn|xml)$/i, "")
+      .replace(/[<>:"/\\|?*\x00-\x1f]/g, "_").replace(/[. ]+$/g, "") || "BPMN";
+    exporting = true;
+    setControlsEnabled(state.loaded);
+    showExportStatus("正在生成完整流程图的 " + format.toUpperCase() + "…");
+    Promise.resolve().then(function () {
+      if (token !== exportSeq) return;
+      return viewer.saveSVG();
+    }).then(function (result) {
+      if (token !== exportSeq || !result) return;
+      var image = window.B2GPrint.prepareSVG(result.svg);
+      if (format === "png") return window.B2GPrint.toPNG(image);
+      return { blob: new Blob([image.svg], { type: "image/svg+xml;charset=utf-8" }) };
+    }).then(function (result) {
+      if (token !== exportSeq || !result) return;
+      downloadBlob(result.blob, name + "." + format);
+      showExportStatus(format === "png" ?
+        "已生成 PNG（" + result.width + " × " + result.height + " 像素），已开始下载。" :
+        "已生成 SVG 并开始下载，可无损放大查看完整流程图。");
+    }).catch(function (err) {
+      if (token === exportSeq) showExportStatus("导出失败：" + (err && err.message ? err.message : err), true);
+    }).then(function () {
+      if (token !== exportSeq) return;
+      exporting = false;
+      setControlsEnabled(state.loaded);
+    });
+  }
+
+  ui.exportSvgBtn.addEventListener("click", function () { exportDiagram("svg"); });
+  ui.exportPngBtn.addEventListener("click", function () { exportDiagram("png"); });
+
+  function closePrint() {
+    ++printSeq;
+    printImage = null;
+    ui.printConfirm.disabled = true;
+    ui.printPreview.removeAttribute("srcdoc");
+    if (ui.printDialog.open) ui.printDialog.close();
+  }
+
+  function printError(err) {
+    ui.printConfirm.disabled = true;
+    ui.printStatus.textContent = "无法准备打印：" + (err && err.message ? err.message : err);
+  }
+
+  function updatePrintPreview() {
+    if (!printImage || !ui.printDialog.open) return;
+    ui.printConfirm.disabled = true;
+    ui.printStatus.textContent = "正在准备预览…";
+    try {
+      var result = window.B2GPrint.buildDocument(printImage, printName, {
+        paper: ui.printPaper.value, orientation: ui.printOrientation.value
+      });
+      ui.printPreview.onload = function () {
+        if (!ui.printDialog.open || !printImage) return;
+        var image = ui.printPreview.contentDocument.getElementById("diagram");
+        if (!image || !image.complete || !image.naturalWidth) {
+          printError(new Error("预览图像加载失败，请关闭后重试。"));
+          return;
+        }
+        ui.printStatus.textContent = result.layout.paper + " · " +
+          (result.layout.orientation === "landscape" ? "横向" : "纵向") + " · 完整流程图 / 1 页";
+        ui.printConfirm.disabled = false;
+      };
+      ui.printPreview.srcdoc = result.html;
+    } catch (err) { printError(err); }
+  }
+
+  ui.printBtn.addEventListener("click", function () {
+    if (!state.loaded) return;
+    var token = ++printSeq;
+    printImage = null;
+    printName = ui.fileName.textContent;
+    ui.printStatus.textContent = "正在生成完整流程图…";
+    ui.printConfirm.disabled = true;
+    ui.printDialog.showModal();
+    // saveSVG 导出整张图，与当前缩放、平移位置无关；不改变查看器画布。
+    viewer.saveSVG().then(function (result) {
+      if (token !== printSeq || !ui.printDialog.open) return;
+      printImage = window.B2GPrint.prepareSVG(result.svg);
+      updatePrintPreview();
+    }).catch(function (err) {
+      if (token === printSeq && ui.printDialog.open) printError(err);
+    });
+  });
+  ui.printClose.addEventListener("click", closePrint);
+  ui.printDialog.addEventListener("cancel", function (e) { e.preventDefault(); closePrint(); });
+  ui.printPaper.addEventListener("change", updatePrintPreview);
+  ui.printOrientation.addEventListener("change", updatePrintPreview);
+  ui.printConfirm.addEventListener("click", function () {
+    if (ui.printConfirm.disabled) return;
+    try {
+      ui.printPreview.contentWindow.focus();
+      ui.printPreview.contentWindow.print();
+    } catch (err) { printError(err); }
+  });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") hideCard(); });
 
   var dragDepth = 0;

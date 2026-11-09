@@ -23,15 +23,44 @@
     <span class="spacer"></span>
     <button id="clear-btn" class="btn" type="button" disabled>清除筛选</button>
     <button id="fit-btn" class="btn" type="button" disabled>适应窗口</button>
+    <button id="export-svg-btn" class="btn" type="button" disabled title="下载完整矢量流程图，适合长流程图和放大查看">导出 SVG</button>
+    <button id="export-png-btn" class="btn" type="button" disabled title="下载完整流程图的高清 PNG 图片">导出 PNG</button>
+    <button id="print-btn" class="btn" type="button" disabled title="打印完整流程图，或另存为 PDF">打印 / PDF</button>
   </header>
   <main id="stage" class="stage">
     <div id="canvas" class="canvas"></div>
     <div id="message" class="message">打开或拖入一个 BPMN 文件</div>
     <aside id="card" class="card" hidden></aside>
     <div id="drop-hint" class="drop-hint" hidden>松开鼠标以打开文件</div>
+    <div id="export-status" class="export-status" role="status" aria-live="polite" hidden></div>
   </main>
+  <dialog id="print-dialog" class="print-dialog" aria-labelledby="print-title">
+    <div class="print-header">
+      <h2 id="print-title">打印 / 导出 PDF</h2>
+      <button id="print-close" class="btn" type="button">关闭</button>
+    </div>
+    <p class="print-help">完整流程图将等比缩放到一页，保留当前筛选高亮。在系统打印窗口选择“另存为 PDF”，建议关闭页眉和页脚。长流程图建议使用工具栏「导出 SVG」或「导出 PNG」，以便放大查看。</p>
+    <div class="print-settings">
+      <label class="field">纸张
+        <select id="print-paper"><option value="A4">A4</option><option value="A3">A3</option></select>
+      </label>
+      <label class="field">方向
+        <select id="print-orientation">
+          <option value="auto">自动</option>
+          <option value="landscape">横向</option>
+          <option value="portrait">纵向</option>
+        </select>
+      </label>
+      <span id="print-status" role="status" aria-live="polite"></span>
+    </div>
+    <iframe id="print-preview" class="print-preview" title="完整流程图打印预览" sandbox="allow-same-origin allow-modals"></iframe>
+    <div class="print-actions">
+      <button id="print-confirm" class="btn primary" type="button" disabled>打印 / 保存 PDF</button>
+    </div>
+  </dialog>
   <script src="vendor/bpmn-js/bpmn-navigated-viewer.production.min.js"></script>
   <script src="properties.js"></script>
+  <script src="print.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

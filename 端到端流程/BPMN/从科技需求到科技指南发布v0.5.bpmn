@@ -1,0 +1,2545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:b2g="https://github.com/lxy34232/BPMN2GraphML/properties" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn2:process id="Process_1">
+    <bpmn2:startEvent id="EBPM_5318187e-ab00-4b44-98f3-c90f6aca7816" name="科技规划编制任务已下达">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划编制策划" />
+          <b2g:property name="责任主体" value="科技管理部门" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>EBPM_9a0d0088-6e84-4d83-bafe-9a805eb88b59</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:manualTask id="EBPM_57f4ff31-3f47-4494-918a-a851e9e0d846" name="制定科技规划编制工作方案">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划编制策划" />
+          <b2g:property name="责任主体" value="科技管理部门" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_9a0d0088-6e84-4d83-bafe-9a805eb88b59</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_966fc0bd-3a18-459a-ad59-b34e0d319aae</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_a78485d8-6b4d-4022-a9f7-fb92e5a7dc72" name="组建规划编制工作组与专题组">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划编制策划" />
+          <b2g:property name="责任主体" value="科技管理部门" />
+          <b2g:property name="参与方" value="相关职能部门" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_966fc0bd-3a18-459a-ad59-b34e0d319aae</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_01d6c74b-cc82-4c52-878c-7889f448b134</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_d5dd7619-fdcc-46be-a232-35129ba3a23e" name="制定DOORS规划数据管理规范">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划编制策划" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_01d6c74b-cc82-4c52-878c-7889f448b134</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_213627d3-df30-46bf-ae19-731be365f296</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_c030ceab-c077-4d33-af80-f8ec8d7530af" name="配置DOORS模块模板与链接规则">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划编制策划" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_213627d3-df30-46bf-ae19-731be365f296</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_6ebac06c-a188-4d1d-861d-49258eadfafa</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:parallelGateway id="EBPM_26bf3c5f-c7ba-4c42-a722-6c6db02387c6">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_6ebac06c-a188-4d1d-861d-49258eadfafa</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_7bba2a5e-fdb8-4098-9005-b5d0ad1b0f29</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_49ffdb8a-56f2-44f8-87c2-c346de3cfe2d</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_2b70e5d9-174e-4566-86db-754b0f9d6bbb</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_3ef1428c-e19f-409f-85c5-729efe7bc714</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_e085a7f8-5157-4534-a424-3b6dc526603f</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:manualTask id="EBPM_549f0dec-5a51-403d-9872-fa7c87a59f1e" name="收集国家及行业政策规划">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_7bba2a5e-fdb8-4098-9005-b5d0ad1b0f29</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_d8ccaadb-9415-4416-a08a-f15ab393a9ec</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_53b2d9a5-6ed4-4590-a13a-c06eb04e76a8" name="收集集团战略与科技规划">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_49ffdb8a-56f2-44f8-87c2-c346de3cfe2d</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_14e100e7-eb59-45d7-bf8b-97925c4283f8</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_a2cc2ab7-5830-4b62-9c59-f75f1b946827" name="收集公司战略部署与领导讲话">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_2b70e5d9-174e-4566-86db-754b0f9d6bbb</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_815d5a45-1a25-45b2-86a3-423397a61aa6</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_d88a6a1f-52ba-4ed5-9c17-5e1028b9e1dd" name="提取上一周期规划总结评估结论">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_3ef1428c-e19f-409f-85c5-729efe7bc714</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_c3468a38-43f1-4c16-a64d-6f4a5afc895a</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_2a8db910-3e28-4b6a-afc9-5783f17155ab" name="收集业务单位与市场用户科技需求">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_e085a7f8-5157-4534-a424-3b6dc526603f</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_bacd800f-0609-4536-9513-37923d8df70b</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:parallelGateway id="EBPM_50b7dcd3-be8c-4478-bf69-10bd8f582e37">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_d8ccaadb-9415-4416-a08a-f15ab393a9ec</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_14e100e7-eb59-45d7-bf8b-97925c4283f8</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_815d5a45-1a25-45b2-86a3-423397a61aa6</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_c3468a38-43f1-4c16-a64d-6f4a5afc895a</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_bacd800f-0609-4536-9513-37923d8df70b</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_3786538a-29f6-4166-9ed7-7139043edff4</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:manualTask id="EBPM_a6b6be5e-7d35-4b1f-9e3f-19c240fe0f9f" name="科技规划需求文本结构化">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_3786538a-29f6-4166-9ed7-7139043edff4</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_3541ecc3-8011-49c1-945e-762886937f44</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_bc0ee071-f812-4391-ae25-c7d31709bc9a">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_3541ecc3-8011-49c1-945e-762886937f44</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_719c410e-21ff-457e-ab27-9551f41cabf2</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_e20b83d6-47f0-45f6-886f-92d0c57247a4</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_9c2f6634-af1d-463f-ad44-a16bb21db500" name="科技规划需求规范性导入DOORS">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_e20b83d6-47f0-45f6-886f-92d0c57247a4</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_184f6e39-6b8d-42af-8d7f-dd6146537007</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="EBPM_e6c39ef2-aaed-442e-bda2-9f5f26508f98" name="需求导入质量是否合格？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_184f6e39-6b8d-42af-8d7f-dd6146537007</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_329a09c6-a8bc-40ad-b4b0-b26309de7ae8</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_4f876bd2-745b-4319-9be1-66c83f5cbd55</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="EBPM_1905de6a-7ffa-49f8-a88e-b98e3f03061d" name="修正结构化需求文本">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_4f876bd2-745b-4319-9be1-66c83f5cbd55</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_719c410e-21ff-457e-ab27-9551f41cabf2</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_ea18ee5c-fb5b-4f2f-8c90-7d7eff4d9a4d" name="标注需求条目规划主题并识别关键需求">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_329a09c6-a8bc-40ad-b4b0-b26309de7ae8</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_857ea792-6ffa-430e-8d78-5a2b199bd786</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_c6a1148a-37b4-46f8-b35e-296f25dd57b0" name="发布科技规划需求基线">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划需求收集" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_857ea792-6ffa-430e-8d78-5a2b199bd786</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_bc4c6f3f-7ff8-486c-9608-a66574847a27</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_3d93bf07-3524-482d-bf1a-9af4f980d14e" name="研判需求并归纳规划主题">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+          <b2g:property name="信息系统" value="TechArchi技术地图" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_bc4c6f3f-7ff8-486c-9608-a66574847a27</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_77df46c2-c380-44a2-98cc-a0e3fb4043f5</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_14e48602-d449-4d81-98cd-45dc0614d551" name="确定科技规划大纲框架">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_77df46c2-c380-44a2-98cc-a0e3fb4043f5</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_4d15ed27-1701-496d-913c-307e8a8da08b</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_12cf70ed-c5d7-4f9c-841f-e35c66aedadf" name="科技规划大纲制定">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_4d15ed27-1701-496d-913c-307e8a8da08b</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_fdd18454-b827-44f6-9ac3-80bc6a2659f9</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_2ea57121-d9d2-4b41-abeb-01928b16b495" name="科技规划大纲规范性导入DOORS">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_fdd18454-b827-44f6-9ac3-80bc6a2659f9</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_6f757e76-5ba6-48d4-a858-5a49719f5e2f</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_f14aa0a5-89e5-4e70-8d28-039016c679d8" name="创建科技大纲模块与科技规划需求模块追溯链接">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_6f757e76-5ba6-48d4-a858-5a49719f5e2f</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_5dac820a-6389-42ec-b99d-ad089765a29f</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="EBPM_428b72d5-2a56-4a25-bbb1-f663e6077614">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_5dac820a-6389-42ec-b99d-ad089765a29f</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_680e54a3-3702-4d8f-acb5-397ed45008f5</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_8e707bb5-b307-4c9d-b97b-90ec079aa0e2</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_fa55cd12-bb3a-4231-8447-7a9d5f21ff84" name="开展需求覆盖性分析">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_8e707bb5-b307-4c9d-b97b-90ec079aa0e2</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_d591bfea-2779-4823-aa06-b40a3281f0c7</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="EBPM_7cd80811-7843-4523-8ba3-abc683b3fb04" name="关键需求是否全部覆盖？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_d591bfea-2779-4823-aa06-b40a3281f0c7</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_05257214-9ffb-42cf-95f5-2f73b08a39f4</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_8e75cf59-e471-4bf8-8377-e114f63b202b</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="EBPM_9d3a75c0-a557-441c-acf5-7588ab7f41d1" name="组织大纲研讨审查">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_05257214-9ffb-42cf-95f5-2f73b08a39f4</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_0b3e29d3-31d1-43fd-9f90-6f38965e541f</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_27beeb3c-4d4b-4fde-966a-df1050836c1c" name="大纲是否通过审查？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_0b3e29d3-31d1-43fd-9f90-6f38965e541f</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_69b5201a-f2e0-42fc-97c9-8ef24e0ad116</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_e72b448a-5ce7-48f2-a697-df88bc86d15b</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:exclusiveGateway id="EBPM_17e71084-fd29-4c73-9363-53f9841220a2">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_8e75cf59-e471-4bf8-8377-e114f63b202b</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_e72b448a-5ce7-48f2-a697-df88bc86d15b</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_bee181ff-8077-46fa-bb95-15ec285fe41f</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_c8d52336-0808-4fa3-bcc5-28be131b9ea0" name="补充调整大纲条目及链接">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_bee181ff-8077-46fa-bb95-15ec285fe41f</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_680e54a3-3702-4d8f-acb5-397ed45008f5</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_ec77a12a-0246-407d-aea0-71fae2a01cb6" name="科技规划大纲基线发布">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划大纲制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_69b5201a-f2e0-42fc-97c9-8ef24e0ad116</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_94f9ca2d-c025-45d0-b0a4-6bf256f86b32</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_dc1fe813-0de4-49be-954a-aa4d5e82e2d6" name="确定规划文本结构与编写分工">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_94f9ca2d-c025-45d0-b0a4-6bf256f86b32</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_750a2d69-af21-40cb-af67-09f6aa9b3c4b</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_92aa66c6-6607-4c5b-b351-2724880b3602" name="开展形势研判与差距分析">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_750a2d69-af21-40cb-af67-09f6aa9b3c4b</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_e2cb0507-58af-43c6-b461-86fe415c3620</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_44569e41-e153-42cf-94ad-6d4d7d2e0ac5" name="确定指导思想、基本原则与发展目标">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_e2cb0507-58af-43c6-b461-86fe415c3620</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_9ecf1a2a-2c1b-4af6-9328-aa6966164338</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_b4f57ba7-d172-4496-ae36-7f33458e3d20" name="测算主要指标并确认统计口径">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="相关职能部门" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_9ecf1a2a-2c1b-4af6-9328-aa6966164338</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_97f764ff-26b8-4525-b058-1ab2d0bf1fcd</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:parallelGateway id="EBPM_cb0fea69-4f14-444c-b04d-11b0ccd50f4e">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_97f764ff-26b8-4525-b058-1ab2d0bf1fcd</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_63c60a57-22a5-4b33-8a5f-04caeb29795c</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_bcf1474b-c3c0-4398-bee8-531e3b6f90cf</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_db1711c4-5e6c-453b-8a17-266abc6f8732</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_f3a57392-2c73-4916-8858-67793144a216</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:manualTask id="EBPM_4bde7bb2-9a97-463d-be1d-148503f37a5d" name="编制关键技术布局">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="TechArchi技术地图" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_63c60a57-22a5-4b33-8a5f-04caeb29795c</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_d2f5eb78-2063-4b01-95fc-f8b388942e6d</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_71afcce2-39aa-4c3e-be1b-8ea6e2e61bad" name="编制重点产品开发规划">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_bcf1474b-c3c0-4398-bee8-531e3b6f90cf</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_31ea05bd-b8d6-406c-a80f-a4d2f1acfd1d</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_9f3dd4ac-060e-4c24-b5de-f1e676979999" name="编制科技创新体系建设任务">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_db1711c4-5e6c-453b-8a17-266abc6f8732</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_8410ad3e-c3ba-419f-9906-c82c0d9a7c43</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_ba00ebf3-6ef0-410c-8d89-c7f42ec0eb00" name="编制规划实施保障">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_f3a57392-2c73-4916-8858-67793144a216</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_f2ca8cb5-9055-49e4-9e56-3df3c078c5f4</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:parallelGateway id="EBPM_790775bf-c28c-4e39-bd49-4d2b7fe973fa">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_d2f5eb78-2063-4b01-95fc-f8b388942e6d</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_31ea05bd-b8d6-406c-a80f-a4d2f1acfd1d</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_8410ad3e-c3ba-419f-9906-c82c0d9a7c43</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_f2ca8cb5-9055-49e4-9e56-3df3c078c5f4</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_bf923bcc-47ff-43ea-96bc-8feafbf5c1ee</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:manualTask id="EBPM_c2dca39a-5587-4fb9-890a-9876e2f83c22" name="形成重点任务清单">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_bf923bcc-47ff-43ea-96bc-8feafbf5c1ee</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_8afeb90d-7ac5-49a6-8306-6bc00aa3a1ca</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_968dad0c-f9c0-477e-bbbe-928318c5b773" name="形成规划初稿">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_8afeb90d-7ac5-49a6-8306-6bc00aa3a1ca</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_e280f967-5890-4902-9f3e-12d8f3c8212f</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_dd4b9c3d-e46f-4dea-8513-32f5ce337b75" name="科技发展规划规范性导入DOORS">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_e280f967-5890-4902-9f3e-12d8f3c8212f</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_f4f4c1f2-b548-4aa9-b3e6-63fb55752c40</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_194f663b-7216-4080-a7c6-da9eaec2a7d3" name="创建科技发展规划与科技发展规划大纲的追溯关系">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_f4f4c1f2-b548-4aa9-b3e6-63fb55752c40</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_84b4598c-3eaa-4c46-8fcd-4c9d4ba1b819</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="EBPM_ed63b454-a81a-43ff-880b-900a4d296a66">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_84b4598c-3eaa-4c46-8fcd-4c9d4ba1b819</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_428b2945-d73c-4162-9a05-4c2862b34808</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_6d210525-1f6e-4c72-90ec-fe9d2d243816</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_e8428d92-7183-4df9-8131-fca5ca9c1253" name="开展大纲承接性分析">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_6d210525-1f6e-4c72-90ec-fe9d2d243816</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_81eb9855-fb19-44cf-955a-043b62dc0d1a</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="EBPM_dcf906b3-04ac-4524-ae13-d9781257b287" name="大纲条目是否全部承接？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_81eb9855-fb19-44cf-955a-043b62dc0d1a</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_57bddbd3-7ba2-424a-99e4-d21a752cad53</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_70190fb0-7a07-4ea1-92d0-4d03f80e9330</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_210f45a9-7de0-4786-b95e-bacc4ff78109" name="补充调整规划条目及链接">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_70190fb0-7a07-4ea1-92d0-4d03f80e9330</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_428b2945-d73c-4162-9a05-4c2862b34808</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_6f8b6cdf-8847-458a-92b8-33d81f89196f" name="发布科技发展规划基线">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划制定" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_57bddbd3-7ba2-424a-99e4-d21a752cad53</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_5a6402ed-d377-4ee5-a321-c47e0674c69f</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_840f0885-6e0b-4d78-86ea-d215ce197647" name="进行科技发展规划修订意见征集">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="OA" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_5a6402ed-d377-4ee5-a321-c47e0674c69f</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_4d7a6a71-ac28-41ee-9479-53dd402caf11</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_73ea5826-eaae-419d-90ca-8924a7cd2813" name="提出科技发展规划修订意见">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="各业务单位及分子公司" />
+          <b2g:property name="责任主体" value="相关职能部门" />
+          <b2g:property name="责任主体" value="专家组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_4d7a6a71-ac28-41ee-9479-53dd402caf11</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_8e2f5132-7f39-40d4-88e4-842571106848</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_8e2f5132-7f39-40d4-88e4-842571106848</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_87c99391-55a6-4b6f-92e0-66f12695a763</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_603da004-da4d-4506-8188-577edec1d690</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_43fc4fc0-7b5b-472b-a244-2502f37f6b5e</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_4bc403d1-e27a-4774-a5ae-572f2a85179a</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_72220bfc-6c8c-45a5-a8dc-24c304a08b37</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_574fbc43-1f6b-4ef4-ade8-a23ae19441c7</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_11d53814-f8e5-4f50-beaf-fd658c2cfcaa" name="修订意见导入DOORS并关联被修订对象">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_574fbc43-1f6b-4ef4-ade8-a23ae19441c7</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_1c52f12f-52aa-4a9b-9544-bd5c945c30a7</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_f0fc5346-3809-4199-a6f8-87e87527da11" name="逐条形成修订意见处理结论">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_1c52f12f-52aa-4a9b-9544-bd5c945c30a7</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_288283d3-7f36-496f-8d5c-58daa44b73c5</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_a27e0ea1-4805-4c76-9b54-8cb969206ef4" name="修订规划文本并更新DOORS模块">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_288283d3-7f36-496f-8d5c-58daa44b73c5</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_42ab8259-d358-4ed5-a73a-b34db39e70ce</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_bcc57787-a008-4879-b485-b0a368af8073" name="处理疑似链接并复核追溯关系">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_42ab8259-d358-4ed5-a73a-b34db39e70ce</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_7df0a4f0-aa2f-4731-a8c5-5ac2df6ce88e</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_a5d685dc-0c4a-4227-a8bc-99400e310d49" name="组织进行一级评审">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="专家组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_7df0a4f0-aa2f-4731-a8c5-5ac2df6ce88e</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_cd01deb7-b9f1-4dd5-9785-de95a5610384</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_7d1f2836-c144-4236-96f5-daeafd0cad3c" name="一级评审是否通过？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="专家组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_cd01deb7-b9f1-4dd5-9785-de95a5610384</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_041a491c-a398-4f8b-88df-49e97f915123</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_87c99391-55a6-4b6f-92e0-66f12695a763</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="EBPM_2be873bb-ab5e-4889-94ac-ce58e53f082f" name="组织进行二级评审">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="技术委员会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_041a491c-a398-4f8b-88df-49e97f915123</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_f447cdb1-e8bf-42d4-9a1f-a59879bf5ce6</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_4bb8f007-40c4-42e9-9b16-5234c29d9a55" name="二级评审是否通过？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="技术委员会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_f447cdb1-e8bf-42d4-9a1f-a59879bf5ce6</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_438b86c7-ead0-4d1f-9a3c-34ee14f25937</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_603da004-da4d-4506-8188-577edec1d690</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_dfaaa3bb-57e0-44af-9baf-aeaaf57fcb99" name="发布科技发展规划送审稿基线">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_438b86c7-ead0-4d1f-9a3c-34ee14f25937</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_974e0a3d-a03d-45ee-8d18-5864a1531bc8</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_8f68b3f2-7372-4c5e-bc7f-926453ce035f" name="编写科技发展规划上会议案">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划修订评审" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_974e0a3d-a03d-45ee-8d18-5864a1531bc8</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_a6072a2f-fcab-450b-8ec9-ad8a8fddaee0</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_d024510a-e1fc-44ef-9c16-3cab083ef54a" name="提交党委会前置研究">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划审议发布" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="公司党委会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_a6072a2f-fcab-450b-8ec9-ad8a8fddaee0</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_4c6d2750-c798-43a9-9ae1-ac813d56772c</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_386ca65a-a541-41c2-b25d-ca684b37bff7" name="党委会是否同意提交审议？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划审议发布" />
+          <b2g:property name="责任主体" value="公司党委会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_4c6d2750-c798-43a9-9ae1-ac813d56772c</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_848d6194-1c43-4fb7-9603-6741b6bb2730</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_43fc4fc0-7b5b-472b-a244-2502f37f6b5e</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="EBPM_e14ee3c2-4468-4ad1-9aaf-8710aaa8e8ee" name="提交总经理办公会审议">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划审议发布" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="总经理办公会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_848d6194-1c43-4fb7-9603-6741b6bb2730</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_7997ffd7-0c38-4188-bc1b-6c4ebdce522c</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_8925c616-ad41-44f2-b328-85621b463068" name="总经理办公会是否审议通过？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划审议发布" />
+          <b2g:property name="责任主体" value="总经理办公会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_7997ffd7-0c38-4188-bc1b-6c4ebdce522c</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_d82b28b0-76e9-47b6-8ca9-679959b89c8c</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_4bc403d1-e27a-4774-a5ae-572f2a85179a</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="EBPM_9776faa1-9be9-4797-aafa-850b737328ee" name="发布科技发展规划">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划审议发布" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="OA" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_d82b28b0-76e9-47b6-8ca9-679959b89c8c</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_7720c214-c637-48b7-911f-909108988b9e</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_5e5b6c16-2a74-448d-8a33-3e9352083563" name="发布科技发展规划正式基线">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划审议发布" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_7720c214-c637-48b7-911f-909108988b9e</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_ccd9cb7a-c67d-4d57-af0c-f54fd847a413</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_5d8fe299-b4d5-47c7-9687-8d999fc0f8b6" name="开展规划宣贯与任务分解">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技发展规划审议发布" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_ccd9cb7a-c67d-4d57-af0c-f54fd847a413</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_8f6a79ac-30f3-4efa-b5bc-5aa6a2afd14e</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_4e51ba92-b04f-4e5b-a9f3-98eedaaecd2f">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_8f6a79ac-30f3-4efa-b5bc-5aa6a2afd14e</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_44b0ba9c-54fb-4cbe-aab0-fc07a528714d</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_706e8933-9bd1-4b91-b3f7-a08ee3956c4e</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="EBPM_87902283-558e-4e21-8255-ff48a3289721" name="启动年度科研指南编制">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="OA" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_706e8933-9bd1-4b91-b3f7-a08ee3956c4e</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_733fd356-e145-486c-a10b-7ce0acf090eb</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:parallelGateway id="EBPM_ac6674a2-4af0-4474-976d-acb2f4a7d9b9">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_733fd356-e145-486c-a10b-7ce0acf090eb</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_15d320ec-c72f-4bc6-9cc8-a55f0ea36de2</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_d76900d8-4ce9-4091-8a9e-f5756f47177b</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:manualTask id="EBPM_472788b5-b588-4655-85b1-268b69d89e41" name="分解规划年度任务">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_15d320ec-c72f-4bc6-9cc8-a55f0ea36de2</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_d6464597-dc76-44b9-8b07-e6c431b98db6</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_db8f7e41-1183-48b6-80c0-41e1af3e98a9" name="收集年度科研项目需求">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_d76900d8-4ce9-4091-8a9e-f5756f47177b</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_6d874cc0-aa35-4361-8b56-9a01f3476718</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:parallelGateway id="EBPM_4ae59c00-9294-43dd-b9b5-e774192fffb1">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_d6464597-dc76-44b9-8b07-e6c431b98db6</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_6d874cc0-aa35-4361-8b56-9a01f3476718</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_dc36b34c-17c1-4e63-92eb-8f940153eb07</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:manualTask id="EBPM_30647f43-1794-4ce9-b3ee-40cbbbb1a4e6" name="确定年度指南方向与项目分类">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="TechArchi技术地图" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_dc36b34c-17c1-4e63-92eb-8f940153eb07</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_75f76107-4f35-4aab-9f33-85d3bae18272</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_ad66beb8-e403-44ef-8682-a39e79674c8a" name="编制科研项目指南">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="TechArchi技术地图" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_75f76107-4f35-4aab-9f33-85d3bae18272</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_1604eaad-17aa-41d0-b7ef-9fc45b052275</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_95122385-454a-421d-a25a-b5ac163a2fab" name="科研项目指南规范性导入DOORS">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_1604eaad-17aa-41d0-b7ef-9fc45b052275</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_e6ef23c4-c58c-4847-b239-5b5d6cee0e5d</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_3e3061a3-caa8-4fdc-9dff-5884ccbc8e08" name="创建科研项目指南与科技发展规划的追溯关系">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_e6ef23c4-c58c-4847-b239-5b5d6cee0e5d</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_27f84942-f104-4f3a-978d-6b6938944ba0</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="EBPM_61941524-f845-43eb-b5df-6a42874a0d61">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_27f84942-f104-4f3a-978d-6b6938944ba0</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_f9f7581d-93dc-434d-b352-36403d891a65</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_9ba89aca-198d-4aca-9ac2-d2f3d38657ba</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_8a3223fa-549c-41ca-916c-cc64971bd3bc" name="开展规划承接与重复性分析">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+          <b2g:property name="信息系统" value="TechArchi技术地图" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_9ba89aca-198d-4aca-9ac2-d2f3d38657ba</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_623d977d-52b1-4355-b3e8-b40b202a32e8</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="EBPM_50181728-6482-4d60-b052-3649d5eaba33" name="指南条目依据是否充分？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_623d977d-52b1-4355-b3e8-b40b202a32e8</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_7e1233ba-fe1f-46d0-b1b9-40948f265cc9</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_3b9881c4-eba1-43c9-a260-3605b6d7227c</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_4e46afae-4ade-4ff4-aeb3-23d92829a964" name="调整指南条目及链接">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_3b9881c4-eba1-43c9-a260-3605b6d7227c</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_f9f7581d-93dc-434d-b352-36403d891a65</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_9e3c32bd-8c5d-4e0c-9848-2d20ebc24651" name="发布科研项目指南征求意见稿基线">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_7e1233ba-fe1f-46d0-b1b9-40948f265cc9</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_551e877b-2156-46f8-bfb9-efc558425af4</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_98f44d7f-f2d4-4435-825b-9528839b267c" name="进行科研指南意见征集">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="OA" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_551e877b-2156-46f8-bfb9-efc558425af4</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_a3772773-9a53-4cfb-b9f8-7f7625b164bb</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_191b9b59-872f-4b3a-baef-a7eb8f74c66d" name="提出科研指南修订意见">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="各业务单位及分子公司" />
+          <b2g:property name="责任主体" value="专家组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_a3772773-9a53-4cfb-b9f8-7f7625b164bb</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_710b8790-c3f3-4fc6-afed-8207f62ab1f5</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_11d3d221-af81-4c59-b427-0476ddda9647">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_710b8790-c3f3-4fc6-afed-8207f62ab1f5</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_f4384e3b-c5c9-4c5e-ae45-600f43a52dec</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_5c7d4f9b-105c-497a-a6ff-60dba5d18399</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="EBPM_7acaba1e-383f-4aa1-a33c-07b08256b19c" name="指南修订意见导入DOORS并形成处理结论">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_5c7d4f9b-105c-497a-a6ff-60dba5d18399</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_5cc147b6-bf4e-4a9b-8972-5b33dbe9201d</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_23c2c7e2-bdc7-469f-808d-58364f923e5e" name="修订科研项目指南并更新DOORS">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_5cc147b6-bf4e-4a9b-8972-5b33dbe9201d</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_7685113a-49a0-4ab2-84f8-1d503b8f43b8</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_aae4761b-114d-4268-941d-e42f6b737536" name="组织科研指南评审">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="技术委员会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_7685113a-49a0-4ab2-84f8-1d503b8f43b8</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_a32c4b82-1414-4a1d-a0f7-137faad4874f</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_aed2e494-4fbd-49e4-9634-7cb2e789d8c6" name="科研指南评审是否通过？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="技术委员会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_a32c4b82-1414-4a1d-a0f7-137faad4874f</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_b26251b4-2eb0-4983-8414-966104100087</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_f4384e3b-c5c9-4c5e-ae45-600f43a52dec</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="EBPM_5a13fec4-d7a2-47ce-99a8-4b0192245612" name="科研项目指南发布">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="OA" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_b26251b4-2eb0-4983-8414-966104100087</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_2ddbf115-0516-41db-bc93-82f4dca988df</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_78fea495-24a7-49bc-872b-a1d65a41d513" name="发布科研项目指南正式基线">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科研项目指南编制" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_2ddbf115-0516-41db-bc93-82f4dca988df</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_f37ae263-3955-4ef8-9445-678de73542fd</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_e2a30b56-8a26-4bed-9619-43725ae51ea6" name="确定评估类型与评估方案">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_f37ae263-3955-4ef8-9445-678de73542fd</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_37481032-a428-4d59-a0c0-94703dc3ede1</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_891dd116-a5d2-4ffe-91c5-42dd66a3c825" name="下发评估通知与数据采集模板">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+          <b2g:property name="参与方" value="相关职能部门" />
+          <b2g:property name="信息系统" value="OA" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_37481032-a428-4d59-a0c0-94703dc3ede1</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_710fddfe-d2ab-4e19-93f3-f8b3a14e2b9d</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:parallelGateway id="EBPM_7882d6e9-f20a-417f-930d-a180695fd195">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_710fddfe-d2ab-4e19-93f3-f8b3a14e2b9d</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_fdde3160-3973-4473-8f9d-0dde51038c45</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_8d4e5c26-c776-415f-a30a-f7821ddf7ee1</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_146aaec5-0e2d-4b13-8e6d-5aa39d9df95b</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_f9532181-8f98-49bb-99ad-2870d1b8e370</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_b5268ea3-989a-4d31-8a5e-81f3fd0f0764</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_6495fbd4-5e11-402f-88c6-0502395a15da</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_291b79b9-7551-4346-982a-cb38608db10b</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_8f3c42f2-f2fa-42ba-b2dc-2bea9cd22a63</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:manualTask id="EBPM_330191ff-2712-41fa-9df2-39ad98d9dc1d" name="收集规划任务完成情况">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_fdde3160-3973-4473-8f9d-0dde51038c45</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_500baed7-5032-48d0-a077-894ece48c1a8</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_c2fdab93-b2e5-4050-9bc5-bed0b324e587" name="收集科研项目立项与完成情况">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="相关职能部门" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_8d4e5c26-c776-415f-a30a-f7821ddf7ee1</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_b2270e87-e9c9-4c27-8a13-4804ffe98e08</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_467d3c02-d92d-4ad5-9ded-986c0dbfc243" name="收集科技成果工程化应用情况">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_146aaec5-0e2d-4b13-8e6d-5aa39d9df95b</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_e3703d16-7e92-4ced-9518-22d00672643b</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_1cee20f5-3628-4831-97be-de6dfd640d17" name="收集产品平台化模块化成果运用情况">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_f9532181-8f98-49bb-99ad-2870d1b8e370</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_0db5cbb2-432c-42a6-86f2-d8ed67f4139d</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_c01c4433-00b0-4ff1-a300-bdca7d1d923a" name="收集科技人才梯队建设情况">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="相关职能部门" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_b5268ea3-989a-4d31-8a5e-81f3fd0f0764</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_3b52be0b-56c9-4754-9335-40328a58e392</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_f8894dd9-d56a-4c23-a4ad-13a7f7d11130" name="收集重大科技成果情况">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+          <b2g:property name="参与方" value="相关职能部门" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_6495fbd4-5e11-402f-88c6-0502395a15da</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_89c106ce-4871-4ffc-8f7a-6ca295dbad56</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_49703492-dec9-4fe9-bdea-2f1a936cc2ef" name="收集科研经费投入情况">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="相关职能部门" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_291b79b9-7551-4346-982a-cb38608db10b</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_d7128c7a-d2e4-4672-bb5d-51b2e26516dc</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_278f07ed-4c9b-4294-bfa5-e963a7631cbb" name="收集质量攻关问题情况">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="相关职能部门" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_8f3c42f2-f2fa-42ba-b2dc-2bea9cd22a63</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_1aacb811-7957-4ccc-8f27-a658e61ed42d</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:parallelGateway id="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_500baed7-5032-48d0-a077-894ece48c1a8</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_b2270e87-e9c9-4c27-8a13-4804ffe98e08</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_e3703d16-7e92-4ced-9518-22d00672643b</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_0db5cbb2-432c-42a6-86f2-d8ed67f4139d</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_3b52be0b-56c9-4754-9335-40328a58e392</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_89c106ce-4871-4ffc-8f7a-6ca295dbad56</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_d7128c7a-d2e4-4672-bb5d-51b2e26516dc</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_1aacb811-7957-4ccc-8f27-a658e61ed42d</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_3f6504a0-4424-403a-9d69-a7f65878dbf4</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:exclusiveGateway id="EBPM_36cb04a3-9957-44a4-9850-3d13c099953d">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_3f6504a0-4424-403a-9d69-a7f65878dbf4</bpmn2:incoming>
+      <bpmn2:incoming>EBPM_2c79d96c-51fa-4811-87e8-f00966511e53</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_4deb2ba5-a470-4ccd-9270-3de9505f0335</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="EBPM_a9e2962a-c6dc-45bd-8bb1-3ac6c1fb94c1" name="核验评估数据与统计口径">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_4deb2ba5-a470-4ccd-9270-3de9505f0335</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_863cc838-1af2-4332-95d1-68e90849893d</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:exclusiveGateway id="EBPM_ce0e09d9-17d1-49c6-8cfb-35fdde610525" name="评估数据是否完整准确？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_863cc838-1af2-4332-95d1-68e90849893d</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_2597c10b-9372-46f7-b452-445f8445c66e</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_2bb4b8c5-7071-4f38-b234-dad34b86ae9a</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:manualTask id="EBPM_03bfc506-36e1-42e3-b0ce-afba92843bb6" name="补充核实评估数据">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="各业务单位及分子公司" />
+          <b2g:property name="参与方" value="相关职能部门" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_2bb4b8c5-7071-4f38-b234-dad34b86ae9a</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_2c79d96c-51fa-4811-87e8-f00966511e53</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_9c48bafd-7da0-4c4c-ac3c-b94b20804eb0" name="评估数据录入DOORS并建立追溯">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_2597c10b-9372-46f7-b452-445f8445c66e</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_d4bf1dff-ed59-4c64-85d4-583b89b8dc90</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="EBPM_fb617bd5-b37b-4b7e-8d89-69dc24a373f6" name="开展追溯统计与完成度分析">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+          <b2g:property name="信息系统" value="TechArchi技术地图" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_d4bf1dff-ed59-4c64-85d4-583b89b8dc90</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_3aa43882-ec3d-474b-99e3-97247fcc7ff3</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:manualTask id="EBPM_7ce65fdc-cffe-40e4-b296-c31133ae4fa5" name="分析偏差原因并提出调整建议">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_3aa43882-ec3d-474b-99e3-97247fcc7ff3</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_efc9db82-af3f-4dfa-a212-b479910e5189</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_01ec1ccd-e43a-4ab5-8084-38e569f7377d" name="形成规划实施评估报告">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_efc9db82-af3f-4dfa-a212-b479910e5189</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_eaf7af08-36a9-4c39-bb87-593261d11295</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:manualTask id="EBPM_70c8b9f6-76c8-4afc-aa94-3f294b2e2868" name="审定规划实施评估报告">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="参与方" value="技术委员会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_eaf7af08-36a9-4c39-bb87-593261d11295</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_994e6bf2-3a16-4374-b3c0-e823243a373f</bpmn2:outgoing>
+    </bpmn2:manualTask>
+    <bpmn2:userTask id="EBPM_5af235f6-339d-4aca-a886-f7f1d7f8fe5a" name="发布规划实施评估基线">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="信息系统" value="DOORS 9.7.2" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_994e6bf2-3a16-4374-b3c0-e823243a373f</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_90c04dac-7e1c-4fe1-b852-40dfbc8b00ff</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:exclusiveGateway id="EBPM_6414c845-bb78-4fdf-b5c0-430343da1bfa" name="是否为规划期总结评估？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_90c04dac-7e1c-4fe1-b852-40dfbc8b00ff</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_f308c21c-ce2d-4b86-837e-d805e19c8747</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_b9b2006f-dbdd-44c7-93a3-63b27c281f18</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:exclusiveGateway id="EBPM_3debe33b-0f59-406a-b899-ee50b62231f6" name="是否需要滚动修编规划？">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+          <b2g:property name="责任主体" value="技术委员会" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_b9b2006f-dbdd-44c7-93a3-63b27c281f18</bpmn2:incoming>
+      <bpmn2:outgoing>EBPM_72220bfc-6c8c-45a5-a8dc-24c304a08b37</bpmn2:outgoing>
+      <bpmn2:outgoing>EBPM_44b0ba9c-54fb-4cbe-aab0-fc07a528714d</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:endEvent id="EBPM_1c7ccfb5-0cd3-4b60-a6a5-89f9bb3d7c90" name="科技规划周期已收官">
+      <bpmn2:extensionElements>
+        <b2g:properties>
+          <b2g:property name="来源流程" value="科技规划实施评估" />
+          <b2g:property name="责任主体" value="规划编制工作组" />
+        </b2g:properties>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>EBPM_f308c21c-ce2d-4b86-837e-d805e19c8747</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="EBPM_9a0d0088-6e84-4d83-bafe-9a805eb88b59" sourceRef="EBPM_5318187e-ab00-4b44-98f3-c90f6aca7816" targetRef="EBPM_57f4ff31-3f47-4494-918a-a851e9e0d846" name="" />
+    <bpmn2:sequenceFlow id="EBPM_966fc0bd-3a18-459a-ad59-b34e0d319aae" sourceRef="EBPM_57f4ff31-3f47-4494-918a-a851e9e0d846" targetRef="EBPM_a78485d8-6b4d-4022-a9f7-fb92e5a7dc72" name="编制工作方案已制定" />
+    <bpmn2:sequenceFlow id="EBPM_01d6c74b-cc82-4c52-878c-7889f448b134" sourceRef="EBPM_a78485d8-6b4d-4022-a9f7-fb92e5a7dc72" targetRef="EBPM_d5dd7619-fdcc-46be-a232-35129ba3a23e" name="编制工作组已组建" />
+    <bpmn2:sequenceFlow id="EBPM_213627d3-df30-46bf-ae19-731be365f296" sourceRef="EBPM_d5dd7619-fdcc-46be-a232-35129ba3a23e" targetRef="EBPM_c030ceab-c077-4d33-af80-f8ec8d7530af" name="DOORS数据管理规范已制定" />
+    <bpmn2:sequenceFlow id="EBPM_6ebac06c-a188-4d1d-861d-49258eadfafa" sourceRef="EBPM_c030ceab-c077-4d33-af80-f8ec8d7530af" targetRef="EBPM_26bf3c5f-c7ba-4c42-a722-6c6db02387c6" name="DOORS模块模板与链接规则已配置" />
+    <bpmn2:sequenceFlow id="EBPM_7bba2a5e-fdb8-4098-9005-b5d0ad1b0f29" sourceRef="EBPM_26bf3c5f-c7ba-4c42-a722-6c6db02387c6" targetRef="EBPM_549f0dec-5a51-403d-9872-fa7c87a59f1e" name="" />
+    <bpmn2:sequenceFlow id="EBPM_d8ccaadb-9415-4416-a08a-f15ab393a9ec" sourceRef="EBPM_549f0dec-5a51-403d-9872-fa7c87a59f1e" targetRef="EBPM_50b7dcd3-be8c-4478-bf69-10bd8f582e37" name="国家及行业政策规划已收集" />
+    <bpmn2:sequenceFlow id="EBPM_49ffdb8a-56f2-44f8-87c2-c346de3cfe2d" sourceRef="EBPM_26bf3c5f-c7ba-4c42-a722-6c6db02387c6" targetRef="EBPM_53b2d9a5-6ed4-4590-a13a-c06eb04e76a8" name="" />
+    <bpmn2:sequenceFlow id="EBPM_14e100e7-eb59-45d7-bf8b-97925c4283f8" sourceRef="EBPM_53b2d9a5-6ed4-4590-a13a-c06eb04e76a8" targetRef="EBPM_50b7dcd3-be8c-4478-bf69-10bd8f582e37" name="集团战略与科技规划已收集" />
+    <bpmn2:sequenceFlow id="EBPM_2b70e5d9-174e-4566-86db-754b0f9d6bbb" sourceRef="EBPM_26bf3c5f-c7ba-4c42-a722-6c6db02387c6" targetRef="EBPM_a2cc2ab7-5830-4b62-9c59-f75f1b946827" name="" />
+    <bpmn2:sequenceFlow id="EBPM_815d5a45-1a25-45b2-86a3-423397a61aa6" sourceRef="EBPM_a2cc2ab7-5830-4b62-9c59-f75f1b946827" targetRef="EBPM_50b7dcd3-be8c-4478-bf69-10bd8f582e37" name="公司战略部署与领导讲话已收集" />
+    <bpmn2:sequenceFlow id="EBPM_3ef1428c-e19f-409f-85c5-729efe7bc714" sourceRef="EBPM_26bf3c5f-c7ba-4c42-a722-6c6db02387c6" targetRef="EBPM_d88a6a1f-52ba-4ed5-9c17-5e1028b9e1dd" name="" />
+    <bpmn2:sequenceFlow id="EBPM_c3468a38-43f1-4c16-a64d-6f4a5afc895a" sourceRef="EBPM_d88a6a1f-52ba-4ed5-9c17-5e1028b9e1dd" targetRef="EBPM_50b7dcd3-be8c-4478-bf69-10bd8f582e37" name="上一周期总结评估结论已提取" />
+    <bpmn2:sequenceFlow id="EBPM_e085a7f8-5157-4534-a424-3b6dc526603f" sourceRef="EBPM_26bf3c5f-c7ba-4c42-a722-6c6db02387c6" targetRef="EBPM_2a8db910-3e28-4b6a-afc9-5783f17155ab" name="" />
+    <bpmn2:sequenceFlow id="EBPM_bacd800f-0609-4536-9513-37923d8df70b" sourceRef="EBPM_2a8db910-3e28-4b6a-afc9-5783f17155ab" targetRef="EBPM_50b7dcd3-be8c-4478-bf69-10bd8f582e37" name="业务单位与市场用户科技需求已收集" />
+    <bpmn2:sequenceFlow id="EBPM_3786538a-29f6-4166-9ed7-7139043edff4" sourceRef="EBPM_50b7dcd3-be8c-4478-bf69-10bd8f582e37" targetRef="EBPM_a6b6be5e-7d35-4b1f-9e3f-19c240fe0f9f" name="需求资料已收集齐全" />
+    <bpmn2:sequenceFlow id="EBPM_3541ecc3-8011-49c1-945e-762886937f44" sourceRef="EBPM_a6b6be5e-7d35-4b1f-9e3f-19c240fe0f9f" targetRef="EBPM_bc0ee071-f812-4391-ae25-c7d31709bc9a" name="科技规划需求文本已结构化" />
+    <bpmn2:sequenceFlow id="EBPM_e20b83d6-47f0-45f6-886f-92d0c57247a4" sourceRef="EBPM_bc0ee071-f812-4391-ae25-c7d31709bc9a" targetRef="EBPM_9c2f6634-af1d-463f-ad44-a16bb21db500" name="" />
+    <bpmn2:sequenceFlow id="EBPM_184f6e39-6b8d-42af-8d7f-dd6146537007" sourceRef="EBPM_9c2f6634-af1d-463f-ad44-a16bb21db500" targetRef="EBPM_e6c39ef2-aaed-442e-bda2-9f5f26508f98" name="需求文本已导入DOORS" />
+    <bpmn2:sequenceFlow id="EBPM_329a09c6-a8bc-40ad-b4b0-b26309de7ae8" sourceRef="EBPM_e6c39ef2-aaed-442e-bda2-9f5f26508f98" targetRef="EBPM_ea18ee5c-fb5b-4f2f-8c90-7d7eff4d9a4d" name="合格" />
+    <bpmn2:sequenceFlow id="EBPM_4f876bd2-745b-4319-9be1-66c83f5cbd55" sourceRef="EBPM_e6c39ef2-aaed-442e-bda2-9f5f26508f98" targetRef="EBPM_1905de6a-7ffa-49f8-a88e-b98e3f03061d" name="不合格" />
+    <bpmn2:sequenceFlow id="EBPM_719c410e-21ff-457e-ab27-9551f41cabf2" sourceRef="EBPM_1905de6a-7ffa-49f8-a88e-b98e3f03061d" targetRef="EBPM_bc0ee071-f812-4391-ae25-c7d31709bc9a" name="结构化文本已修正" />
+    <bpmn2:sequenceFlow id="EBPM_857ea792-6ffa-430e-8d78-5a2b199bd786" sourceRef="EBPM_ea18ee5c-fb5b-4f2f-8c90-7d7eff4d9a4d" targetRef="EBPM_c6a1148a-37b4-46f8-b35e-296f25dd57b0" name="需求条目已完成主题标注" />
+    <bpmn2:sequenceFlow id="EBPM_bc4c6f3f-7ff8-486c-9608-a66574847a27" sourceRef="EBPM_c6a1148a-37b4-46f8-b35e-296f25dd57b0" targetRef="EBPM_3d93bf07-3524-482d-bf1a-9af4f980d14e" name="科技规划需求基线已发布" />
+    <bpmn2:sequenceFlow id="EBPM_77df46c2-c380-44a2-98cc-a0e3fb4043f5" sourceRef="EBPM_3d93bf07-3524-482d-bf1a-9af4f980d14e" targetRef="EBPM_14e48602-d449-4d81-98cd-45dc0614d551" name="规划主题已归纳" />
+    <bpmn2:sequenceFlow id="EBPM_4d15ed27-1701-496d-913c-307e8a8da08b" sourceRef="EBPM_14e48602-d449-4d81-98cd-45dc0614d551" targetRef="EBPM_12cf70ed-c5d7-4f9c-841f-e35c66aedadf" name="大纲框架已确定" />
+    <bpmn2:sequenceFlow id="EBPM_fdd18454-b827-44f6-9ac3-80bc6a2659f9" sourceRef="EBPM_12cf70ed-c5d7-4f9c-841f-e35c66aedadf" targetRef="EBPM_2ea57121-d9d2-4b41-abeb-01928b16b495" name="科技规划大纲制定完成" />
+    <bpmn2:sequenceFlow id="EBPM_6f757e76-5ba6-48d4-a858-5a49719f5e2f" sourceRef="EBPM_2ea57121-d9d2-4b41-abeb-01928b16b495" targetRef="EBPM_f14aa0a5-89e5-4e70-8d28-039016c679d8" name="大纲已导入DOORS" />
+    <bpmn2:sequenceFlow id="EBPM_5dac820a-6389-42ec-b99d-ad089765a29f" sourceRef="EBPM_f14aa0a5-89e5-4e70-8d28-039016c679d8" targetRef="EBPM_428b72d5-2a56-4a25-bbb1-f663e6077614" name="科技规划大纲与科技规划需求追溯链接已创建" />
+    <bpmn2:sequenceFlow id="EBPM_8e707bb5-b307-4c9d-b97b-90ec079aa0e2" sourceRef="EBPM_428b72d5-2a56-4a25-bbb1-f663e6077614" targetRef="EBPM_fa55cd12-bb3a-4231-8447-7a9d5f21ff84" name="" />
+    <bpmn2:sequenceFlow id="EBPM_d591bfea-2779-4823-aa06-b40a3281f0c7" sourceRef="EBPM_fa55cd12-bb3a-4231-8447-7a9d5f21ff84" targetRef="EBPM_7cd80811-7843-4523-8ba3-abc683b3fb04" name="需求覆盖性分析已完成" />
+    <bpmn2:sequenceFlow id="EBPM_05257214-9ffb-42cf-95f5-2f73b08a39f4" sourceRef="EBPM_7cd80811-7843-4523-8ba3-abc683b3fb04" targetRef="EBPM_9d3a75c0-a557-441c-acf5-7588ab7f41d1" name="已全部覆盖" />
+    <bpmn2:sequenceFlow id="EBPM_8e75cf59-e471-4bf8-8377-e114f63b202b" sourceRef="EBPM_7cd80811-7843-4523-8ba3-abc683b3fb04" targetRef="EBPM_17e71084-fd29-4c73-9363-53f9841220a2" name="存在未覆盖的关键需求" />
+    <bpmn2:sequenceFlow id="EBPM_0b3e29d3-31d1-43fd-9f90-6f38965e541f" sourceRef="EBPM_9d3a75c0-a557-441c-acf5-7588ab7f41d1" targetRef="EBPM_27beeb3c-4d4b-4fde-966a-df1050836c1c" name="大纲研讨审查已完成" />
+    <bpmn2:sequenceFlow id="EBPM_69b5201a-f2e0-42fc-97c9-8ef24e0ad116" sourceRef="EBPM_27beeb3c-4d4b-4fde-966a-df1050836c1c" targetRef="EBPM_ec77a12a-0246-407d-aea0-71fae2a01cb6" name="通过" />
+    <bpmn2:sequenceFlow id="EBPM_e72b448a-5ce7-48f2-a697-df88bc86d15b" sourceRef="EBPM_27beeb3c-4d4b-4fde-966a-df1050836c1c" targetRef="EBPM_17e71084-fd29-4c73-9363-53f9841220a2" name="需调整" />
+    <bpmn2:sequenceFlow id="EBPM_bee181ff-8077-46fa-bb95-15ec285fe41f" sourceRef="EBPM_17e71084-fd29-4c73-9363-53f9841220a2" targetRef="EBPM_c8d52336-0808-4fa3-bcc5-28be131b9ea0" name="" />
+    <bpmn2:sequenceFlow id="EBPM_680e54a3-3702-4d8f-acb5-397ed45008f5" sourceRef="EBPM_c8d52336-0808-4fa3-bcc5-28be131b9ea0" targetRef="EBPM_428b72d5-2a56-4a25-bbb1-f663e6077614" name="大纲条目及链接已调整" />
+    <bpmn2:sequenceFlow id="EBPM_94f9ca2d-c025-45d0-b0a4-6bf256f86b32" sourceRef="EBPM_ec77a12a-0246-407d-aea0-71fae2a01cb6" targetRef="EBPM_dc1fe813-0de4-49be-954a-aa4d5e82e2d6" name="科技规划大纲基线已发布" />
+    <bpmn2:sequenceFlow id="EBPM_750a2d69-af21-40cb-af67-09f6aa9b3c4b" sourceRef="EBPM_dc1fe813-0de4-49be-954a-aa4d5e82e2d6" targetRef="EBPM_92aa66c6-6607-4c5b-b351-2724880b3602" name="规划文本结构与分工已确定" />
+    <bpmn2:sequenceFlow id="EBPM_e2cb0507-58af-43c6-b461-86fe415c3620" sourceRef="EBPM_92aa66c6-6607-4c5b-b351-2724880b3602" targetRef="EBPM_44569e41-e153-42cf-94ad-6d4d7d2e0ac5" name="形势研判与差距分析已完成" />
+    <bpmn2:sequenceFlow id="EBPM_9ecf1a2a-2c1b-4af6-9328-aa6966164338" sourceRef="EBPM_44569e41-e153-42cf-94ad-6d4d7d2e0ac5" targetRef="EBPM_b4f57ba7-d172-4496-ae36-7f33458e3d20" name="总体要求已确定" />
+    <bpmn2:sequenceFlow id="EBPM_97f764ff-26b8-4525-b058-1ab2d0bf1fcd" sourceRef="EBPM_b4f57ba7-d172-4496-ae36-7f33458e3d20" targetRef="EBPM_cb0fea69-4f14-444c-b04d-11b0ccd50f4e" name="主要指标及统计口径已确认" />
+    <bpmn2:sequenceFlow id="EBPM_63c60a57-22a5-4b33-8a5f-04caeb29795c" sourceRef="EBPM_cb0fea69-4f14-444c-b04d-11b0ccd50f4e" targetRef="EBPM_4bde7bb2-9a97-463d-be1d-148503f37a5d" name="" />
+    <bpmn2:sequenceFlow id="EBPM_d2f5eb78-2063-4b01-95fc-f8b388942e6d" sourceRef="EBPM_4bde7bb2-9a97-463d-be1d-148503f37a5d" targetRef="EBPM_790775bf-c28c-4e39-bd49-4d2b7fe973fa" name="关键技术布局已编制" />
+    <bpmn2:sequenceFlow id="EBPM_bcf1474b-c3c0-4398-bee8-531e3b6f90cf" sourceRef="EBPM_cb0fea69-4f14-444c-b04d-11b0ccd50f4e" targetRef="EBPM_71afcce2-39aa-4c3e-be1b-8ea6e2e61bad" name="" />
+    <bpmn2:sequenceFlow id="EBPM_31ea05bd-b8d6-406c-a80f-a4d2f1acfd1d" sourceRef="EBPM_71afcce2-39aa-4c3e-be1b-8ea6e2e61bad" targetRef="EBPM_790775bf-c28c-4e39-bd49-4d2b7fe973fa" name="重点产品开发规划已编制" />
+    <bpmn2:sequenceFlow id="EBPM_db1711c4-5e6c-453b-8a17-266abc6f8732" sourceRef="EBPM_cb0fea69-4f14-444c-b04d-11b0ccd50f4e" targetRef="EBPM_9f3dd4ac-060e-4c24-b5de-f1e676979999" name="" />
+    <bpmn2:sequenceFlow id="EBPM_8410ad3e-c3ba-419f-9906-c82c0d9a7c43" sourceRef="EBPM_9f3dd4ac-060e-4c24-b5de-f1e676979999" targetRef="EBPM_790775bf-c28c-4e39-bd49-4d2b7fe973fa" name="科技创新体系建设任务已编制" />
+    <bpmn2:sequenceFlow id="EBPM_f3a57392-2c73-4916-8858-67793144a216" sourceRef="EBPM_cb0fea69-4f14-444c-b04d-11b0ccd50f4e" targetRef="EBPM_ba00ebf3-6ef0-410c-8d89-c7f42ec0eb00" name="" />
+    <bpmn2:sequenceFlow id="EBPM_f2ca8cb5-9055-49e4-9e56-3df3c078c5f4" sourceRef="EBPM_ba00ebf3-6ef0-410c-8d89-c7f42ec0eb00" targetRef="EBPM_790775bf-c28c-4e39-bd49-4d2b7fe973fa" name="规划实施保障已编制" />
+    <bpmn2:sequenceFlow id="EBPM_bf923bcc-47ff-43ea-96bc-8feafbf5c1ee" sourceRef="EBPM_790775bf-c28c-4e39-bd49-4d2b7fe973fa" targetRef="EBPM_c2dca39a-5587-4fb9-890a-9876e2f83c22" name="各章专题内容已编制" />
+    <bpmn2:sequenceFlow id="EBPM_8afeb90d-7ac5-49a6-8306-6bc00aa3a1ca" sourceRef="EBPM_c2dca39a-5587-4fb9-890a-9876e2f83c22" targetRef="EBPM_968dad0c-f9c0-477e-bbbe-928318c5b773" name="重点任务清单已形成" />
+    <bpmn2:sequenceFlow id="EBPM_e280f967-5890-4902-9f3e-12d8f3c8212f" sourceRef="EBPM_968dad0c-f9c0-477e-bbbe-928318c5b773" targetRef="EBPM_dd4b9c3d-e46f-4dea-8513-32f5ce337b75" name="规划初稿已形成" />
+    <bpmn2:sequenceFlow id="EBPM_f4f4c1f2-b548-4aa9-b3e6-63fb55752c40" sourceRef="EBPM_dd4b9c3d-e46f-4dea-8513-32f5ce337b75" targetRef="EBPM_194f663b-7216-4080-a7c6-da9eaec2a7d3" name="规划文本已导入DOORS" />
+    <bpmn2:sequenceFlow id="EBPM_84b4598c-3eaa-4c46-8fcd-4c9d4ba1b819" sourceRef="EBPM_194f663b-7216-4080-a7c6-da9eaec2a7d3" targetRef="EBPM_ed63b454-a81a-43ff-880b-900a4d296a66" name="科技发展规划与科技发展规划大纲的追溯关系已创建" />
+    <bpmn2:sequenceFlow id="EBPM_6d210525-1f6e-4c72-90ec-fe9d2d243816" sourceRef="EBPM_ed63b454-a81a-43ff-880b-900a4d296a66" targetRef="EBPM_e8428d92-7183-4df9-8131-fca5ca9c1253" name="" />
+    <bpmn2:sequenceFlow id="EBPM_81eb9855-fb19-44cf-955a-043b62dc0d1a" sourceRef="EBPM_e8428d92-7183-4df9-8131-fca5ca9c1253" targetRef="EBPM_dcf906b3-04ac-4524-ae13-d9781257b287" name="大纲承接性分析已完成" />
+    <bpmn2:sequenceFlow id="EBPM_57bddbd3-7ba2-424a-99e4-d21a752cad53" sourceRef="EBPM_dcf906b3-04ac-4524-ae13-d9781257b287" targetRef="EBPM_6f8b6cdf-8847-458a-92b8-33d81f89196f" name="已全部承接" />
+    <bpmn2:sequenceFlow id="EBPM_70190fb0-7a07-4ea1-92d0-4d03f80e9330" sourceRef="EBPM_dcf906b3-04ac-4524-ae13-d9781257b287" targetRef="EBPM_210f45a9-7de0-4786-b95e-bacc4ff78109" name="存在未承接条目" />
+    <bpmn2:sequenceFlow id="EBPM_428b2945-d73c-4162-9a05-4c2862b34808" sourceRef="EBPM_210f45a9-7de0-4786-b95e-bacc4ff78109" targetRef="EBPM_ed63b454-a81a-43ff-880b-900a4d296a66" name="规划条目及链接已调整" />
+    <bpmn2:sequenceFlow id="EBPM_5a6402ed-d377-4ee5-a321-c47e0674c69f" sourceRef="EBPM_6f8b6cdf-8847-458a-92b8-33d81f89196f" targetRef="EBPM_840f0885-6e0b-4d78-86ea-d215ce197647" name="科技发展规划征求意见稿基线已发布" />
+    <bpmn2:sequenceFlow id="EBPM_4d7a6a71-ac28-41ee-9479-53dd402caf11" sourceRef="EBPM_840f0885-6e0b-4d78-86ea-d215ce197647" targetRef="EBPM_73ea5826-eaae-419d-90ca-8924a7cd2813" name="科技发展规划意见征集通知已发出" />
+    <bpmn2:sequenceFlow id="EBPM_8e2f5132-7f39-40d4-88e4-842571106848" sourceRef="EBPM_73ea5826-eaae-419d-90ca-8924a7cd2813" targetRef="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf" name="科技发展规划修订建议已提出" />
+    <bpmn2:sequenceFlow id="EBPM_574fbc43-1f6b-4ef4-ade8-a23ae19441c7" sourceRef="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf" targetRef="EBPM_11d53814-f8e5-4f50-beaf-fd658c2cfcaa" name="" />
+    <bpmn2:sequenceFlow id="EBPM_1c52f12f-52aa-4a9b-9544-bd5c945c30a7" sourceRef="EBPM_11d53814-f8e5-4f50-beaf-fd658c2cfcaa" targetRef="EBPM_f0fc5346-3809-4199-a6f8-87e87527da11" name="修订意见已导入DOORS" />
+    <bpmn2:sequenceFlow id="EBPM_288283d3-7f36-496f-8d5c-58daa44b73c5" sourceRef="EBPM_f0fc5346-3809-4199-a6f8-87e87527da11" targetRef="EBPM_a27e0ea1-4805-4c76-9b54-8cb969206ef4" name="修订意见处理结论已形成" />
+    <bpmn2:sequenceFlow id="EBPM_42ab8259-d358-4ed5-a73a-b34db39e70ce" sourceRef="EBPM_a27e0ea1-4805-4c76-9b54-8cb969206ef4" targetRef="EBPM_bcc57787-a008-4879-b485-b0a368af8073" name="规划文本已修订" />
+    <bpmn2:sequenceFlow id="EBPM_7df0a4f0-aa2f-4731-a8c5-5ac2df6ce88e" sourceRef="EBPM_bcc57787-a008-4879-b485-b0a368af8073" targetRef="EBPM_a5d685dc-0c4a-4227-a8bc-99400e310d49" name="追溯关系已复核" />
+    <bpmn2:sequenceFlow id="EBPM_cd01deb7-b9f1-4dd5-9785-de95a5610384" sourceRef="EBPM_a5d685dc-0c4a-4227-a8bc-99400e310d49" targetRef="EBPM_7d1f2836-c144-4236-96f5-daeafd0cad3c" name="一级评审已完成" />
+    <bpmn2:sequenceFlow id="EBPM_041a491c-a398-4f8b-88df-49e97f915123" sourceRef="EBPM_7d1f2836-c144-4236-96f5-daeafd0cad3c" targetRef="EBPM_2be873bb-ab5e-4889-94ac-ce58e53f082f" name="评审通过" />
+    <bpmn2:sequenceFlow id="EBPM_87c99391-55a6-4b6f-92e0-66f12695a763" sourceRef="EBPM_7d1f2836-c144-4236-96f5-daeafd0cad3c" targetRef="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf" name="评审不通过，需修改" />
+    <bpmn2:sequenceFlow id="EBPM_f447cdb1-e8bf-42d4-9a1f-a59879bf5ce6" sourceRef="EBPM_2be873bb-ab5e-4889-94ac-ce58e53f082f" targetRef="EBPM_4bb8f007-40c4-42e9-9b16-5234c29d9a55" name="二级评审已完成" />
+    <bpmn2:sequenceFlow id="EBPM_438b86c7-ead0-4d1f-9a3c-34ee14f25937" sourceRef="EBPM_4bb8f007-40c4-42e9-9b16-5234c29d9a55" targetRef="EBPM_dfaaa3bb-57e0-44af-9baf-aeaaf57fcb99" name="评审通过" />
+    <bpmn2:sequenceFlow id="EBPM_603da004-da4d-4506-8188-577edec1d690" sourceRef="EBPM_4bb8f007-40c4-42e9-9b16-5234c29d9a55" targetRef="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf" name="评审不通过，需修改" />
+    <bpmn2:sequenceFlow id="EBPM_974e0a3d-a03d-45ee-8d18-5864a1531bc8" sourceRef="EBPM_dfaaa3bb-57e0-44af-9baf-aeaaf57fcb99" targetRef="EBPM_8f68b3f2-7372-4c5e-bc7f-926453ce035f" name="送审稿基线已发布" />
+    <bpmn2:sequenceFlow id="EBPM_a6072a2f-fcab-450b-8ec9-ad8a8fddaee0" sourceRef="EBPM_8f68b3f2-7372-4c5e-bc7f-926453ce035f" targetRef="EBPM_d024510a-e1fc-44ef-9c16-3cab083ef54a" name="科技发展规划上会议案已编制" />
+    <bpmn2:sequenceFlow id="EBPM_4c6d2750-c798-43a9-9ae1-ac813d56772c" sourceRef="EBPM_d024510a-e1fc-44ef-9c16-3cab083ef54a" targetRef="EBPM_386ca65a-a541-41c2-b25d-ca684b37bff7" name="党委会前置研究已完成" />
+    <bpmn2:sequenceFlow id="EBPM_848d6194-1c43-4fb7-9603-6741b6bb2730" sourceRef="EBPM_386ca65a-a541-41c2-b25d-ca684b37bff7" targetRef="EBPM_e14ee3c2-4468-4ad1-9aaf-8710aaa8e8ee" name="同意提交审议" />
+    <bpmn2:sequenceFlow id="EBPM_43fc4fc0-7b5b-472b-a244-2502f37f6b5e" sourceRef="EBPM_386ca65a-a541-41c2-b25d-ca684b37bff7" targetRef="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf" name="需修改" />
+    <bpmn2:sequenceFlow id="EBPM_7997ffd7-0c38-4188-bc1b-6c4ebdce522c" sourceRef="EBPM_e14ee3c2-4468-4ad1-9aaf-8710aaa8e8ee" targetRef="EBPM_8925c616-ad41-44f2-b328-85621b463068" name="总经理办公会审议已完成" />
+    <bpmn2:sequenceFlow id="EBPM_d82b28b0-76e9-47b6-8ca9-679959b89c8c" sourceRef="EBPM_8925c616-ad41-44f2-b328-85621b463068" targetRef="EBPM_9776faa1-9be9-4797-aafa-850b737328ee" name="审议通过" />
+    <bpmn2:sequenceFlow id="EBPM_4bc403d1-e27a-4774-a5ae-572f2a85179a" sourceRef="EBPM_8925c616-ad41-44f2-b328-85621b463068" targetRef="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf" name="需修改" />
+    <bpmn2:sequenceFlow id="EBPM_7720c214-c637-48b7-911f-909108988b9e" sourceRef="EBPM_9776faa1-9be9-4797-aafa-850b737328ee" targetRef="EBPM_5e5b6c16-2a74-448d-8a33-3e9352083563" name="科技发展规划已印发" />
+    <bpmn2:sequenceFlow id="EBPM_ccd9cb7a-c67d-4d57-af0c-f54fd847a413" sourceRef="EBPM_5e5b6c16-2a74-448d-8a33-3e9352083563" targetRef="EBPM_5d8fe299-b4d5-47c7-9687-8d999fc0f8b6" name="科技发展规划正式基线已发布" />
+    <bpmn2:sequenceFlow id="EBPM_8f6a79ac-30f3-4efa-b5bc-5aa6a2afd14e" sourceRef="EBPM_5d8fe299-b4d5-47c7-9687-8d999fc0f8b6" targetRef="EBPM_4e51ba92-b04f-4e5b-a9f3-98eedaaecd2f" name="规划任务已分解" />
+    <bpmn2:sequenceFlow id="EBPM_706e8933-9bd1-4b91-b3f7-a08ee3956c4e" sourceRef="EBPM_4e51ba92-b04f-4e5b-a9f3-98eedaaecd2f" targetRef="EBPM_87902283-558e-4e21-8255-ff48a3289721" name="" />
+    <bpmn2:sequenceFlow id="EBPM_733fd356-e145-486c-a10b-7ce0acf090eb" sourceRef="EBPM_87902283-558e-4e21-8255-ff48a3289721" targetRef="EBPM_ac6674a2-4af0-4474-976d-acb2f4a7d9b9" name="年度科研指南编制已启动" />
+    <bpmn2:sequenceFlow id="EBPM_15d320ec-c72f-4bc6-9cc8-a55f0ea36de2" sourceRef="EBPM_ac6674a2-4af0-4474-976d-acb2f4a7d9b9" targetRef="EBPM_472788b5-b588-4655-85b1-268b69d89e41" name="" />
+    <bpmn2:sequenceFlow id="EBPM_d6464597-dc76-44b9-8b07-e6c431b98db6" sourceRef="EBPM_472788b5-b588-4655-85b1-268b69d89e41" targetRef="EBPM_4ae59c00-9294-43dd-b9b5-e774192fffb1" name="规划年度任务已分解" />
+    <bpmn2:sequenceFlow id="EBPM_d76900d8-4ce9-4091-8a9e-f5756f47177b" sourceRef="EBPM_ac6674a2-4af0-4474-976d-acb2f4a7d9b9" targetRef="EBPM_db8f7e41-1183-48b6-80c0-41e1af3e98a9" name="" />
+    <bpmn2:sequenceFlow id="EBPM_6d874cc0-aa35-4361-8b56-9a01f3476718" sourceRef="EBPM_db8f7e41-1183-48b6-80c0-41e1af3e98a9" targetRef="EBPM_4ae59c00-9294-43dd-b9b5-e774192fffb1" name="年度科研项目需求已收集" />
+    <bpmn2:sequenceFlow id="EBPM_dc36b34c-17c1-4e63-92eb-8f940153eb07" sourceRef="EBPM_4ae59c00-9294-43dd-b9b5-e774192fffb1" targetRef="EBPM_30647f43-1794-4ce9-b3ee-40cbbbb1a4e6" name="年度指南编制输入已齐备" />
+    <bpmn2:sequenceFlow id="EBPM_75f76107-4f35-4aab-9f33-85d3bae18272" sourceRef="EBPM_30647f43-1794-4ce9-b3ee-40cbbbb1a4e6" targetRef="EBPM_ad66beb8-e403-44ef-8682-a39e79674c8a" name="年度指南方向已确定" />
+    <bpmn2:sequenceFlow id="EBPM_1604eaad-17aa-41d0-b7ef-9fc45b052275" sourceRef="EBPM_ad66beb8-e403-44ef-8682-a39e79674c8a" targetRef="EBPM_95122385-454a-421d-a25a-b5ac163a2fab" name="科研项目指南已制定" />
+    <bpmn2:sequenceFlow id="EBPM_e6ef23c4-c58c-4847-b239-5b5d6cee0e5d" sourceRef="EBPM_95122385-454a-421d-a25a-b5ac163a2fab" targetRef="EBPM_3e3061a3-caa8-4fdc-9dff-5884ccbc8e08" name="指南已导入DOORS" />
+    <bpmn2:sequenceFlow id="EBPM_27f84942-f104-4f3a-978d-6b6938944ba0" sourceRef="EBPM_3e3061a3-caa8-4fdc-9dff-5884ccbc8e08" targetRef="EBPM_61941524-f845-43eb-b5df-6a42874a0d61" name="科研项目指南与科技发展规划的追溯关系已创建" />
+    <bpmn2:sequenceFlow id="EBPM_9ba89aca-198d-4aca-9ac2-d2f3d38657ba" sourceRef="EBPM_61941524-f845-43eb-b5df-6a42874a0d61" targetRef="EBPM_8a3223fa-549c-41ca-916c-cc64971bd3bc" name="" />
+    <bpmn2:sequenceFlow id="EBPM_623d977d-52b1-4355-b3e8-b40b202a32e8" sourceRef="EBPM_8a3223fa-549c-41ca-916c-cc64971bd3bc" targetRef="EBPM_50181728-6482-4d60-b052-3649d5eaba33" name="规划承接与重复性分析已完成" />
+    <bpmn2:sequenceFlow id="EBPM_7e1233ba-fe1f-46d0-b1b9-40948f265cc9" sourceRef="EBPM_50181728-6482-4d60-b052-3649d5eaba33" targetRef="EBPM_9e3c32bd-8c5d-4e0c-9848-2d20ebc24651" name="依据充分" />
+    <bpmn2:sequenceFlow id="EBPM_3b9881c4-eba1-43c9-a260-3605b6d7227c" sourceRef="EBPM_50181728-6482-4d60-b052-3649d5eaba33" targetRef="EBPM_4e46afae-4ade-4ff4-aeb3-23d92829a964" name="依据不充分" />
+    <bpmn2:sequenceFlow id="EBPM_f9f7581d-93dc-434d-b352-36403d891a65" sourceRef="EBPM_4e46afae-4ade-4ff4-aeb3-23d92829a964" targetRef="EBPM_61941524-f845-43eb-b5df-6a42874a0d61" name="指南条目及链接已调整" />
+    <bpmn2:sequenceFlow id="EBPM_551e877b-2156-46f8-bfb9-efc558425af4" sourceRef="EBPM_9e3c32bd-8c5d-4e0c-9848-2d20ebc24651" targetRef="EBPM_98f44d7f-f2d4-4435-825b-9528839b267c" name="科研项目指南征求意见稿基线已发布" />
+    <bpmn2:sequenceFlow id="EBPM_a3772773-9a53-4cfb-b9f8-7f7625b164bb" sourceRef="EBPM_98f44d7f-f2d4-4435-825b-9528839b267c" targetRef="EBPM_191b9b59-872f-4b3a-baef-a7eb8f74c66d" name="科研指南意见征集通知已发出" />
+    <bpmn2:sequenceFlow id="EBPM_710b8790-c3f3-4fc6-afed-8207f62ab1f5" sourceRef="EBPM_191b9b59-872f-4b3a-baef-a7eb8f74c66d" targetRef="EBPM_11d3d221-af81-4c59-b427-0476ddda9647" name="科研指南意见已提出" />
+    <bpmn2:sequenceFlow id="EBPM_5c7d4f9b-105c-497a-a6ff-60dba5d18399" sourceRef="EBPM_11d3d221-af81-4c59-b427-0476ddda9647" targetRef="EBPM_7acaba1e-383f-4aa1-a33c-07b08256b19c" name="" />
+    <bpmn2:sequenceFlow id="EBPM_5cc147b6-bf4e-4a9b-8972-5b33dbe9201d" sourceRef="EBPM_7acaba1e-383f-4aa1-a33c-07b08256b19c" targetRef="EBPM_23c2c7e2-bdc7-469f-808d-58364f923e5e" name="指南修订意见已处理" />
+    <bpmn2:sequenceFlow id="EBPM_7685113a-49a0-4ab2-84f8-1d503b8f43b8" sourceRef="EBPM_23c2c7e2-bdc7-469f-808d-58364f923e5e" targetRef="EBPM_aae4761b-114d-4268-941d-e42f6b737536" name="科研项目指南已修订" />
+    <bpmn2:sequenceFlow id="EBPM_a32c4b82-1414-4a1d-a0f7-137faad4874f" sourceRef="EBPM_aae4761b-114d-4268-941d-e42f6b737536" targetRef="EBPM_aed2e494-4fbd-49e4-9634-7cb2e789d8c6" name="科研指南评审已完成" />
+    <bpmn2:sequenceFlow id="EBPM_b26251b4-2eb0-4983-8414-966104100087" sourceRef="EBPM_aed2e494-4fbd-49e4-9634-7cb2e789d8c6" targetRef="EBPM_5a13fec4-d7a2-47ce-99a8-4b0192245612" name="评审通过" />
+    <bpmn2:sequenceFlow id="EBPM_f4384e3b-c5c9-4c5e-ae45-600f43a52dec" sourceRef="EBPM_aed2e494-4fbd-49e4-9634-7cb2e789d8c6" targetRef="EBPM_11d3d221-af81-4c59-b427-0476ddda9647" name="评审不通过，需修改" />
+    <bpmn2:sequenceFlow id="EBPM_2ddbf115-0516-41db-bc93-82f4dca988df" sourceRef="EBPM_5a13fec4-d7a2-47ce-99a8-4b0192245612" targetRef="EBPM_78fea495-24a7-49bc-872b-a1d65a41d513" name="科研项目指南已发布" />
+    <bpmn2:sequenceFlow id="EBPM_f37ae263-3955-4ef8-9445-678de73542fd" sourceRef="EBPM_78fea495-24a7-49bc-872b-a1d65a41d513" targetRef="EBPM_e2a30b56-8a26-4bed-9619-43725ae51ea6" name="指南年度已结束" />
+    <bpmn2:sequenceFlow id="EBPM_37481032-a428-4d59-a0c0-94703dc3ede1" sourceRef="EBPM_e2a30b56-8a26-4bed-9619-43725ae51ea6" targetRef="EBPM_891dd116-a5d2-4ffe-91c5-42dd66a3c825" name="评估方案已确定" />
+    <bpmn2:sequenceFlow id="EBPM_710fddfe-d2ab-4e19-93f3-f8b3a14e2b9d" sourceRef="EBPM_891dd116-a5d2-4ffe-91c5-42dd66a3c825" targetRef="EBPM_7882d6e9-f20a-417f-930d-a180695fd195" name="评估通知已下发" />
+    <bpmn2:sequenceFlow id="EBPM_fdde3160-3973-4473-8f9d-0dde51038c45" sourceRef="EBPM_7882d6e9-f20a-417f-930d-a180695fd195" targetRef="EBPM_330191ff-2712-41fa-9df2-39ad98d9dc1d" name="" />
+    <bpmn2:sequenceFlow id="EBPM_500baed7-5032-48d0-a077-894ece48c1a8" sourceRef="EBPM_330191ff-2712-41fa-9df2-39ad98d9dc1d" targetRef="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f" name="规划任务完成情况已收集" />
+    <bpmn2:sequenceFlow id="EBPM_8d4e5c26-c776-415f-a30a-f7821ddf7ee1" sourceRef="EBPM_7882d6e9-f20a-417f-930d-a180695fd195" targetRef="EBPM_c2fdab93-b2e5-4050-9bc5-bed0b324e587" name="" />
+    <bpmn2:sequenceFlow id="EBPM_b2270e87-e9c9-4c27-8a13-4804ffe98e08" sourceRef="EBPM_c2fdab93-b2e5-4050-9bc5-bed0b324e587" targetRef="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f" name="科研项目立项与完成情况已收集" />
+    <bpmn2:sequenceFlow id="EBPM_146aaec5-0e2d-4b13-8e6d-5aa39d9df95b" sourceRef="EBPM_7882d6e9-f20a-417f-930d-a180695fd195" targetRef="EBPM_467d3c02-d92d-4ad5-9ded-986c0dbfc243" name="" />
+    <bpmn2:sequenceFlow id="EBPM_e3703d16-7e92-4ced-9518-22d00672643b" sourceRef="EBPM_467d3c02-d92d-4ad5-9ded-986c0dbfc243" targetRef="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f" name="科技成果工程化应用情况已收集" />
+    <bpmn2:sequenceFlow id="EBPM_f9532181-8f98-49bb-99ad-2870d1b8e370" sourceRef="EBPM_7882d6e9-f20a-417f-930d-a180695fd195" targetRef="EBPM_1cee20f5-3628-4831-97be-de6dfd640d17" name="" />
+    <bpmn2:sequenceFlow id="EBPM_0db5cbb2-432c-42a6-86f2-d8ed67f4139d" sourceRef="EBPM_1cee20f5-3628-4831-97be-de6dfd640d17" targetRef="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f" name="平台化模块化成果运用情况已收集" />
+    <bpmn2:sequenceFlow id="EBPM_b5268ea3-989a-4d31-8a5e-81f3fd0f0764" sourceRef="EBPM_7882d6e9-f20a-417f-930d-a180695fd195" targetRef="EBPM_c01c4433-00b0-4ff1-a300-bdca7d1d923a" name="" />
+    <bpmn2:sequenceFlow id="EBPM_3b52be0b-56c9-4754-9335-40328a58e392" sourceRef="EBPM_c01c4433-00b0-4ff1-a300-bdca7d1d923a" targetRef="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f" name="科技人才梯队建设情况已收集" />
+    <bpmn2:sequenceFlow id="EBPM_6495fbd4-5e11-402f-88c6-0502395a15da" sourceRef="EBPM_7882d6e9-f20a-417f-930d-a180695fd195" targetRef="EBPM_f8894dd9-d56a-4c23-a4ad-13a7f7d11130" name="" />
+    <bpmn2:sequenceFlow id="EBPM_89c106ce-4871-4ffc-8f7a-6ca295dbad56" sourceRef="EBPM_f8894dd9-d56a-4c23-a4ad-13a7f7d11130" targetRef="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f" name="重大科技成果情况已收集" />
+    <bpmn2:sequenceFlow id="EBPM_291b79b9-7551-4346-982a-cb38608db10b" sourceRef="EBPM_7882d6e9-f20a-417f-930d-a180695fd195" targetRef="EBPM_49703492-dec9-4fe9-bdea-2f1a936cc2ef" name="" />
+    <bpmn2:sequenceFlow id="EBPM_d7128c7a-d2e4-4672-bb5d-51b2e26516dc" sourceRef="EBPM_49703492-dec9-4fe9-bdea-2f1a936cc2ef" targetRef="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f" name="科研经费投入情况已收集" />
+    <bpmn2:sequenceFlow id="EBPM_8f3c42f2-f2fa-42ba-b2dc-2bea9cd22a63" sourceRef="EBPM_7882d6e9-f20a-417f-930d-a180695fd195" targetRef="EBPM_278f07ed-4c9b-4294-bfa5-e963a7631cbb" name="" />
+    <bpmn2:sequenceFlow id="EBPM_1aacb811-7957-4ccc-8f27-a658e61ed42d" sourceRef="EBPM_278f07ed-4c9b-4294-bfa5-e963a7631cbb" targetRef="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f" name="质量攻关问题情况已收集" />
+    <bpmn2:sequenceFlow id="EBPM_3f6504a0-4424-403a-9d69-a7f65878dbf4" sourceRef="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f" targetRef="EBPM_36cb04a3-9957-44a4-9850-3d13c099953d" name="评估数据已收集齐全" />
+    <bpmn2:sequenceFlow id="EBPM_4deb2ba5-a470-4ccd-9270-3de9505f0335" sourceRef="EBPM_36cb04a3-9957-44a4-9850-3d13c099953d" targetRef="EBPM_a9e2962a-c6dc-45bd-8bb1-3ac6c1fb94c1" name="" />
+    <bpmn2:sequenceFlow id="EBPM_863cc838-1af2-4332-95d1-68e90849893d" sourceRef="EBPM_a9e2962a-c6dc-45bd-8bb1-3ac6c1fb94c1" targetRef="EBPM_ce0e09d9-17d1-49c6-8cfb-35fdde610525" name="评估数据已核验" />
+    <bpmn2:sequenceFlow id="EBPM_2597c10b-9372-46f7-b452-445f8445c66e" sourceRef="EBPM_ce0e09d9-17d1-49c6-8cfb-35fdde610525" targetRef="EBPM_9c48bafd-7da0-4c4c-ac3c-b94b20804eb0" name="完整准确" />
+    <bpmn2:sequenceFlow id="EBPM_2bb4b8c5-7071-4f38-b234-dad34b86ae9a" sourceRef="EBPM_ce0e09d9-17d1-49c6-8cfb-35fdde610525" targetRef="EBPM_03bfc506-36e1-42e3-b0ce-afba92843bb6" name="存在缺失或口径问题" />
+    <bpmn2:sequenceFlow id="EBPM_2c79d96c-51fa-4811-87e8-f00966511e53" sourceRef="EBPM_03bfc506-36e1-42e3-b0ce-afba92843bb6" targetRef="EBPM_36cb04a3-9957-44a4-9850-3d13c099953d" name="评估数据已补充" />
+    <bpmn2:sequenceFlow id="EBPM_d4bf1dff-ed59-4c64-85d4-583b89b8dc90" sourceRef="EBPM_9c48bafd-7da0-4c4c-ac3c-b94b20804eb0" targetRef="EBPM_fb617bd5-b37b-4b7e-8d89-69dc24a373f6" name="评估数据已录入DOORS" />
+    <bpmn2:sequenceFlow id="EBPM_3aa43882-ec3d-474b-99e3-97247fcc7ff3" sourceRef="EBPM_fb617bd5-b37b-4b7e-8d89-69dc24a373f6" targetRef="EBPM_7ce65fdc-cffe-40e4-b296-c31133ae4fa5" name="完成度分析已完成" />
+    <bpmn2:sequenceFlow id="EBPM_efc9db82-af3f-4dfa-a212-b479910e5189" sourceRef="EBPM_7ce65fdc-cffe-40e4-b296-c31133ae4fa5" targetRef="EBPM_01ec1ccd-e43a-4ab5-8084-38e569f7377d" name="调整建议已提出" />
+    <bpmn2:sequenceFlow id="EBPM_eaf7af08-36a9-4c39-bb87-593261d11295" sourceRef="EBPM_01ec1ccd-e43a-4ab5-8084-38e569f7377d" targetRef="EBPM_70c8b9f6-76c8-4afc-aa94-3f294b2e2868" name="评估报告已形成" />
+    <bpmn2:sequenceFlow id="EBPM_994e6bf2-3a16-4374-b3c0-e823243a373f" sourceRef="EBPM_70c8b9f6-76c8-4afc-aa94-3f294b2e2868" targetRef="EBPM_5af235f6-339d-4aca-a886-f7f1d7f8fe5a" name="评估报告已审定" />
+    <bpmn2:sequenceFlow id="EBPM_90c04dac-7e1c-4fe1-b852-40dfbc8b00ff" sourceRef="EBPM_5af235f6-339d-4aca-a886-f7f1d7f8fe5a" targetRef="EBPM_6414c845-bb78-4fdf-b5c0-430343da1bfa" name="规划实施评估基线已发布" />
+    <bpmn2:sequenceFlow id="EBPM_f308c21c-ce2d-4b86-837e-d805e19c8747" sourceRef="EBPM_6414c845-bb78-4fdf-b5c0-430343da1bfa" targetRef="EBPM_1c7ccfb5-0cd3-4b60-a6a5-89f9bb3d7c90" name="总结评估" />
+    <bpmn2:sequenceFlow id="EBPM_b9b2006f-dbdd-44c7-93a3-63b27c281f18" sourceRef="EBPM_6414c845-bb78-4fdf-b5c0-430343da1bfa" targetRef="EBPM_3debe33b-0f59-406a-b899-ee50b62231f6" name="年度或中期评估" />
+    <bpmn2:sequenceFlow id="EBPM_72220bfc-6c8c-45a5-a8dc-24c304a08b37" sourceRef="EBPM_3debe33b-0f59-406a-b899-ee50b62231f6" targetRef="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf" name="需要滚动修编" />
+    <bpmn2:sequenceFlow id="EBPM_44b0ba9c-54fb-4cbe-aab0-fc07a528714d" sourceRef="EBPM_3debe33b-0f59-406a-b899-ee50b62231f6" targetRef="EBPM_4e51ba92-b04f-4e5b-a9f3-98eedaaecd2f" name="无需修编，进入下一年度" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="EBPM_5318187e-ab00-4b44-98f3-c90f6aca7816_di" bpmnElement="EBPM_5318187e-ab00-4b44-98f3-c90f6aca7816">
+        <dc:Bounds x="2444.58" y="0" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_57f4ff31-3f47-4494-918a-a851e9e0d846_di" bpmnElement="EBPM_57f4ff31-3f47-4494-918a-a851e9e0d846">
+        <dc:Bounds x="2368.58" y="136" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_a78485d8-6b4d-4022-a9f7-fb92e5a7dc72_di" bpmnElement="EBPM_a78485d8-6b4d-4022-a9f7-fb92e5a7dc72">
+        <dc:Bounds x="2361.58" y="316" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_d5dd7619-fdcc-46be-a232-35129ba3a23e_di" bpmnElement="EBPM_d5dd7619-fdcc-46be-a232-35129ba3a23e">
+        <dc:Bounds x="2347.58" y="496" width="230" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_c030ceab-c077-4d33-af80-f8ec8d7530af_di" bpmnElement="EBPM_c030ceab-c077-4d33-af80-f8ec8d7530af">
+        <dc:Bounds x="2340.58" y="676" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_26bf3c5f-c7ba-4c42-a722-6c6db02387c6_di" bpmnElement="EBPM_26bf3c5f-c7ba-4c42-a722-6c6db02387c6">
+        <dc:Bounds x="2437.58" y="856" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_549f0dec-5a51-403d-9872-fa7c87a59f1e_di" bpmnElement="EBPM_549f0dec-5a51-403d-9872-fa7c87a59f1e">
+        <dc:Bounds x="2649.58" y="1006" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_53b2d9a5-6ed4-4590-a13a-c06eb04e76a8_di" bpmnElement="EBPM_53b2d9a5-6ed4-4590-a13a-c06eb04e76a8">
+        <dc:Bounds x="2375.58" y="1006" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_a2cc2ab7-5830-4b62-9c59-f75f1b946827_di" bpmnElement="EBPM_a2cc2ab7-5830-4b62-9c59-f75f1b946827">
+        <dc:Bounds x="2923.58" y="1006" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_d88a6a1f-52ba-4ed5-9c17-5e1028b9e1dd_di" bpmnElement="EBPM_d88a6a1f-52ba-4ed5-9c17-5e1028b9e1dd">
+        <dc:Bounds x="1729.58" y="1006" width="216" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_2a8db910-3e28-4b6a-afc9-5783f17155ab_di" bpmnElement="EBPM_2a8db910-3e28-4b6a-afc9-5783f17155ab">
+        <dc:Bounds x="2045.58" y="1006" width="230" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_50b7dcd3-be8c-4478-bf69-10bd8f582e37_di" bpmnElement="EBPM_50b7dcd3-be8c-4478-bf69-10bd8f582e37">
+        <dc:Bounds x="2437.58" y="1186" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_a6b6be5e-7d35-4b1f-9e3f-19c240fe0f9f_di" bpmnElement="EBPM_a6b6be5e-7d35-4b1f-9e3f-19c240fe0f9f">
+        <dc:Bounds x="2375.58" y="1336" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_bc0ee071-f812-4391-ae25-c7d31709bc9a_di" bpmnElement="EBPM_bc0ee071-f812-4391-ae25-c7d31709bc9a" isMarkerVisible="true">
+        <dc:Bounds x="2437.58" y="1516" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_9c2f6634-af1d-463f-ad44-a16bb21db500_di" bpmnElement="EBPM_9c2f6634-af1d-463f-ad44-a16bb21db500">
+        <dc:Bounds x="2328.08" y="1666" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_e6c39ef2-aaed-442e-bda2-9f5f26508f98_di" bpmnElement="EBPM_e6c39ef2-aaed-442e-bda2-9f5f26508f98" isMarkerVisible="true">
+        <dc:Bounds x="2425.08" y="1846" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_1905de6a-7ffa-49f8-a88e-b98e3f03061d_di" bpmnElement="EBPM_1905de6a-7ffa-49f8-a88e-b98e3f03061d">
+        <dc:Bounds x="2563.08" y="1996" width="146" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_ea18ee5c-fb5b-4f2f-8c90-7d7eff4d9a4d_di" bpmnElement="EBPM_ea18ee5c-fb5b-4f2f-8c90-7d7eff4d9a4d">
+        <dc:Bounds x="2205.08" y="1996" width="258" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_c6a1148a-37b4-46f8-b35e-296f25dd57b0_di" bpmnElement="EBPM_c6a1148a-37b4-46f8-b35e-296f25dd57b0">
+        <dc:Bounds x="2254.08" y="2176" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_3d93bf07-3524-482d-bf1a-9af4f980d14e_di" bpmnElement="EBPM_3d93bf07-3524-482d-bf1a-9af4f980d14e">
+        <dc:Bounds x="2247.08" y="2356" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_14e48602-d449-4d81-98cd-45dc0614d551_di" bpmnElement="EBPM_14e48602-d449-4d81-98cd-45dc0614d551">
+        <dc:Bounds x="2254.08" y="2536" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_12cf70ed-c5d7-4f9c-841f-e35c66aedadf_di" bpmnElement="EBPM_12cf70ed-c5d7-4f9c-841f-e35c66aedadf">
+        <dc:Bounds x="2264.08" y="2716" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_2ea57121-d9d2-4b41-abeb-01928b16b495_di" bpmnElement="EBPM_2ea57121-d9d2-4b41-abeb-01928b16b495">
+        <dc:Bounds x="2212.08" y="2896" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_f14aa0a5-89e5-4e70-8d28-039016c679d8_di" bpmnElement="EBPM_f14aa0a5-89e5-4e70-8d28-039016c679d8">
+        <dc:Bounds x="2177.08" y="3076" width="314" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_428b72d5-2a56-4a25-bbb1-f663e6077614_di" bpmnElement="EBPM_428b72d5-2a56-4a25-bbb1-f663e6077614" isMarkerVisible="true">
+        <dc:Bounds x="2309.08" y="3256" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_fa55cd12-bb3a-4231-8447-7a9d5f21ff84_di" bpmnElement="EBPM_fa55cd12-bb3a-4231-8447-7a9d5f21ff84">
+        <dc:Bounds x="2248.58" y="3406" width="146" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_7cd80811-7843-4523-8ba3-abc683b3fb04_di" bpmnElement="EBPM_7cd80811-7843-4523-8ba3-abc683b3fb04" isMarkerVisible="true">
+        <dc:Bounds x="2296.58" y="3586" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_9d3a75c0-a557-441c-acf5-7588ab7f41d1_di" bpmnElement="EBPM_9d3a75c0-a557-441c-acf5-7588ab7f41d1">
+        <dc:Bounds x="2141.08" y="3736" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_27beeb3c-4d4b-4fde-966a-df1050836c1c_di" bpmnElement="EBPM_27beeb3c-4d4b-4fde-966a-df1050836c1c" isMarkerVisible="true">
+        <dc:Bounds x="2186.08" y="3916" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_17e71084-fd29-4c73-9363-53f9841220a2_di" bpmnElement="EBPM_17e71084-fd29-4c73-9363-53f9841220a2" isMarkerVisible="true">
+        <dc:Bounds x="2344.08" y="4081" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_c8d52336-0808-4fa3-bcc5-28be131b9ea0_di" bpmnElement="EBPM_c8d52336-0808-4fa3-bcc5-28be131b9ea0">
+        <dc:Bounds x="2364.58" y="4246" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_ec77a12a-0246-407d-aea0-71fae2a01cb6_di" bpmnElement="EBPM_ec77a12a-0246-407d-aea0-71fae2a01cb6">
+        <dc:Bounds x="2083.58" y="4066" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_dc1fe813-0de4-49be-954a-aa4d5e82e2d6_di" bpmnElement="EBPM_dc1fe813-0de4-49be-954a-aa4d5e82e2d6">
+        <dc:Bounds x="2062.58" y="4246" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_92aa66c6-6607-4c5b-b351-2724880b3602_di" bpmnElement="EBPM_92aa66c6-6607-4c5b-b351-2724880b3602">
+        <dc:Bounds x="2076.58" y="4426" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_44569e41-e153-42cf-94ad-6d4d7d2e0ac5_di" bpmnElement="EBPM_44569e41-e153-42cf-94ad-6d4d7d2e0ac5">
+        <dc:Bounds x="2041.58" y="4606" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_b4f57ba7-d172-4496-ae36-7f33458e3d20_di" bpmnElement="EBPM_b4f57ba7-d172-4496-ae36-7f33458e3d20">
+        <dc:Bounds x="2062.58" y="4786" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_cb0fea69-4f14-444c-b04d-11b0ccd50f4e_di" bpmnElement="EBPM_cb0fea69-4f14-444c-b04d-11b0ccd50f4e">
+        <dc:Bounds x="2138.58" y="4966" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_4bde7bb2-9a97-463d-be1d-148503f37a5d_di" bpmnElement="EBPM_4bde7bb2-9a97-463d-be1d-148503f37a5d">
+        <dc:Bounds x="2087.33" y="5116" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_71afcce2-39aa-4c3e-be1b-8ea6e2e61bad_di" bpmnElement="EBPM_71afcce2-39aa-4c3e-be1b-8ea6e2e61bad">
+        <dc:Bounds x="2567.33" y="5116" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_9f3dd4ac-060e-4c24-b5de-f1e676979999_di" bpmnElement="EBPM_9f3dd4ac-060e-4c24-b5de-f1e676979999">
+        <dc:Bounds x="1799.33" y="5116" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_ba00ebf3-6ef0-410c-8d89-c7f42ec0eb00_di" bpmnElement="EBPM_ba00ebf3-6ef0-410c-8d89-c7f42ec0eb00">
+        <dc:Bounds x="2327.33" y="5116" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_790775bf-c28c-4e39-bd49-4d2b7fe973fa_di" bpmnElement="EBPM_790775bf-c28c-4e39-bd49-4d2b7fe973fa">
+        <dc:Bounds x="2366.08" y="5296" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_c2dca39a-5587-4fb9-890a-9876e2f83c22_di" bpmnElement="EBPM_c2dca39a-5587-4fb9-890a-9876e2f83c22">
+        <dc:Bounds x="2321.08" y="5446" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_968dad0c-f9c0-477e-bbbe-928318c5b773_di" bpmnElement="EBPM_968dad0c-f9c0-477e-bbbe-928318c5b773">
+        <dc:Bounds x="2321.08" y="5626" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_dd4b9c3d-e46f-4dea-8513-32f5ce337b75_di" bpmnElement="EBPM_dd4b9c3d-e46f-4dea-8513-32f5ce337b75">
+        <dc:Bounds x="2269.08" y="5806" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_194f663b-7216-4080-a7c6-da9eaec2a7d3_di" bpmnElement="EBPM_194f663b-7216-4080-a7c6-da9eaec2a7d3">
+        <dc:Bounds x="2227.08" y="5986" width="328" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_ed63b454-a81a-43ff-880b-900a4d296a66_di" bpmnElement="EBPM_ed63b454-a81a-43ff-880b-900a4d296a66" isMarkerVisible="true">
+        <dc:Bounds x="2366.08" y="6166" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_e8428d92-7183-4df9-8131-fca5ca9c1253_di" bpmnElement="EBPM_e8428d92-7183-4df9-8131-fca5ca9c1253">
+        <dc:Bounds x="2305.58" y="6316" width="146" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_dcf906b3-04ac-4524-ae13-d9781257b287_di" bpmnElement="EBPM_dcf906b3-04ac-4524-ae13-d9781257b287" isMarkerVisible="true">
+        <dc:Bounds x="2353.58" y="6496" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_210f45a9-7de0-4786-b95e-bacc4ff78109_di" bpmnElement="EBPM_210f45a9-7de0-4786-b95e-bacc4ff78109">
+        <dc:Bounds x="2421.58" y="6646" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_6f8b6cdf-8847-458a-92b8-33d81f89196f_di" bpmnElement="EBPM_6f8b6cdf-8847-458a-92b8-33d81f89196f">
+        <dc:Bounds x="2161.58" y="6646" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_840f0885-6e0b-4d78-86ea-d215ce197647_di" bpmnElement="EBPM_840f0885-6e0b-4d78-86ea-d215ce197647">
+        <dc:Bounds x="2133.58" y="6826" width="216" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_73ea5826-eaae-419d-90ca-8924a7cd2813_di" bpmnElement="EBPM_73ea5826-eaae-419d-90ca-8924a7cd2813">
+        <dc:Bounds x="2147.58" y="7006" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf_di" bpmnElement="EBPM_c39806da-5313-452f-b8e4-8aa2c38e53cf" isMarkerVisible="true">
+        <dc:Bounds x="2216.58" y="7186" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_11d53814-f8e5-4f50-beaf-fd658c2cfcaa_di" bpmnElement="EBPM_11d53814-f8e5-4f50-beaf-fd658c2cfcaa">
+        <dc:Bounds x="1976.83" y="7336" width="286" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_f0fc5346-3809-4199-a6f8-87e87527da11_di" bpmnElement="EBPM_f0fc5346-3809-4199-a6f8-87e87527da11">
+        <dc:Bounds x="2025.83" y="7516" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_a27e0ea1-4805-4c76-9b54-8cb969206ef4_di" bpmnElement="EBPM_a27e0ea1-4805-4c76-9b54-8cb969206ef4">
+        <dc:Bounds x="1997.83" y="7696" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_bcc57787-a008-4879-b485-b0a368af8073_di" bpmnElement="EBPM_bcc57787-a008-4879-b485-b0a368af8073">
+        <dc:Bounds x="2018.83" y="7876" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_a5d685dc-0c4a-4227-a8bc-99400e310d49_di" bpmnElement="EBPM_a5d685dc-0c4a-4227-a8bc-99400e310d49">
+        <dc:Bounds x="2049.83" y="8056" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_7d1f2836-c144-4236-96f5-daeafd0cad3c_di" bpmnElement="EBPM_7d1f2836-c144-4236-96f5-daeafd0cad3c" isMarkerVisible="true">
+        <dc:Bounds x="2012.5" y="8236" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_2be873bb-ab5e-4889-94ac-ce58e53f082f_di" bpmnElement="EBPM_2be873bb-ab5e-4889-94ac-ce58e53f082f">
+        <dc:Bounds x="1967.5" y="8386" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_4bb8f007-40c4-42e9-9b16-5234c29d9a55_di" bpmnElement="EBPM_4bb8f007-40c4-42e9-9b16-5234c29d9a55" isMarkerVisible="true">
+        <dc:Bounds x="2000" y="8566" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_dfaaa3bb-57e0-44af-9baf-aeaaf57fcb99_di" bpmnElement="EBPM_dfaaa3bb-57e0-44af-9baf-aeaaf57fcb99">
+        <dc:Bounds x="1924" y="8716" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_8f68b3f2-7372-4c5e-bc7f-926453ce035f_di" bpmnElement="EBPM_8f68b3f2-7372-4c5e-bc7f-926453ce035f">
+        <dc:Bounds x="1931" y="8896" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_d024510a-e1fc-44ef-9c16-3cab083ef54a_di" bpmnElement="EBPM_d024510a-e1fc-44ef-9c16-3cab083ef54a">
+        <dc:Bounds x="1952" y="9076" width="146" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_386ca65a-a541-41c2-b25d-ca684b37bff7_di" bpmnElement="EBPM_386ca65a-a541-41c2-b25d-ca684b37bff7" isMarkerVisible="true">
+        <dc:Bounds x="2167.17" y="9256" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_e14ee3c2-4468-4ad1-9aaf-8710aaa8e8ee_di" bpmnElement="EBPM_e14ee3c2-4468-4ad1-9aaf-8710aaa8e8ee">
+        <dc:Bounds x="2112.17" y="9406" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_8925c616-ad41-44f2-b328-85621b463068_di" bpmnElement="EBPM_8925c616-ad41-44f2-b328-85621b463068" isMarkerVisible="true">
+        <dc:Bounds x="2179.67" y="9586" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_9776faa1-9be9-4797-aafa-850b737328ee_di" bpmnElement="EBPM_9776faa1-9be9-4797-aafa-850b737328ee">
+        <dc:Bounds x="2134.67" y="9736" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_5e5b6c16-2a74-448d-8a33-3e9352083563_di" bpmnElement="EBPM_5e5b6c16-2a74-448d-8a33-3e9352083563">
+        <dc:Bounds x="2110.67" y="9916" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_5d8fe299-b4d5-47c7-9687-8d999fc0f8b6_di" bpmnElement="EBPM_5d8fe299-b4d5-47c7-9687-8d999fc0f8b6">
+        <dc:Bounds x="2117.67" y="10096" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_4e51ba92-b04f-4e5b-a9f3-98eedaaecd2f_di" bpmnElement="EBPM_4e51ba92-b04f-4e5b-a9f3-98eedaaecd2f" isMarkerVisible="true">
+        <dc:Bounds x="2179.67" y="10276" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_87902283-558e-4e21-8255-ff48a3289721_di" bpmnElement="EBPM_87902283-558e-4e21-8255-ff48a3289721">
+        <dc:Bounds x="1637.38" y="10426" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_ac6674a2-4af0-4474-976d-acb2f4a7d9b9_di" bpmnElement="EBPM_ac6674a2-4af0-4474-976d-acb2f4a7d9b9">
+        <dc:Bounds x="1692.38" y="10606" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_472788b5-b588-4655-85b1-268b69d89e41_di" bpmnElement="EBPM_472788b5-b588-4655-85b1-268b69d89e41">
+        <dc:Bounds x="1659.88" y="10756" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_db8f7e41-1183-48b6-80c0-41e1af3e98a9_di" bpmnElement="EBPM_db8f7e41-1183-48b6-80c0-41e1af3e98a9">
+        <dc:Bounds x="1399.88" y="10756" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_4ae59c00-9294-43dd-b9b5-e774192fffb1_di" bpmnElement="EBPM_4ae59c00-9294-43dd-b9b5-e774192fffb1">
+        <dc:Bounds x="1467.38" y="10936" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_30647f43-1794-4ce9-b3ee-40cbbbb1a4e6_di" bpmnElement="EBPM_30647f43-1794-4ce9-b3ee-40cbbbb1a4e6">
+        <dc:Bounds x="1391.38" y="11086" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_ad66beb8-e403-44ef-8682-a39e79674c8a_di" bpmnElement="EBPM_ad66beb8-e403-44ef-8682-a39e79674c8a">
+        <dc:Bounds x="1422.38" y="11266" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_95122385-454a-421d-a25a-b5ac163a2fab_di" bpmnElement="EBPM_95122385-454a-421d-a25a-b5ac163a2fab">
+        <dc:Bounds x="1370.38" y="11446" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_3e3061a3-caa8-4fdc-9dff-5884ccbc8e08_di" bpmnElement="EBPM_3e3061a3-caa8-4fdc-9dff-5884ccbc8e08">
+        <dc:Bounds x="1342.38" y="11626" width="300" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_61941524-f845-43eb-b5df-6a42874a0d61_di" bpmnElement="EBPM_61941524-f845-43eb-b5df-6a42874a0d61" isMarkerVisible="true">
+        <dc:Bounds x="1467.38" y="11806" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_8a3223fa-549c-41ca-916c-cc64971bd3bc_di" bpmnElement="EBPM_8a3223fa-549c-41ca-916c-cc64971bd3bc">
+        <dc:Bounds x="1410.88" y="11956" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_50181728-6482-4d60-b052-3649d5eaba33_di" bpmnElement="EBPM_50181728-6482-4d60-b052-3649d5eaba33" isMarkerVisible="true">
+        <dc:Bounds x="1479.88" y="12136" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_4e46afae-4ade-4ff4-aeb3-23d92829a964_di" bpmnElement="EBPM_4e46afae-4ade-4ff4-aeb3-23d92829a964">
+        <dc:Bounds x="1156.38" y="12286" width="146" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_9e3c32bd-8c5d-4e0c-9848-2d20ebc24651_di" bpmnElement="EBPM_9e3c32bd-8c5d-4e0c-9848-2d20ebc24651">
+        <dc:Bounds x="1402.38" y="12286" width="230" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_98f44d7f-f2d4-4435-825b-9528839b267c_di" bpmnElement="EBPM_98f44d7f-f2d4-4435-825b-9528839b267c">
+        <dc:Bounds x="1437.38" y="12466" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_191b9b59-872f-4b3a-baef-a7eb8f74c66d_di" bpmnElement="EBPM_191b9b59-872f-4b3a-baef-a7eb8f74c66d">
+        <dc:Bounds x="1437.38" y="12646" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_11d3d221-af81-4c59-b427-0476ddda9647_di" bpmnElement="EBPM_11d3d221-af81-4c59-b427-0476ddda9647" isMarkerVisible="true">
+        <dc:Bounds x="1492.38" y="12826" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_7acaba1e-383f-4aa1-a33c-07b08256b19c_di" bpmnElement="EBPM_7acaba1e-383f-4aa1-a33c-07b08256b19c">
+        <dc:Bounds x="1129.38" y="12976" width="300" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_23c2c7e2-bdc7-469f-808d-58364f923e5e_di" bpmnElement="EBPM_23c2c7e2-bdc7-469f-808d-58364f923e5e">
+        <dc:Bounds x="1157.38" y="13156" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_aae4761b-114d-4268-941d-e42f6b737536_di" bpmnElement="EBPM_aae4761b-114d-4268-941d-e42f6b737536">
+        <dc:Bounds x="1209.38" y="13336" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_aed2e494-4fbd-49e4-9634-7cb2e789d8c6_di" bpmnElement="EBPM_aed2e494-4fbd-49e4-9634-7cb2e789d8c6" isMarkerVisible="true">
+        <dc:Bounds x="1266.88" y="13516" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_5a13fec4-d7a2-47ce-99a8-4b0192245612_di" bpmnElement="EBPM_5a13fec4-d7a2-47ce-99a8-4b0192245612">
+        <dc:Bounds x="1221.88" y="13666" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_78fea495-24a7-49bc-872b-a1d65a41d513_di" bpmnElement="EBPM_78fea495-24a7-49bc-872b-a1d65a41d513">
+        <dc:Bounds x="1197.88" y="13846" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_e2a30b56-8a26-4bed-9619-43725ae51ea6_di" bpmnElement="EBPM_e2a30b56-8a26-4bed-9619-43725ae51ea6">
+        <dc:Bounds x="1204.88" y="14026" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_891dd116-a5d2-4ffe-91c5-42dd66a3c825_di" bpmnElement="EBPM_891dd116-a5d2-4ffe-91c5-42dd66a3c825">
+        <dc:Bounds x="1190.88" y="14206" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_7882d6e9-f20a-417f-930d-a180695fd195_di" bpmnElement="EBPM_7882d6e9-f20a-417f-930d-a180695fd195">
+        <dc:Bounds x="1266.88" y="14386" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_330191ff-2712-41fa-9df2-39ad98d9dc1d_di" bpmnElement="EBPM_330191ff-2712-41fa-9df2-39ad98d9dc1d">
+        <dc:Bounds x="105" y="14536" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_c2fdab93-b2e5-4050-9bc5-bed0b324e587_di" bpmnElement="EBPM_c2fdab93-b2e5-4050-9bc5-bed0b324e587">
+        <dc:Bounds x="2079" y="14536" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_467d3c02-d92d-4ad5-9ded-986c0dbfc243_di" bpmnElement="EBPM_467d3c02-d92d-4ad5-9ded-986c0dbfc243">
+        <dc:Bounds x="1777" y="14536" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_1cee20f5-3628-4831-97be-de6dfd640d17_di" bpmnElement="EBPM_1cee20f5-3628-4831-97be-de6dfd640d17">
+        <dc:Bounds x="1173" y="14536" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_c01c4433-00b0-4ff1-a300-bdca7d1d923a_di" bpmnElement="EBPM_c01c4433-00b0-4ff1-a300-bdca7d1d923a">
+        <dc:Bounds x="625" y="14536" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_f8894dd9-d56a-4c23-a4ad-13a7f7d11130_di" bpmnElement="EBPM_f8894dd9-d56a-4c23-a4ad-13a7f7d11130">
+        <dc:Bounds x="1517" y="14536" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_49703492-dec9-4fe9-bdea-2f1a936cc2ef_di" bpmnElement="EBPM_49703492-dec9-4fe9-bdea-2f1a936cc2ef">
+        <dc:Bounds x="913" y="14536" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_278f07ed-4c9b-4294-bfa5-e963a7631cbb_di" bpmnElement="EBPM_278f07ed-4c9b-4294-bfa5-e963a7631cbb">
+        <dc:Bounds x="365" y="14536" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f_di" bpmnElement="EBPM_9d301f87-78d3-4911-94fc-b07c03b40f4f">
+        <dc:Bounds x="1266.88" y="14716" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_36cb04a3-9957-44a4-9850-3d13c099953d_di" bpmnElement="EBPM_36cb04a3-9957-44a4-9850-3d13c099953d" isMarkerVisible="true">
+        <dc:Bounds x="1266.88" y="14866" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_a9e2962a-c6dc-45bd-8bb1-3ac6c1fb94c1_di" bpmnElement="EBPM_a9e2962a-c6dc-45bd-8bb1-3ac6c1fb94c1">
+        <dc:Bounds x="1379.88" y="15016" width="174" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_ce0e09d9-17d1-49c6-8cfb-35fdde610525_di" bpmnElement="EBPM_ce0e09d9-17d1-49c6-8cfb-35fdde610525" isMarkerVisible="true">
+        <dc:Bounds x="1441.88" y="15196" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_03bfc506-36e1-42e3-b0ce-afba92843bb6_di" bpmnElement="EBPM_03bfc506-36e1-42e3-b0ce-afba92843bb6">
+        <dc:Bounds x="1244.38" y="15346" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_9c48bafd-7da0-4c4c-ac3c-b94b20804eb0_di" bpmnElement="EBPM_9c48bafd-7da0-4c4c-ac3c-b94b20804eb0">
+        <dc:Bounds x="1484.38" y="15346" width="244" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_fb617bd5-b37b-4b7e-8d89-69dc24a373f6_di" bpmnElement="EBPM_fb617bd5-b37b-4b7e-8d89-69dc24a373f6">
+        <dc:Bounds x="1512.38" y="15526" width="188" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_7ce65fdc-cffe-40e4-b296-c31133ae4fa5_di" bpmnElement="EBPM_7ce65fdc-cffe-40e4-b296-c31133ae4fa5">
+        <dc:Bounds x="1505.38" y="15706" width="202" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_01ec1ccd-e43a-4ab5-8084-38e569f7377d_di" bpmnElement="EBPM_01ec1ccd-e43a-4ab5-8084-38e569f7377d">
+        <dc:Bounds x="1526.38" y="15886" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_70c8b9f6-76c8-4afc-aa94-3f294b2e2868_di" bpmnElement="EBPM_70c8b9f6-76c8-4afc-aa94-3f294b2e2868">
+        <dc:Bounds x="1526.38" y="16066" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_5af235f6-339d-4aca-a886-f7f1d7f8fe5a_di" bpmnElement="EBPM_5af235f6-339d-4aca-a886-f7f1d7f8fe5a">
+        <dc:Bounds x="1526.38" y="16246" width="160" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_6414c845-bb78-4fdf-b5c0-430343da1bfa_di" bpmnElement="EBPM_6414c845-bb78-4fdf-b5c0-430343da1bfa" isMarkerVisible="true">
+        <dc:Bounds x="1581.38" y="16426" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_3debe33b-0f59-406a-b899-ee50b62231f6_di" bpmnElement="EBPM_3debe33b-0f59-406a-b899-ee50b62231f6" isMarkerVisible="true">
+        <dc:Bounds x="2356.5" y="16576" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EBPM_1c7ccfb5-0cd3-4b60-a6a5-89f9bb3d7c90_di" bpmnElement="EBPM_1c7ccfb5-0cd3-4b60-a6a5-89f9bb3d7c90">
+        <dc:Bounds x="1575.88" y="16583" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="EBPM_9a0d0088-6e84-4d83-bafe-9a805eb88b59_di" bpmnElement="EBPM_9a0d0088-6e84-4d83-bafe-9a805eb88b59">
+        <di:waypoint x="2462.58" y="36" />
+        <di:waypoint x="2462.58" y="136" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_966fc0bd-3a18-459a-ad59-b34e0d319aae_di" bpmnElement="EBPM_966fc0bd-3a18-459a-ad59-b34e0d319aae">
+        <di:waypoint x="2462.58" y="216" />
+        <di:waypoint x="2462.58" y="316" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_01d6c74b-cc82-4c52-878c-7889f448b134_di" bpmnElement="EBPM_01d6c74b-cc82-4c52-878c-7889f448b134">
+        <di:waypoint x="2462.58" y="396" />
+        <di:waypoint x="2462.58" y="496" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_213627d3-df30-46bf-ae19-731be365f296_di" bpmnElement="EBPM_213627d3-df30-46bf-ae19-731be365f296">
+        <di:waypoint x="2462.58" y="576" />
+        <di:waypoint x="2462.58" y="676" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_6ebac06c-a188-4d1d-861d-49258eadfafa_di" bpmnElement="EBPM_6ebac06c-a188-4d1d-861d-49258eadfafa">
+        <di:waypoint x="2462.58" y="756" />
+        <di:waypoint x="2462.58" y="856" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_7bba2a5e-fdb8-4098-9005-b5d0ad1b0f29_di" bpmnElement="EBPM_7bba2a5e-fdb8-4098-9005-b5d0ad1b0f29">
+        <di:waypoint x="2472.58" y="895.97" />
+        <di:waypoint x="2472.58" y="937.5" />
+        <di:waypoint x="2736.58" y="937.5" />
+        <di:waypoint x="2736.58" y="1006" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_d8ccaadb-9415-4416-a08a-f15ab393a9ec_di" bpmnElement="EBPM_d8ccaadb-9415-4416-a08a-f15ab393a9ec">
+        <di:waypoint x="2736.58" y="1086" />
+        <di:waypoint x="2736.58" y="1101.5" />
+        <di:waypoint x="2472.58" y="1101.5" />
+        <di:waypoint x="2472.58" y="1196.03" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_49ffdb8a-56f2-44f8-87c2-c346de3cfe2d_di" bpmnElement="EBPM_49ffdb8a-56f2-44f8-87c2-c346de3cfe2d">
+        <di:waypoint x="2462.58" y="906" />
+        <di:waypoint x="2462.58" y="1006" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_14e100e7-eb59-45d7-bf8b-97925c4283f8_di" bpmnElement="EBPM_14e100e7-eb59-45d7-bf8b-97925c4283f8">
+        <di:waypoint x="2462.58" y="1086" />
+        <di:waypoint x="2462.58" y="1186" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_2b70e5d9-174e-4566-86db-754b0f9d6bbb_di" bpmnElement="EBPM_2b70e5d9-174e-4566-86db-754b0f9d6bbb">
+        <di:waypoint x="2482.58" y="885.97" />
+        <di:waypoint x="2482.58" y="921.5" />
+        <di:waypoint x="3024.58" y="921.5" />
+        <di:waypoint x="3024.58" y="1006" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_815d5a45-1a25-45b2-86a3-423397a61aa6_di" bpmnElement="EBPM_815d5a45-1a25-45b2-86a3-423397a61aa6">
+        <di:waypoint x="3024.58" y="1086" />
+        <di:waypoint x="3024.58" y="1117.5" />
+        <di:waypoint x="2482.58" y="1117.5" />
+        <di:waypoint x="2482.58" y="1206.03" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_3ef1428c-e19f-409f-85c5-729efe7bc714_di" bpmnElement="EBPM_3ef1428c-e19f-409f-85c5-729efe7bc714">
+        <di:waypoint x="2442.58" y="886.03" />
+        <di:waypoint x="2442.58" y="921.5" />
+        <di:waypoint x="1837.58" y="921.5" />
+        <di:waypoint x="1837.58" y="1006" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_c3468a38-43f1-4c16-a64d-6f4a5afc895a_di" bpmnElement="EBPM_c3468a38-43f1-4c16-a64d-6f4a5afc895a">
+        <di:waypoint x="1837.58" y="1086" />
+        <di:waypoint x="1837.58" y="1117.5" />
+        <di:waypoint x="2442.58" y="1117.5" />
+        <di:waypoint x="2442.58" y="1205.97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_e085a7f8-5157-4534-a424-3b6dc526603f_di" bpmnElement="EBPM_e085a7f8-5157-4534-a424-3b6dc526603f">
+        <di:waypoint x="2452.58" y="896.03" />
+        <di:waypoint x="2452.58" y="937.5" />
+        <di:waypoint x="2160.58" y="937.5" />
+        <di:waypoint x="2160.58" y="1006" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_bacd800f-0609-4536-9513-37923d8df70b_di" bpmnElement="EBPM_bacd800f-0609-4536-9513-37923d8df70b">
+        <di:waypoint x="2160.58" y="1086" />
+        <di:waypoint x="2160.58" y="1101.5" />
+        <di:waypoint x="2452.58" y="1101.5" />
+        <di:waypoint x="2452.58" y="1195.97" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_3786538a-29f6-4166-9ed7-7139043edff4_di" bpmnElement="EBPM_3786538a-29f6-4166-9ed7-7139043edff4">
+        <di:waypoint x="2462.58" y="1236" />
+        <di:waypoint x="2462.58" y="1336" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_3541ecc3-8011-49c1-945e-762886937f44_di" bpmnElement="EBPM_3541ecc3-8011-49c1-945e-762886937f44">
+        <di:waypoint x="2462.58" y="1416" />
+        <di:waypoint x="2462.58" y="1516" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_e20b83d6-47f0-45f6-886f-92d0c57247a4_di" bpmnElement="EBPM_e20b83d6-47f0-45f6-886f-92d0c57247a4">
+        <di:waypoint x="2450.08" y="1553.53" />
+        <di:waypoint x="2450.08" y="1666" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_184f6e39-6b8d-42af-8d7f-dd6146537007_di" bpmnElement="EBPM_184f6e39-6b8d-42af-8d7f-dd6146537007">
+        <di:waypoint x="2450.08" y="1746" />
+        <di:waypoint x="2450.08" y="1846" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_329a09c6-a8bc-40ad-b4b0-b26309de7ae8_di" bpmnElement="EBPM_329a09c6-a8bc-40ad-b4b0-b26309de7ae8">
+        <di:waypoint x="2437.58" y="1883.53" />
+        <di:waypoint x="2437.58" y="1934.2" />
+        <di:waypoint x="2334.08" y="1934.2" />
+        <di:waypoint x="2334.08" y="1996" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_4f876bd2-745b-4319-9be1-66c83f5cbd55_di" bpmnElement="EBPM_4f876bd2-745b-4319-9be1-66c83f5cbd55">
+        <di:waypoint x="2462.58" y="1883.47" />
+        <di:waypoint x="2462.58" y="1934.2" />
+        <di:waypoint x="2599.58" y="1934.2" />
+        <di:waypoint x="2599.58" y="1996" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_719c410e-21ff-457e-ab27-9551f41cabf2_di" bpmnElement="EBPM_719c410e-21ff-457e-ab27-9551f41cabf2">
+        <di:waypoint x="2672.58" y="1996" />
+        <di:waypoint x="2672.58" y="1581.5" />
+        <di:waypoint x="2475.08" y="1581.5" />
+        <di:waypoint x="2475.08" y="1553.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_857ea792-6ffa-430e-8d78-5a2b199bd786_di" bpmnElement="EBPM_857ea792-6ffa-430e-8d78-5a2b199bd786">
+        <di:waypoint x="2334.08" y="2076" />
+        <di:waypoint x="2334.08" y="2176" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_bc4c6f3f-7ff8-486c-9608-a66574847a27_di" bpmnElement="EBPM_bc4c6f3f-7ff8-486c-9608-a66574847a27">
+        <di:waypoint x="2334.08" y="2256" />
+        <di:waypoint x="2334.08" y="2356" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_77df46c2-c380-44a2-98cc-a0e3fb4043f5_di" bpmnElement="EBPM_77df46c2-c380-44a2-98cc-a0e3fb4043f5">
+        <di:waypoint x="2334.08" y="2436" />
+        <di:waypoint x="2334.08" y="2536" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_4d15ed27-1701-496d-913c-307e8a8da08b_di" bpmnElement="EBPM_4d15ed27-1701-496d-913c-307e8a8da08b">
+        <di:waypoint x="2334.08" y="2616" />
+        <di:waypoint x="2334.08" y="2716" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_fdd18454-b827-44f6-9ac3-80bc6a2659f9_di" bpmnElement="EBPM_fdd18454-b827-44f6-9ac3-80bc6a2659f9">
+        <di:waypoint x="2334.08" y="2796" />
+        <di:waypoint x="2334.08" y="2896" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_6f757e76-5ba6-48d4-a858-5a49719f5e2f_di" bpmnElement="EBPM_6f757e76-5ba6-48d4-a858-5a49719f5e2f">
+        <di:waypoint x="2334.08" y="2976" />
+        <di:waypoint x="2334.08" y="3076" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_5dac820a-6389-42ec-b99d-ad089765a29f_di" bpmnElement="EBPM_5dac820a-6389-42ec-b99d-ad089765a29f">
+        <di:waypoint x="2334.08" y="3156" />
+        <di:waypoint x="2334.08" y="3256" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_8e707bb5-b307-4c9d-b97b-90ec079aa0e2_di" bpmnElement="EBPM_8e707bb5-b307-4c9d-b97b-90ec079aa0e2">
+        <di:waypoint x="2321.58" y="3293.53" />
+        <di:waypoint x="2321.58" y="3406" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_d591bfea-2779-4823-aa06-b40a3281f0c7_di" bpmnElement="EBPM_d591bfea-2779-4823-aa06-b40a3281f0c7">
+        <di:waypoint x="2321.58" y="3486" />
+        <di:waypoint x="2321.58" y="3586" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_05257214-9ffb-42cf-95f5-2f73b08a39f4_di" bpmnElement="EBPM_05257214-9ffb-42cf-95f5-2f73b08a39f4">
+        <di:waypoint x="2309.08" y="3623.53" />
+        <di:waypoint x="2309.08" y="3674.2" />
+        <di:waypoint x="2211.08" y="3674.2" />
+        <di:waypoint x="2211.08" y="3736" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_8e75cf59-e471-4bf8-8377-e114f63b202b_di" bpmnElement="EBPM_8e75cf59-e471-4bf8-8377-e114f63b202b">
+        <di:waypoint x="2334.08" y="3623.47" />
+        <di:waypoint x="2334.08" y="3674.2" />
+        <di:waypoint x="2381.58" y="3674.2" />
+        <di:waypoint x="2381.58" y="4093.53" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_0b3e29d3-31d1-43fd-9f90-6f38965e541f_di" bpmnElement="EBPM_0b3e29d3-31d1-43fd-9f90-6f38965e541f">
+        <di:waypoint x="2211.08" y="3816" />
+        <di:waypoint x="2211.08" y="3916" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_69b5201a-f2e0-42fc-97c9-8ef24e0ad116_di" bpmnElement="EBPM_69b5201a-f2e0-42fc-97c9-8ef24e0ad116">
+        <di:waypoint x="2198.58" y="3953.53" />
+        <di:waypoint x="2198.58" y="4004.2" />
+        <di:waypoint x="2163.58" y="4004.2" />
+        <di:waypoint x="2163.58" y="4066" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_e72b448a-5ce7-48f2-a697-df88bc86d15b_di" bpmnElement="EBPM_e72b448a-5ce7-48f2-a697-df88bc86d15b">
+        <di:waypoint x="2223.58" y="3953.47" />
+        <di:waypoint x="2223.58" y="4004.2" />
+        <di:waypoint x="2356.58" y="4004.2" />
+        <di:waypoint x="2356.58" y="4093.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_bee181ff-8077-46fa-bb95-15ec285fe41f_di" bpmnElement="EBPM_bee181ff-8077-46fa-bb95-15ec285fe41f">
+        <di:waypoint x="2369.08" y="4131" />
+        <di:waypoint x="2369.08" y="4146.5" />
+        <di:waypoint x="2408.08" y="4146.5" />
+        <di:waypoint x="2408.08" y="4246" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_680e54a3-3702-4d8f-acb5-397ed45008f5_di" bpmnElement="EBPM_680e54a3-3702-4d8f-acb5-397ed45008f5">
+        <di:waypoint x="2495.08" y="4246" />
+        <di:waypoint x="2495.08" y="3321.5" />
+        <di:waypoint x="2346.58" y="3321.5" />
+        <di:waypoint x="2346.58" y="3293.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_94f9ca2d-c025-45d0-b0a4-6bf256f86b32_di" bpmnElement="EBPM_94f9ca2d-c025-45d0-b0a4-6bf256f86b32">
+        <di:waypoint x="2163.58" y="4146" />
+        <di:waypoint x="2163.58" y="4246" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_750a2d69-af21-40cb-af67-09f6aa9b3c4b_di" bpmnElement="EBPM_750a2d69-af21-40cb-af67-09f6aa9b3c4b">
+        <di:waypoint x="2163.58" y="4326" />
+        <di:waypoint x="2163.58" y="4426" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_e2cb0507-58af-43c6-b461-86fe415c3620_di" bpmnElement="EBPM_e2cb0507-58af-43c6-b461-86fe415c3620">
+        <di:waypoint x="2163.58" y="4506" />
+        <di:waypoint x="2163.58" y="4606" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_9ecf1a2a-2c1b-4af6-9328-aa6966164338_di" bpmnElement="EBPM_9ecf1a2a-2c1b-4af6-9328-aa6966164338">
+        <di:waypoint x="2163.58" y="4686" />
+        <di:waypoint x="2163.58" y="4786" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_97f764ff-26b8-4525-b058-1ab2d0bf1fcd_di" bpmnElement="EBPM_97f764ff-26b8-4525-b058-1ab2d0bf1fcd">
+        <di:waypoint x="2163.58" y="4866" />
+        <di:waypoint x="2163.58" y="4966" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_63c60a57-22a5-4b33-8a5f-04caeb29795c_di" bpmnElement="EBPM_63c60a57-22a5-4b33-8a5f-04caeb29795c">
+        <di:waypoint x="2157.33" y="5009.78" />
+        <di:waypoint x="2157.33" y="5116" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_d2f5eb78-2063-4b01-95fc-f8b388942e6d_di" bpmnElement="EBPM_d2f5eb78-2063-4b01-95fc-f8b388942e6d">
+        <di:waypoint x="2157.33" y="5196" />
+        <di:waypoint x="2157.33" y="5211.5" />
+        <di:waypoint x="2384.83" y="5211.5" />
+        <di:waypoint x="2384.83" y="5302.22" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_bcf1474b-c3c0-4398-bee8-531e3b6f90cf_di" bpmnElement="EBPM_bcf1474b-c3c0-4398-bee8-531e3b6f90cf">
+        <di:waypoint x="2182.33" y="4997.22" />
+        <di:waypoint x="2182.33" y="5031.5" />
+        <di:waypoint x="2647.33" y="5031.5" />
+        <di:waypoint x="2647.33" y="5116" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_31ea05bd-b8d6-406c-a80f-a4d2f1acfd1d_di" bpmnElement="EBPM_31ea05bd-b8d6-406c-a80f-a4d2f1acfd1d">
+        <di:waypoint x="2647.33" y="5196" />
+        <di:waypoint x="2647.33" y="5211.5" />
+        <di:waypoint x="2409.83" y="5211.5" />
+        <di:waypoint x="2409.83" y="5314.78" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_db1711c4-5e6c-453b-8a17-266abc6f8732_di" bpmnElement="EBPM_db1711c4-5e6c-453b-8a17-266abc6f8732">
+        <di:waypoint x="2144.83" y="4997.28" />
+        <di:waypoint x="2144.83" y="5031.5" />
+        <di:waypoint x="1893.33" y="5031.5" />
+        <di:waypoint x="1893.33" y="5116" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_8410ad3e-c3ba-419f-9906-c82c0d9a7c43_di" bpmnElement="EBPM_8410ad3e-c3ba-419f-9906-c82c0d9a7c43">
+        <di:waypoint x="1893.33" y="5196" />
+        <di:waypoint x="1893.33" y="5227.5" />
+        <di:waypoint x="2372.33" y="5227.5" />
+        <di:waypoint x="2372.33" y="5314.72" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_f3a57392-2c73-4916-8858-67793144a216_di" bpmnElement="EBPM_f3a57392-2c73-4916-8858-67793144a216">
+        <di:waypoint x="2169.83" y="5009.72" />
+        <di:waypoint x="2169.83" y="5047.5" />
+        <di:waypoint x="2397.33" y="5047.5" />
+        <di:waypoint x="2397.33" y="5116" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_f2ca8cb5-9055-49e4-9e56-3df3c078c5f4_di" bpmnElement="EBPM_f2ca8cb5-9055-49e4-9e56-3df3c078c5f4">
+        <di:waypoint x="2397.33" y="5196" />
+        <di:waypoint x="2397.33" y="5302.28" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_bf923bcc-47ff-43ea-96bc-8feafbf5c1ee_di" bpmnElement="EBPM_bf923bcc-47ff-43ea-96bc-8feafbf5c1ee">
+        <di:waypoint x="2391.08" y="5346" />
+        <di:waypoint x="2391.08" y="5446" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_8afeb90d-7ac5-49a6-8306-6bc00aa3a1ca_di" bpmnElement="EBPM_8afeb90d-7ac5-49a6-8306-6bc00aa3a1ca">
+        <di:waypoint x="2391.08" y="5526" />
+        <di:waypoint x="2391.08" y="5626" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_e280f967-5890-4902-9f3e-12d8f3c8212f_di" bpmnElement="EBPM_e280f967-5890-4902-9f3e-12d8f3c8212f">
+        <di:waypoint x="2391.08" y="5706" />
+        <di:waypoint x="2391.08" y="5806" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_f4f4c1f2-b548-4aa9-b3e6-63fb55752c40_di" bpmnElement="EBPM_f4f4c1f2-b548-4aa9-b3e6-63fb55752c40">
+        <di:waypoint x="2391.08" y="5886" />
+        <di:waypoint x="2391.08" y="5986" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_84b4598c-3eaa-4c46-8fcd-4c9d4ba1b819_di" bpmnElement="EBPM_84b4598c-3eaa-4c46-8fcd-4c9d4ba1b819">
+        <di:waypoint x="2391.08" y="6066" />
+        <di:waypoint x="2391.08" y="6166" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_6d210525-1f6e-4c72-90ec-fe9d2d243816_di" bpmnElement="EBPM_6d210525-1f6e-4c72-90ec-fe9d2d243816">
+        <di:waypoint x="2378.58" y="6203.53" />
+        <di:waypoint x="2378.58" y="6316" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_81eb9855-fb19-44cf-955a-043b62dc0d1a_di" bpmnElement="EBPM_81eb9855-fb19-44cf-955a-043b62dc0d1a">
+        <di:waypoint x="2378.58" y="6396" />
+        <di:waypoint x="2378.58" y="6496" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_57bddbd3-7ba2-424a-99e4-d21a752cad53_di" bpmnElement="EBPM_57bddbd3-7ba2-424a-99e4-d21a752cad53">
+        <di:waypoint x="2366.08" y="6533.53" />
+        <di:waypoint x="2366.08" y="6584.2" />
+        <di:waypoint x="2241.58" y="6584.2" />
+        <di:waypoint x="2241.58" y="6646" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_70190fb0-7a07-4ea1-92d0-4d03f80e9330_di" bpmnElement="EBPM_70190fb0-7a07-4ea1-92d0-4d03f80e9330">
+        <di:waypoint x="2391.08" y="6533.47" />
+        <di:waypoint x="2391.08" y="6584.2" />
+        <di:waypoint x="2465.08" y="6584.2" />
+        <di:waypoint x="2465.08" y="6646" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_428b2945-d73c-4162-9a05-4c2862b34808_di" bpmnElement="EBPM_428b2945-d73c-4162-9a05-4c2862b34808">
+        <di:waypoint x="2552.08" y="6646" />
+        <di:waypoint x="2552.08" y="6231.5" />
+        <di:waypoint x="2403.58" y="6231.5" />
+        <di:waypoint x="2403.58" y="6203.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_5a6402ed-d377-4ee5-a321-c47e0674c69f_di" bpmnElement="EBPM_5a6402ed-d377-4ee5-a321-c47e0674c69f">
+        <di:waypoint x="2241.58" y="6726" />
+        <di:waypoint x="2241.58" y="6826" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_4d7a6a71-ac28-41ee-9479-53dd402caf11_di" bpmnElement="EBPM_4d7a6a71-ac28-41ee-9479-53dd402caf11">
+        <di:waypoint x="2241.58" y="6906" />
+        <di:waypoint x="2241.58" y="7006" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_8e2f5132-7f39-40d4-88e4-842571106848_di" bpmnElement="EBPM_8e2f5132-7f39-40d4-88e4-842571106848">
+        <di:waypoint x="2241.58" y="7086" />
+        <di:waypoint x="2241.58" y="7186" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_574fbc43-1f6b-4ef4-ade8-a23ae19441c7_di" bpmnElement="EBPM_574fbc43-1f6b-4ef4-ade8-a23ae19441c7">
+        <di:waypoint x="2237.42" y="7231.84" />
+        <di:waypoint x="2237.42" y="7283.5" />
+        <di:waypoint x="2119.83" y="7283.5" />
+        <di:waypoint x="2119.83" y="7336" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_1c52f12f-52aa-4a9b-9544-bd5c945c30a7_di" bpmnElement="EBPM_1c52f12f-52aa-4a9b-9544-bd5c945c30a7">
+        <di:waypoint x="2119.83" y="7416" />
+        <di:waypoint x="2119.83" y="7516" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_288283d3-7f36-496f-8d5c-58daa44b73c5_di" bpmnElement="EBPM_288283d3-7f36-496f-8d5c-58daa44b73c5">
+        <di:waypoint x="2119.83" y="7596" />
+        <di:waypoint x="2119.83" y="7696" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_42ab8259-d358-4ed5-a73a-b34db39e70ce_di" bpmnElement="EBPM_42ab8259-d358-4ed5-a73a-b34db39e70ce">
+        <di:waypoint x="2119.83" y="7776" />
+        <di:waypoint x="2119.83" y="7876" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_7df0a4f0-aa2f-4731-a8c5-5ac2df6ce88e_di" bpmnElement="EBPM_7df0a4f0-aa2f-4731-a8c5-5ac2df6ce88e">
+        <di:waypoint x="2119.83" y="7956" />
+        <di:waypoint x="2119.83" y="8056" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_cd01deb7-b9f1-4dd5-9785-de95a5610384_di" bpmnElement="EBPM_cd01deb7-b9f1-4dd5-9785-de95a5610384">
+        <di:waypoint x="2119.83" y="8136" />
+        <di:waypoint x="2119.83" y="8151.5" />
+        <di:waypoint x="2050" y="8151.5" />
+        <di:waypoint x="2050" y="8248.53" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_041a491c-a398-4f8b-88df-49e97f915123_di" bpmnElement="EBPM_041a491c-a398-4f8b-88df-49e97f915123">
+        <di:waypoint x="2037.5" y="8286" />
+        <di:waypoint x="2037.5" y="8386" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_87c99391-55a6-4b6f-92e0-66f12695a763_di" bpmnElement="EBPM_87c99391-55a6-4b6f-92e0-66f12695a763">
+        <di:waypoint x="2025" y="8248.47" />
+        <di:waypoint x="2025" y="8151.5" />
+        <di:waypoint x="1876.33" y="8151.5" />
+        <di:waypoint x="1876.33" y="7267.5" />
+        <di:waypoint x="2229.08" y="7267.5" />
+        <di:waypoint x="2229.08" y="7223.53" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_f447cdb1-e8bf-42d4-9a1f-a59879bf5ce6_di" bpmnElement="EBPM_f447cdb1-e8bf-42d4-9a1f-a59879bf5ce6">
+        <di:waypoint x="2037.5" y="8466" />
+        <di:waypoint x="2037.5" y="8578.53" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_438b86c7-ead0-4d1f-9a3c-34ee14f25937_di" bpmnElement="EBPM_438b86c7-ead0-4d1f-9a3c-34ee14f25937">
+        <di:waypoint x="2025" y="8616" />
+        <di:waypoint x="2025" y="8716" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_603da004-da4d-4506-8188-577edec1d690_di" bpmnElement="EBPM_603da004-da4d-4506-8188-577edec1d690">
+        <di:waypoint x="2012.5" y="8578.47" />
+        <di:waypoint x="2012.5" y="8481.5" />
+        <di:waypoint x="1867" y="8481.5" />
+        <di:waypoint x="1867" y="7251.5" />
+        <di:waypoint x="2220.75" y="7251.5" />
+        <di:waypoint x="2220.75" y="7215.16" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_974e0a3d-a03d-45ee-8d18-5864a1531bc8_di" bpmnElement="EBPM_974e0a3d-a03d-45ee-8d18-5864a1531bc8">
+        <di:waypoint x="2025" y="8796" />
+        <di:waypoint x="2025" y="8896" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_a6072a2f-fcab-450b-8ec9-ad8a8fddaee0_di" bpmnElement="EBPM_a6072a2f-fcab-450b-8ec9-ad8a8fddaee0">
+        <di:waypoint x="2025" y="8976" />
+        <di:waypoint x="2025" y="9076" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_4c6d2750-c798-43a9-9ae1-ac813d56772c_di" bpmnElement="EBPM_4c6d2750-c798-43a9-9ae1-ac813d56772c">
+        <di:waypoint x="2025" y="9156" />
+        <di:waypoint x="2025" y="9171.5" />
+        <di:waypoint x="2179.67" y="9171.5" />
+        <di:waypoint x="2179.67" y="9268.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_848d6194-1c43-4fb7-9603-6741b6bb2730_di" bpmnElement="EBPM_848d6194-1c43-4fb7-9603-6741b6bb2730">
+        <di:waypoint x="2192.17" y="9306" />
+        <di:waypoint x="2192.17" y="9406" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_43fc4fc0-7b5b-472b-a244-2502f37f6b5e_di" bpmnElement="EBPM_43fc4fc0-7b5b-472b-a244-2502f37f6b5e">
+        <di:waypoint x="2204.67" y="9268.53" />
+        <di:waypoint x="2204.67" y="9171.5" />
+        <di:waypoint x="2363.33" y="9171.5" />
+        <di:waypoint x="2363.33" y="7283.5" />
+        <di:waypoint x="2245.75" y="7283.5" />
+        <di:waypoint x="2245.75" y="7231.84" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_7997ffd7-0c38-4188-bc1b-6c4ebdce522c_di" bpmnElement="EBPM_7997ffd7-0c38-4188-bc1b-6c4ebdce522c">
+        <di:waypoint x="2192.17" y="9486" />
+        <di:waypoint x="2192.17" y="9598.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_d82b28b0-76e9-47b6-8ca9-679959b89c8c_di" bpmnElement="EBPM_d82b28b0-76e9-47b6-8ca9-679959b89c8c">
+        <di:waypoint x="2204.67" y="9636" />
+        <di:waypoint x="2204.67" y="9736" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_4bc403d1-e27a-4774-a5ae-572f2a85179a_di" bpmnElement="EBPM_4bc403d1-e27a-4774-a5ae-572f2a85179a">
+        <di:waypoint x="2217.17" y="9598.53" />
+        <di:waypoint x="2217.17" y="9501.5" />
+        <di:waypoint x="2372.67" y="9501.5" />
+        <di:waypoint x="2372.67" y="7267.5" />
+        <di:waypoint x="2254.08" y="7267.5" />
+        <di:waypoint x="2254.08" y="7223.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_7720c214-c637-48b7-911f-909108988b9e_di" bpmnElement="EBPM_7720c214-c637-48b7-911f-909108988b9e">
+        <di:waypoint x="2204.67" y="9816" />
+        <di:waypoint x="2204.67" y="9916" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_ccd9cb7a-c67d-4d57-af0c-f54fd847a413_di" bpmnElement="EBPM_ccd9cb7a-c67d-4d57-af0c-f54fd847a413">
+        <di:waypoint x="2204.67" y="9996" />
+        <di:waypoint x="2204.67" y="10096" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_8f6a79ac-30f3-4efa-b5bc-5aa6a2afd14e_di" bpmnElement="EBPM_8f6a79ac-30f3-4efa-b5bc-5aa6a2afd14e">
+        <di:waypoint x="2204.67" y="10176" />
+        <di:waypoint x="2204.67" y="10276" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_706e8933-9bd1-4b91-b3f7-a08ee3956c4e_di" bpmnElement="EBPM_706e8933-9bd1-4b91-b3f7-a08ee3956c4e">
+        <di:waypoint x="2192.17" y="10313.53" />
+        <di:waypoint x="2192.17" y="10341.5" />
+        <di:waypoint x="1717.38" y="10341.5" />
+        <di:waypoint x="1717.38" y="10426" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_733fd356-e145-486c-a10b-7ce0acf090eb_di" bpmnElement="EBPM_733fd356-e145-486c-a10b-7ce0acf090eb">
+        <di:waypoint x="1717.38" y="10506" />
+        <di:waypoint x="1717.38" y="10606" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_15d320ec-c72f-4bc6-9cc8-a55f0ea36de2_di" bpmnElement="EBPM_15d320ec-c72f-4bc6-9cc8-a55f0ea36de2">
+        <di:waypoint x="1729.88" y="10643.47" />
+        <di:waypoint x="1729.88" y="10756" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_d6464597-dc76-44b9-8b07-e6c431b98db6_di" bpmnElement="EBPM_d6464597-dc76-44b9-8b07-e6c431b98db6">
+        <di:waypoint x="1729.88" y="10836" />
+        <di:waypoint x="1729.88" y="10851.5" />
+        <di:waypoint x="1504.88" y="10851.5" />
+        <di:waypoint x="1504.88" y="10948.53" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_d76900d8-4ce9-4091-8a9e-f5756f47177b_di" bpmnElement="EBPM_d76900d8-4ce9-4091-8a9e-f5756f47177b">
+        <di:waypoint x="1704.88" y="10643.53" />
+        <di:waypoint x="1704.88" y="10671.5" />
+        <di:waypoint x="1479.88" y="10671.5" />
+        <di:waypoint x="1479.88" y="10756" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_6d874cc0-aa35-4361-8b56-9a01f3476718_di" bpmnElement="EBPM_6d874cc0-aa35-4361-8b56-9a01f3476718">
+        <di:waypoint x="1479.88" y="10836" />
+        <di:waypoint x="1479.88" y="10948.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_dc36b34c-17c1-4e63-92eb-8f940153eb07_di" bpmnElement="EBPM_dc36b34c-17c1-4e63-92eb-8f940153eb07">
+        <di:waypoint x="1492.38" y="10986" />
+        <di:waypoint x="1492.38" y="11086" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_75f76107-4f35-4aab-9f33-85d3bae18272_di" bpmnElement="EBPM_75f76107-4f35-4aab-9f33-85d3bae18272">
+        <di:waypoint x="1492.38" y="11166" />
+        <di:waypoint x="1492.38" y="11266" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_1604eaad-17aa-41d0-b7ef-9fc45b052275_di" bpmnElement="EBPM_1604eaad-17aa-41d0-b7ef-9fc45b052275">
+        <di:waypoint x="1492.38" y="11346" />
+        <di:waypoint x="1492.38" y="11446" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_e6ef23c4-c58c-4847-b239-5b5d6cee0e5d_di" bpmnElement="EBPM_e6ef23c4-c58c-4847-b239-5b5d6cee0e5d">
+        <di:waypoint x="1492.38" y="11526" />
+        <di:waypoint x="1492.38" y="11626" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_27f84942-f104-4f3a-978d-6b6938944ba0_di" bpmnElement="EBPM_27f84942-f104-4f3a-978d-6b6938944ba0">
+        <di:waypoint x="1492.38" y="11706" />
+        <di:waypoint x="1492.38" y="11806" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_9ba89aca-198d-4aca-9ac2-d2f3d38657ba_di" bpmnElement="EBPM_9ba89aca-198d-4aca-9ac2-d2f3d38657ba">
+        <di:waypoint x="1504.88" y="11843.47" />
+        <di:waypoint x="1504.88" y="11956" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_623d977d-52b1-4355-b3e8-b40b202a32e8_di" bpmnElement="EBPM_623d977d-52b1-4355-b3e8-b40b202a32e8">
+        <di:waypoint x="1504.88" y="12036" />
+        <di:waypoint x="1504.88" y="12136" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_7e1233ba-fe1f-46d0-b1b9-40948f265cc9_di" bpmnElement="EBPM_7e1233ba-fe1f-46d0-b1b9-40948f265cc9">
+        <di:waypoint x="1517.38" y="12173.47" />
+        <di:waypoint x="1517.38" y="12286" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_3b9881c4-eba1-43c9-a260-3605b6d7227c_di" bpmnElement="EBPM_3b9881c4-eba1-43c9-a260-3605b6d7227c">
+        <di:waypoint x="1492.38" y="12173.53" />
+        <di:waypoint x="1492.38" y="12224.2" />
+        <di:waypoint x="1265.88" y="12224.2" />
+        <di:waypoint x="1265.88" y="12286" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_f9f7581d-93dc-434d-b352-36403d891a65_di" bpmnElement="EBPM_f9f7581d-93dc-434d-b352-36403d891a65">
+        <di:waypoint x="1192.88" y="12286" />
+        <di:waypoint x="1192.88" y="11871.5" />
+        <di:waypoint x="1479.88" y="11871.5" />
+        <di:waypoint x="1479.88" y="11843.53" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_551e877b-2156-46f8-bfb9-efc558425af4_di" bpmnElement="EBPM_551e877b-2156-46f8-bfb9-efc558425af4">
+        <di:waypoint x="1517.38" y="12366" />
+        <di:waypoint x="1517.38" y="12466" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_a3772773-9a53-4cfb-b9f8-7f7625b164bb_di" bpmnElement="EBPM_a3772773-9a53-4cfb-b9f8-7f7625b164bb">
+        <di:waypoint x="1517.38" y="12546" />
+        <di:waypoint x="1517.38" y="12646" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_710b8790-c3f3-4fc6-afed-8207f62ab1f5_di" bpmnElement="EBPM_710b8790-c3f3-4fc6-afed-8207f62ab1f5">
+        <di:waypoint x="1517.38" y="12726" />
+        <di:waypoint x="1517.38" y="12826" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_5c7d4f9b-105c-497a-a6ff-60dba5d18399_di" bpmnElement="EBPM_5c7d4f9b-105c-497a-a6ff-60dba5d18399">
+        <di:waypoint x="1504.88" y="12863.53" />
+        <di:waypoint x="1504.88" y="12891.5" />
+        <di:waypoint x="1279.38" y="12891.5" />
+        <di:waypoint x="1279.38" y="12976" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_5cc147b6-bf4e-4a9b-8972-5b33dbe9201d_di" bpmnElement="EBPM_5cc147b6-bf4e-4a9b-8972-5b33dbe9201d">
+        <di:waypoint x="1279.38" y="13056" />
+        <di:waypoint x="1279.38" y="13156" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_7685113a-49a0-4ab2-84f8-1d503b8f43b8_di" bpmnElement="EBPM_7685113a-49a0-4ab2-84f8-1d503b8f43b8">
+        <di:waypoint x="1279.38" y="13236" />
+        <di:waypoint x="1279.38" y="13336" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_a32c4b82-1414-4a1d-a0f7-137faad4874f_di" bpmnElement="EBPM_a32c4b82-1414-4a1d-a0f7-137faad4874f">
+        <di:waypoint x="1279.38" y="13416" />
+        <di:waypoint x="1279.38" y="13528.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_b26251b4-2eb0-4983-8414-966104100087_di" bpmnElement="EBPM_b26251b4-2eb0-4983-8414-966104100087">
+        <di:waypoint x="1291.88" y="13566" />
+        <di:waypoint x="1291.88" y="13666" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_f4384e3b-c5c9-4c5e-ae45-600f43a52dec_di" bpmnElement="EBPM_f4384e3b-c5c9-4c5e-ae45-600f43a52dec">
+        <di:waypoint x="1304.38" y="13528.53" />
+        <di:waypoint x="1304.38" y="13431.5" />
+        <di:waypoint x="1529.88" y="13431.5" />
+        <di:waypoint x="1529.88" y="12863.47" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_2ddbf115-0516-41db-bc93-82f4dca988df_di" bpmnElement="EBPM_2ddbf115-0516-41db-bc93-82f4dca988df">
+        <di:waypoint x="1291.88" y="13746" />
+        <di:waypoint x="1291.88" y="13846" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_f37ae263-3955-4ef8-9445-678de73542fd_di" bpmnElement="EBPM_f37ae263-3955-4ef8-9445-678de73542fd">
+        <di:waypoint x="1291.88" y="13926" />
+        <di:waypoint x="1291.88" y="14026" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_37481032-a428-4d59-a0c0-94703dc3ede1_di" bpmnElement="EBPM_37481032-a428-4d59-a0c0-94703dc3ede1">
+        <di:waypoint x="1291.88" y="14106" />
+        <di:waypoint x="1291.88" y="14206" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_710fddfe-d2ab-4e19-93f3-f8b3a14e2b9d_di" bpmnElement="EBPM_710fddfe-d2ab-4e19-93f3-f8b3a14e2b9d">
+        <di:waypoint x="1291.88" y="14286" />
+        <di:waypoint x="1291.88" y="14386" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_fdde3160-3973-4473-8f9d-0dde51038c45_di" bpmnElement="EBPM_fdde3160-3973-4473-8f9d-0dde51038c45">
+        <di:waypoint x="1270" y="14414.16" />
+        <di:waypoint x="1270" y="14451.5" />
+        <di:waypoint x="185" y="14451.5" />
+        <di:waypoint x="185" y="14536" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_500baed7-5032-48d0-a077-894ece48c1a8_di" bpmnElement="EBPM_500baed7-5032-48d0-a077-894ece48c1a8">
+        <di:waypoint x="185" y="14616" />
+        <di:waypoint x="185" y="14679.5" />
+        <di:waypoint x="1270" y="14679.5" />
+        <di:waypoint x="1270" y="14737.84" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_8d4e5c26-c776-415f-a30a-f7821ddf7ee1_di" bpmnElement="EBPM_8d4e5c26-c776-415f-a30a-f7821ddf7ee1">
+        <di:waypoint x="1313.75" y="14414.09" />
+        <di:waypoint x="1313.75" y="14451.5" />
+        <di:waypoint x="2180" y="14451.5" />
+        <di:waypoint x="2180" y="14536" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_b2270e87-e9c9-4c27-8a13-4804ffe98e08_di" bpmnElement="EBPM_b2270e87-e9c9-4c27-8a13-4804ffe98e08">
+        <di:waypoint x="2180" y="14616" />
+        <di:waypoint x="2180" y="14663.5" />
+        <di:waypoint x="1313.75" y="14663.5" />
+        <di:waypoint x="1313.75" y="14737.91" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_146aaec5-0e2d-4b13-8e6d-5aa39d9df95b_di" bpmnElement="EBPM_146aaec5-0e2d-4b13-8e6d-5aa39d9df95b">
+        <di:waypoint x="1307.5" y="14420.34" />
+        <di:waypoint x="1307.5" y="14467.5" />
+        <di:waypoint x="1878" y="14467.5" />
+        <di:waypoint x="1878" y="14536" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_e3703d16-7e92-4ced-9518-22d00672643b_di" bpmnElement="EBPM_e3703d16-7e92-4ced-9518-22d00672643b">
+        <di:waypoint x="1878" y="14616" />
+        <di:waypoint x="1878" y="14647.5" />
+        <di:waypoint x="1307.5" y="14647.5" />
+        <di:waypoint x="1307.5" y="14731.66" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_f9532181-8f98-49bb-99ad-2870d1b8e370_di" bpmnElement="EBPM_f9532181-8f98-49bb-99ad-2870d1b8e370">
+        <di:waypoint x="1295" y="14432.84" />
+        <di:waypoint x="1295" y="14536" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_0db5cbb2-432c-42a6-86f2-d8ed67f4139d_di" bpmnElement="EBPM_0db5cbb2-432c-42a6-86f2-d8ed67f4139d">
+        <di:waypoint x="1295" y="14616" />
+        <di:waypoint x="1295" y="14719.16" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_b5268ea3-989a-4d31-8a5e-81f3fd0f0764_di" bpmnElement="EBPM_b5268ea3-989a-4d31-8a5e-81f3fd0f0764">
+        <di:waypoint x="1282.5" y="14426.66" />
+        <di:waypoint x="1282.5" y="14483.5" />
+        <di:waypoint x="719" y="14483.5" />
+        <di:waypoint x="719" y="14536" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_3b52be0b-56c9-4754-9335-40328a58e392_di" bpmnElement="EBPM_3b52be0b-56c9-4754-9335-40328a58e392">
+        <di:waypoint x="719" y="14616" />
+        <di:waypoint x="719" y="14647.5" />
+        <di:waypoint x="1282.5" y="14647.5" />
+        <di:waypoint x="1282.5" y="14725.34" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_6495fbd4-5e11-402f-88c6-0502395a15da_di" bpmnElement="EBPM_6495fbd4-5e11-402f-88c6-0502395a15da">
+        <di:waypoint x="1301.25" y="14426.59" />
+        <di:waypoint x="1301.25" y="14483.5" />
+        <di:waypoint x="1597" y="14483.5" />
+        <di:waypoint x="1597" y="14536" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_89c106ce-4871-4ffc-8f7a-6ca295dbad56_di" bpmnElement="EBPM_89c106ce-4871-4ffc-8f7a-6ca295dbad56">
+        <di:waypoint x="1597" y="14616" />
+        <di:waypoint x="1597" y="14631.5" />
+        <di:waypoint x="1301.25" y="14631.5" />
+        <di:waypoint x="1301.25" y="14725.41" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_291b79b9-7551-4346-982a-cb38608db10b_di" bpmnElement="EBPM_291b79b9-7551-4346-982a-cb38608db10b">
+        <di:waypoint x="1288.75" y="14432.91" />
+        <di:waypoint x="1288.75" y="14499.5" />
+        <di:waypoint x="993" y="14499.5" />
+        <di:waypoint x="993" y="14536" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_d7128c7a-d2e4-4672-bb5d-51b2e26516dc_di" bpmnElement="EBPM_d7128c7a-d2e4-4672-bb5d-51b2e26516dc">
+        <di:waypoint x="993" y="14616" />
+        <di:waypoint x="993" y="14631.5" />
+        <di:waypoint x="1288.75" y="14631.5" />
+        <di:waypoint x="1288.75" y="14719.09" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_8f3c42f2-f2fa-42ba-b2dc-2bea9cd22a63_di" bpmnElement="EBPM_8f3c42f2-f2fa-42ba-b2dc-2bea9cd22a63">
+        <di:waypoint x="1276.25" y="14420.41" />
+        <di:waypoint x="1276.25" y="14467.5" />
+        <di:waypoint x="445" y="14467.5" />
+        <di:waypoint x="445" y="14536" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_1aacb811-7957-4ccc-8f27-a658e61ed42d_di" bpmnElement="EBPM_1aacb811-7957-4ccc-8f27-a658e61ed42d">
+        <di:waypoint x="445" y="14616" />
+        <di:waypoint x="445" y="14663.5" />
+        <di:waypoint x="1276.25" y="14663.5" />
+        <di:waypoint x="1276.25" y="14731.59" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_3f6504a0-4424-403a-9d69-a7f65878dbf4_di" bpmnElement="EBPM_3f6504a0-4424-403a-9d69-a7f65878dbf4">
+        <di:waypoint x="1291.88" y="14766" />
+        <di:waypoint x="1291.88" y="14866" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_4deb2ba5-a470-4ccd-9270-3de9505f0335_di" bpmnElement="EBPM_4deb2ba5-a470-4ccd-9270-3de9505f0335">
+        <di:waypoint x="1304.38" y="14903.47" />
+        <di:waypoint x="1304.38" y="14931.5" />
+        <di:waypoint x="1466.88" y="14931.5" />
+        <di:waypoint x="1466.88" y="15016" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_863cc838-1af2-4332-95d1-68e90849893d_di" bpmnElement="EBPM_863cc838-1af2-4332-95d1-68e90849893d">
+        <di:waypoint x="1466.88" y="15096" />
+        <di:waypoint x="1466.88" y="15196" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_2597c10b-9372-46f7-b452-445f8445c66e_di" bpmnElement="EBPM_2597c10b-9372-46f7-b452-445f8445c66e">
+        <di:waypoint x="1479.38" y="15233.47" />
+        <di:waypoint x="1479.38" y="15284.2" />
+        <di:waypoint x="1606.38" y="15284.2" />
+        <di:waypoint x="1606.38" y="15346" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_2bb4b8c5-7071-4f38-b234-dad34b86ae9a_di" bpmnElement="EBPM_2bb4b8c5-7071-4f38-b234-dad34b86ae9a">
+        <di:waypoint x="1454.38" y="15233.53" />
+        <di:waypoint x="1454.38" y="15284.2" />
+        <di:waypoint x="1349.38" y="15284.2" />
+        <di:waypoint x="1349.38" y="15346" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_2c79d96c-51fa-4811-87e8-f00966511e53_di" bpmnElement="EBPM_2c79d96c-51fa-4811-87e8-f00966511e53">
+        <di:waypoint x="1279.38" y="15346" />
+        <di:waypoint x="1279.38" y="14903.53" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_d4bf1dff-ed59-4c64-85d4-583b89b8dc90_di" bpmnElement="EBPM_d4bf1dff-ed59-4c64-85d4-583b89b8dc90">
+        <di:waypoint x="1606.38" y="15426" />
+        <di:waypoint x="1606.38" y="15526" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_3aa43882-ec3d-474b-99e3-97247fcc7ff3_di" bpmnElement="EBPM_3aa43882-ec3d-474b-99e3-97247fcc7ff3">
+        <di:waypoint x="1606.38" y="15606" />
+        <di:waypoint x="1606.38" y="15706" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_efc9db82-af3f-4dfa-a212-b479910e5189_di" bpmnElement="EBPM_efc9db82-af3f-4dfa-a212-b479910e5189">
+        <di:waypoint x="1606.38" y="15786" />
+        <di:waypoint x="1606.38" y="15886" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_eaf7af08-36a9-4c39-bb87-593261d11295_di" bpmnElement="EBPM_eaf7af08-36a9-4c39-bb87-593261d11295">
+        <di:waypoint x="1606.38" y="15966" />
+        <di:waypoint x="1606.38" y="16066" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_994e6bf2-3a16-4374-b3c0-e823243a373f_di" bpmnElement="EBPM_994e6bf2-3a16-4374-b3c0-e823243a373f">
+        <di:waypoint x="1606.38" y="16146" />
+        <di:waypoint x="1606.38" y="16246" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_90c04dac-7e1c-4fe1-b852-40dfbc8b00ff_di" bpmnElement="EBPM_90c04dac-7e1c-4fe1-b852-40dfbc8b00ff">
+        <di:waypoint x="1606.38" y="16326" />
+        <di:waypoint x="1606.38" y="16426" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_f308c21c-ce2d-4b86-837e-d805e19c8747_di" bpmnElement="EBPM_f308c21c-ce2d-4b86-837e-d805e19c8747">
+        <di:waypoint x="1593.88" y="16463.53" />
+        <di:waypoint x="1593.88" y="16583" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_b9b2006f-dbdd-44c7-93a3-63b27c281f18_di" bpmnElement="EBPM_b9b2006f-dbdd-44c7-93a3-63b27c281f18">
+        <di:waypoint x="1618.88" y="16463.47" />
+        <di:waypoint x="1618.88" y="16514.2" />
+        <di:waypoint x="2364.83" y="16514.2" />
+        <di:waypoint x="2364.83" y="16592.66" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_72220bfc-6c8c-45a5-a8dc-24c304a08b37_di" bpmnElement="EBPM_72220bfc-6c8c-45a5-a8dc-24c304a08b37">
+        <di:waypoint x="2398.17" y="16592.66" />
+        <di:waypoint x="2398.17" y="16466.5" />
+        <di:waypoint x="2399.17" y="16466.5" />
+        <di:waypoint x="2399.17" y="7251.5" />
+        <di:waypoint x="2262.42" y="7251.5" />
+        <di:waypoint x="2262.42" y="7215.16" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="EBPM_44b0ba9c-54fb-4cbe-aab0-fc07a528714d_di" bpmnElement="EBPM_44b0ba9c-54fb-4cbe-aab0-fc07a528714d">
+        <di:waypoint x="2381.5" y="16576" />
+        <di:waypoint x="2381.5" y="10341.5" />
+        <di:waypoint x="2217.17" y="10341.5" />
+        <di:waypoint x="2217.17" y="10313.47" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
