@@ -44,6 +44,17 @@
         svg.localName !== "svg" || svg.namespaceURI !== SVG_NS) {
       throw new Error("无法生成流程图的 SVG 图像。");
     }
+    // 界面选中态不属于流程内容，导出时去掉，仅保留分类筛选效果。
+    Array.from(svg.getElementsByTagName("g")).forEach(function (element) {
+      var classes = (element.getAttribute("class") || "").split(/\s+/);
+      if (classes.indexOf("b2g-lane-controls") >= 0 && element.parentNode) {
+        element.parentNode.removeChild(element);
+        return;
+      }
+      if (classes.indexOf("b2g-edge-selected") >= 0) {
+        element.setAttribute("class", classes.filter(function (name) { return name !== "b2g-edge-selected"; }).join(" "));
+      }
+    });
     var box = (svg.getAttribute("viewBox") || "").trim().split(/[\s,]+/).map(Number);
     if (box.length !== 4 || !box.every(Number.isFinite) || box[2] <= 0 || box[3] <= 0) {
       throw new Error("流程图为空或没有有效的图形尺寸。");

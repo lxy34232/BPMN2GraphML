@@ -5,7 +5,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划编制策划" />
-          <b2g:property name="步骤描述" value="公司启动新一轮五年科技发展规划编制，由公司领导批示或上级通知下达编制任务，明确规划周期和总体时间要求。" />
+          <b2g:property name="步骤描述" value="新一轮科技发展规划编制任务已明确，规划周期和总体时间要求已确定，具备启动规划编制的条件。" />
           <b2g:property name="输入" value="上级及公司规划编制要求" />
           <b2g:property name="输出" value="科技规划编制任务通知" />
           <b2g:property name="责任主体" value="科技管理部门" />
@@ -17,7 +17,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划编制策划" />
-          <b2g:property name="步骤描述" value="科技管理部门依据编制任务和上一周期规划，明确规划期限、编制依据、编制范围（技术、产品、体系、保障）、组织方式、工作节点（需求收集、大纲、初稿、征求意见、评审、审议、发布）和成果形式。方案明确由规划编制工作组作为编制主体，需求、大纲、规划文本、科研指南和实施评估全部纳入DOORS结构化管理，并明确规划与年度科研指南、实施评估的衔接要求。方案同时明确以公司技术架构（技术地图，由TechArchi持续维护）及其多维统计数据作为研判技术方向、编写指南和评估技术体系投入产出的依据。" />
+          <b2g:property name="步骤描述" value="依据规划编制要求和上一周期实施情况，明确编制范围、工作阶段、进度安排和成果要求，形成规划编制工作方案。统筹需求分析、规划编制、年度指南和实施评估之间的衔接，明确技术架构与规划数据管理的应用要求。" />
           <b2g:property name="输入" value="科技规划编制任务通知" />
           <b2g:property name="输入" value="上一周期科技发展规划" />
           <b2g:property name="输入" value="公司科研管理制度" />
@@ -32,7 +32,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划编制策划" />
-          <b2g:property name="步骤描述" value="组建规划编制工作组，作为规划编制、指南编制和实施评估的统一执行主体。工作组由科技管理部门牵头，从相关部门抽调人员组成，内部按规划主题设置专题（产业与产品、技术研究、科技管理体系、设计开发体系、数智化转型、知识产权与标准化、保障措施），明确各专题的牵头人、成员、负责章节和交付节点，并在组内指定DOORS管理员负责模块配置、导入和基线操作。" />
+          <b2g:property name="步骤描述" value="围绕规划编制及后续实施管理需要，建立统筹协调与专题协同的工作机制，明确工作职责、协作关系和成果交付要求，为各阶段工作提供组织保障。" />
           <b2g:property name="输入" value="《科技规划编制工作方案》" />
           <b2g:property name="输出" value="规划编制工作组及专题组名单" />
           <b2g:property name="输出" value="专题分工表" />
@@ -47,7 +47,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划编制策划" />
-          <b2g:property name="步骤描述" value="制定规划数据在DOORS中的统一规则，作为后续导入、建链和基线管理的依据。一是文件夹与模块分层：01-政策文本（每份来源文件一个模块）、02-科技规划大纲、03-科技规划文本、04-科研项目指南（每年度一个模块）、05-科研项目台账、06-规划实施评估、07-修订意见。二是对象标识前缀：每个模块使用唯一前缀加文件序号（如CGDP-00、CRRC-00、ZELC-01、TPLP-00、TPDT-00），对象标识一经生成不再变更。三是对象拆分规则：一个对象表达一条完整要求，标题对象保留原文章节层级，并用“条目类型”属性区分标题、要点和说明。四是属性与枚举：统一使用“规划主题”（多值枚举）、“需求等级”（关键需求、一般需求、不纳入）、“处理说明”等属性，各模块的专用属性在模板中定义。科研项目指南和科研项目台账模块设“技术架构节点”属性，取值与技术地图中的节点一致，技术架构本身不进入DOORS。五是链接语义：链接一律从下游指向上游，每种关系使用独立链接模块，即依据（大纲至需求）、承接（规划至大纲）、落实（指南至规划）、实施（项目至指南）、评估（评估记录至规划）、针对（意见至被修订对象）。六是基线规则：编号采用“主版本.次版本+后缀”，编制过程草稿为0.x，正式发布为1.0，滚动修编后的正式版为2.0，正式版勘误为1.1，后缀写明用途（如征求意见稿、送审稿、2027年度评估）。在需求、大纲、规划发布等里程碑使用基线集（Baseline Set）对相关模块同时建立基线，保证同一时点的追溯关系一致。" />
+          <b2g:property name="步骤描述" value="围绕规划全生命周期管理，统一数据组织、内容粒度、属性分类、追溯关系和版本基线等要求，明确各类成果之间的衔接规则，为规划数据的规范管理和全过程追溯提供依据。" />
           <b2g:property name="输入" value="《科技规划编制工作方案》" />
           <b2g:property name="输出" value="《DOORS规划数据管理规范》" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -61,7 +61,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划编制策划" />
-          <b2g:property name="步骤描述" value="按规范在DOORS项目中建立01至07文件夹，为每类模块建立模板，包含属性定义、枚举类型和标准视图。建立依据、承接、落实、实施、评估、针对六个链接模块，在各模块属性中设置链接集配对，并只允许通过指定链接模块建链，避免使用默认的DOORS Links。标准视图包括：全文视图、追溯视图（用分析向导生成入向和出向链接列，即现有“深度为1的出向链接”列）、覆盖缺口视图（过滤没有入链或出链的要点对象）。设置访问权限：工作组成员按专题拥有编辑权限，其他人员只读，模块建立正式基线后转为只读。同时把现有政策文本模块中名称和取值不统一的字段（如“科技体系相关”“科技规划相关”“备注”）按模板迁移为“规划主题”“需求等级”“处理说明”。" />
+          <b2g:property name="步骤描述" value="依据规划数据管理规范，配置DOORS中的数据模块、基础模板、追溯关系和访问控制，形成统一的数据管理环境，支持规划成果的规范导入、协同维护和版本管理。" />
           <b2g:property name="输入" value="《DOORS规划数据管理规范》" />
           <b2g:property name="输出" value="DOORS模块模板与链接模块" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -88,7 +88,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="收集与公司业务相关的国家和行业上位规划，如国民经济和社会发展五年规划纲要、国家科技创新规划、铁路科技创新五年规划、城市轨道交通智慧城轨发展纲要，以及交通强国、能源和新兴产业专项规划。登记发布单位、发布日期和版本，优先使用正式发布稿，暂用征求意见稿的须标注，正式稿发布后替换。" />
+          <b2g:property name="步骤描述" value="收集与业务发展和科技创新相关的国家及行业政策规划，识别战略导向、重点任务和约束要求。核实资料的有效性与适用范围，形成可作为规划依据的政策资料集。" />
           <b2g:property name="输入" value="国家及行业政策规划原文" />
           <b2g:property name="输出" value="国家及行业政策规划文件集" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -101,7 +101,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="收集集团层面的发展战略纲要、科技发展规划、数智化转型方案和相关专项规划，重点识别对子公司的承接要求，如“一鼎两环三支撑”大创新体系、“1+M+N+X”规划体系、“双赛道双集群”产业布局和集团考核指标。" />
+          <b2g:property name="步骤描述" value="收集集团战略、科技规划及相关专项部署，梳理需要承接的目标、任务和管理要求，形成上位战略与科技发展要求清单。" />
           <b2g:property name="输入" value="集团战略与科技规划原文" />
           <b2g:property name="输出" value="集团战略与科技规划文件集" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -114,7 +114,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="收集公司党代会报告、战略规划务虚会和科技规划务虚会领导讲话、公司五年发展规划等文件，提炼公司中心任务（如建设“新质株机”）、战略工程和对科技创新的明确要求。领导讲话中的定性要求和公司发展规划中的量化目标都要纳入。行业技术趋势和对标研究的结论已体现在这些文件和各单位科技需求中，不单独开展研究。" />
+          <b2g:property name="步骤描述" value="收集公司战略规划、重要部署及相关讲话材料，提炼发展方向、重点任务和科技创新要求，明确科技规划需要支撑的战略目标。" />
           <b2g:property name="输入" value="公司党代会报告及务虚会讲话" />
           <b2g:property name="输入" value="公司五年发展规划" />
           <b2g:property name="输出" value="公司战略部署与领导讲话文件集" />
@@ -128,7 +128,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="以上一周期“科技规划实施评估”子流程形成的总结评估报告为依据，提取代表性成果（作为新规划的发展基础）、主要指标完成情况、未完成或退出的任务及原因、组织能力、技术管理和设计开发三个体系维度的问题（作为新规划的存在问题），形成上一周期发展基础与问题清单。上一周期未按本流程开展总结评估的，先按“科技规划实施评估”子流程补做一次总结评估。" />
+          <b2g:property name="步骤描述" value="依据上一周期规划总结评估成果，梳理发展基础、主要成效、未完成任务及存在问题，形成新一轮规划编制的基础与问题清单。对评估依据不足的内容补充分析，确保结论能够支撑后续研判。" />
           <b2g:property name="输入" value="《规划实施评估报告》" />
           <b2g:property name="输出" value="上一周期发展基础与问题清单" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -141,7 +141,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="向各业务单位、分子公司、营销和服务部门征集科技需求，覆盖市场与用户需求、产品竞争力短板、现场质量问题、全寿命周期服务、海外区域适配需求以及各单位日常跟踪的技术趋势和对标结论。按统一模板填写需求背景、期望目标、紧迫程度和关联产品，体现“需求牵引”原则。" />
+          <b2g:property name="步骤描述" value="面向业务发展与市场用户需求，收集产品升级、技术突破、质量改进和服务提升等方面的科技需求，梳理需求背景、预期目标和紧迫程度，形成科技需求汇总成果。" />
           <b2g:property name="输入" value="业务单位科技需求反馈" />
           <b2g:property name="输入" value="用户与现场问题记录" />
           <b2g:property name="输出" value="业务单位与市场用户科技需求汇总表" />
@@ -169,7 +169,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="按《DOORS规划数据管理规范》把收集到的文件整理成可导入的结构化文本。在Word中用标题样式标出原文章节层级，正文拆分到“一个对象表达一条完整要求”的粒度，清除页眉页脚、目录、图表说明等无关内容，统一标点和编号格式，每份文件形成一个待导入文本并登记来源和版本。需求汇总表和上一周期发展基础与问题清单同样结构化后导入。" />
+          <b2g:property name="步骤描述" value="对收集的政策、战略、业务需求及历史评估材料进行归纳整理，统一内容层级和表达粒度，保留来源信息，形成适合分类管理和后续追溯的结构化需求文本。" />
           <b2g:property name="输入" value="国家及行业政策规划文件集" />
           <b2g:property name="输入" value="集团战略与科技规划文件集" />
           <b2g:property name="输入" value="公司战略部署与领导讲话文件集" />
@@ -197,7 +197,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="DOORS管理员用政策文本模板在“01-政策文本”下为每份文件建立模块，模块名采用“序号+文件名称”，通过Word导入把标题样式映射为DOORS标题层级。导入后设置“条目类型”属性，在模块属性中记录来源文件、发布单位、版本和导入日期。" />
+          <b2g:property name="步骤描述" value="按照统一规范将结构化需求导入DOORS，维护需求分类、来源和版本信息，保持原有内容层级与完整性，形成可用于分析和追溯的需求数据。" />
           <b2g:property name="输入" value="结构化需求文本" />
           <b2g:property name="输入" value="DOORS模块模板与链接模块" />
           <b2g:property name="输出" value="政策文本DOORS模块（导入稿）" />
@@ -212,7 +212,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="判定标准：抽查对象内容与原文一致，无遗漏、无乱码，标题层级与原文章节一致，对象粒度符合“一条要求一个对象”，模块命名、对象前缀和属性符合规范。全部满足为合格，任一项不满足为不合格，记录问题后退回修正。" />
+          <b2g:property name="步骤描述" value="检查导入内容与原始资料的一致性、完整性和结构规范性。满足要求后进入需求标注；存在遗漏、失真或结构问题的，退回修正。" />
           <b2g:property name="输出" value="导入质量核查记录" />
           <b2g:property name="责任主体" value="规划编制工作组" />
         </b2g:properties>
@@ -225,7 +225,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="根据导入质量核查记录定位问题，修正结构化文本的拆分粒度、层级、编号或字符问题。问题较多的模块删除后重新导入，个别问题直接在DOORS中修正。" />
+          <b2g:property name="步骤描述" value="依据质量核查结果，修正需求文本中的内容遗漏、层级划分和表达不规范等问题，同步更新相关数据，直至满足导入质量要求。" />
           <b2g:property name="输入" value="导入质量核查记录" />
           <b2g:property name="输入" value="结构化需求文本" />
           <b2g:property name="输出" value="结构化需求文本" />
@@ -239,7 +239,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="工作组按专题分工逐模块阅读政策文本，对与公司科技规划相关的要点对象填写“规划主题”属性（如总体战略、科技体系、产业升级、人才队伍、战新产业、质量管理、数智转型），一个对象可选多个主题。在“需求等级”属性中区分关键需求（上级明确下达的目标、指标和任务，以及公司领导明确提出的要求）、一般需求和不纳入。用“需求等级=关键需求”的过滤视图导出关键需求清单，作为大纲覆盖性分析的检查对象。" />
+          <b2g:property name="步骤描述" value="依据规划范围对需求条目进行主题分类，识别关键要求和优先事项，区分纳入规划与暂不纳入的内容并说明理由，形成关键需求清单。" />
           <b2g:property name="输入" value="政策文本DOORS模块（导入稿）" />
           <b2g:property name="输入" value="专题分工表" />
           <b2g:property name="输出" value="主题标注后的政策文本DOORS模块" />
@@ -255,7 +255,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划需求收集" />
-          <b2g:property name="步骤描述" value="主题标注完成后，用基线集对“01-政策文本”下的全部模块同时建立基线1.0，后缀写明规划周期（如“十五五需求”），大纲链接均以该基线为准。上位文件正式稿替换征求意见稿时，更新对应模块并建立1.1基线，同时检查受影响的链接。" />
+          <b2g:property name="步骤描述" value="对确认后的需求内容、分类结果及相关信息建立受控基线，作为大纲编制和追溯分析的共同依据。后续需求变化按版本管理要求更新，并评估其影响。" />
           <b2g:property name="输入" value="主题标注后的政策文本DOORS模块" />
           <b2g:property name="输出" value="科技规划需求基线" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -269,7 +269,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="在DOORS中按“规划主题”分组查看需求，汇总每个主题下的上级要求、公司要求和发展短板。对每个主题回答三个问题：上级要求做什么、公司战略要求做什么、我们现在差在哪里。其中“差在哪里”的技术部分，用技术架构多维统计数据说明各根技术和关键技术族的投入、成果、研究情况和质量问题。把相近的需求归并成规划主题，识别需求之间的冲突和优先级，形成规划需求研判报告。" />
+          <b2g:property name="步骤描述" value="综合上位要求、发展目标、业务需求和现有能力，分析主要差距、需求冲突及优先级，归纳规划主题和重点关注方向，形成规划需求研判结论。" />
           <b2g:property name="输入" value="科技规划需求基线" />
           <b2g:property name="输入" value="关键需求清单" />
           <b2g:property name="输入" value="上一周期发展基础与问题清单" />
@@ -287,7 +287,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="依据研判结果确定大纲的一、二级章节，原则上承接上位科技规划的结构并对应公司战略工程。参考框架：总体要求、双赛道产业布局与提质（按机车、城轨、动车组、磁浮、产品+、维保、战新板块展开）、技术研究（根技术、软件定义产品、核心技术攻关、自主化、碳管理）、科技管理体系、设计开发体系、数智化转型、知识产权与标准化、保障措施。其中技术研究部分按公司技术架构的四大根技术（系统集成、复杂结构、能源动力、控制算法）组织，使规划技术方向与技术架构对应。框架经工作组讨论确认后，把二级章节分配到各专题。" />
+          <b2g:property name="步骤描述" value="依据需求研判结果，统筹战略目标、产业发展、技术布局和体系建设等内容，确定规划大纲的总体结构与主题边界，形成层次清晰、相互衔接的编制框架。" />
           <b2g:property name="输入" value="《规划需求研判报告》" />
           <b2g:property name="输入" value="专题分工表" />
           <b2g:property name="输入" value="公司技术架构" />
@@ -302,7 +302,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="工作组按专题在大纲框架下编写大纲条目。每个条目提炼一个规划要点（方向、目标或任务），用一句话表述，并在条目后注明所依据需求对象的标识（如ZELC-00-162），供后续建链使用。条目要说明“为什么做”（依据）和“做什么”（要点），不展开具体实施内容。" />
+          <b2g:property name="步骤描述" value="围绕已确定的大纲框架，提炼各主题的主要方向、目标和任务，说明其需求依据与规划意图，形成能够指导后续文本编写的大纲条目。" />
           <b2g:property name="输入" value="科技规划大纲框架" />
           <b2g:property name="输入" value="主题标注后的政策文本DOORS模块" />
           <b2g:property name="输入" value="关键需求清单" />
@@ -317,7 +317,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="用大纲模板建立“02-科技规划大纲”模块（前缀TPLP），导入大纲草稿，章节为标题对象，条目为要点对象，并填写“所属专题”属性。条目注明的依据标识暂存在“依据标识”临时属性中，供建链使用。" />
+          <b2g:property name="步骤描述" value="按照统一规范将大纲内容导入DOORS，保持章节与条目的层级关系，补充必要的分类和依据信息，形成可维护、可追溯的大纲数据。" />
           <b2g:property name="输入" value="科技规划大纲草稿" />
           <b2g:property name="输入" value="DOORS模块模板与链接模块" />
           <b2g:property name="输出" value="科技规划大纲DOORS模块" />
@@ -332,7 +332,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="按“依据标识”属性，从大纲对象向政策文本对象创建“依据”链接，一个大纲条目可以链接多个需求对象。条目较多时可用DXL脚本按依据标识批量建链。建链后打开追溯视图，逐条核对链接目标与依据是否一致，核对完成后清空“依据标识”属性。" />
+          <b2g:property name="步骤描述" value="建立大纲条目与相关需求之间的依据关系，核实关联内容的准确性与完整性，使大纲内容能够追溯到相应的规划需求。" />
           <b2g:property name="输入" value="科技规划大纲DOORS模块" />
           <b2g:property name="输入" value="科技规划需求基线" />
           <b2g:property name="输出" value="大纲至需求追溯链接" />
@@ -357,7 +357,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="在DOORS中做双向追溯检查。正向检查：在政策文本模块中用覆盖缺口视图过滤“需求等级=关键需求”且没有入链的对象，再对一般需求统计覆盖率。反向检查：在大纲模块中过滤没有出链的要点对象，确认是否为公司自主提出的内容，并在“处理说明”中补充依据。形成需求覆盖性分析报告，列出未覆盖需求和处理建议（补充条目、并入已有条目、说明不纳入理由）。" />
+          <b2g:property name="步骤描述" value="分析大纲对关键需求和一般需求的覆盖情况，核查大纲条目的依据是否充分，识别遗漏、重复及缺乏依据的内容，形成覆盖性分析结论和完善建议。" />
           <b2g:property name="输入" value="大纲至需求追溯链接" />
           <b2g:property name="输入" value="关键需求清单" />
           <b2g:property name="输出" value="《需求覆盖性分析报告》" />
@@ -372,7 +372,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="判定标准：关键需求全部有大纲入链，或已在“处理说明”中记录经工作组确认的不纳入理由。一般需求的覆盖率作为参考，不作为否决条件。没有出链的大纲要点都已有依据说明。" />
+          <b2g:property name="步骤描述" value="检查关键需求是否已在大纲中体现，未纳入内容是否具有经确认的理由，大纲条目是否具备充分依据。满足要求后进入大纲审查，否则补充调整。" />
           <b2g:property name="责任主体" value="规划编制工作组" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -384,7 +384,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="工作组组织研讨大纲，并请分管领导参加。审查重点：框架是否完整承接上位规划和公司战略，主题之间有无重叠或遗漏，条目方向是否清晰、能否展开为规划内容，与公司发展规划的目标是否一致。研讨结论形成大纲审查意见。" />
+          <b2g:property name="步骤描述" value="对大纲框架、主题设置和主要方向开展研讨审查，重点判断其与上位要求、发展战略及规划需求的衔接情况，形成大纲审查意见。" />
           <b2g:property name="输入" value="科技规划大纲DOORS模块" />
           <b2g:property name="输入" value="《需求覆盖性分析报告》" />
           <b2g:property name="输出" value="大纲审查意见" />
@@ -398,7 +398,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="判定标准：审查意见中没有“框架调整”或“方向性修改”类意见即为通过，文字性意见在发布基线前直接修改。存在方向性意见时退回补充调整。" />
+          <b2g:property name="步骤描述" value="依据审查结论判断大纲是否满足编制要求。不存在影响框架和主要方向的实质性问题，且一般修改意见已明确处理安排的，进入基线发布；否则退回调整。" />
           <b2g:property name="责任主体" value="规划编制工作组" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -420,7 +420,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="根据需求覆盖性分析报告或大纲审查意见，在DOORS大纲模块中新增、修改或合并条目，同步补充或调整“依据”链接。对决定不纳入的需求，把“需求等级”改为不纳入并在“处理说明”中记录理由。调整后重新开展覆盖性分析。" />
+          <b2g:property name="步骤描述" value="依据覆盖性分析和审查意见，补充、调整或整合大纲条目，同步完善需求依据和追溯关系，对未采纳内容说明理由，形成满足审查要求的大纲成果。" />
           <b2g:property name="输入" value="《需求覆盖性分析报告》" />
           <b2g:property name="输入" value="大纲审查意见" />
           <b2g:property name="输出" value="科技规划大纲DOORS模块" />
@@ -436,7 +436,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划大纲制定" />
-          <b2g:property name="步骤描述" value="对“02-科技规划大纲”模块建立基线1.0，后缀写明审查通过日期。大纲基线是规划文本编写和建链的依据，基线发布后大纲如需调整，须经工作组确认并建立1.1等后续基线。" />
+          <b2g:property name="步骤描述" value="对审查确认的大纲建立受控基线，作为规划文本编制和追溯管理的依据。后续大纲调整履行确认程序，并保留版本变化记录。" />
           <b2g:property name="输入" value="科技规划大纲DOORS模块" />
           <b2g:property name="输入" value="大纲审查意见" />
           <b2g:property name="输出" value="科技规划大纲基线" />
@@ -451,7 +451,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="把大纲转化为规划文本的章节结构，按“形势—要求—任务—保障”的逻辑组织：摘要、发展基础与形势要求、总体要求、关键技术布局、重点产品开发、科技创新体系建设、规划实施保障。建立大纲章节与规划章节的对应表（如大纲“技术研究”对应规划“强化关键技术布局”，大纲“双赛道产业布局”对应规划“推进重点产品开发”），按对应关系把各章分配到专题并指定统稿人，统一专栏表格的格式。" />
+          <b2g:property name="步骤描述" value="将大纲要求转化为规划文本的章节结构，明确各部分的内容边界、衔接关系和编写安排，统一表达要求，形成规划文本编制框架。" />
           <b2g:property name="输入" value="科技规划大纲基线" />
           <b2g:property name="输入" value="专题分工表" />
           <b2g:property name="输出" value="规划章节结构及编写分工表" />
@@ -466,7 +466,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="按“基础—问题—要求—趋势”四个维度编写第一章。发展基础取自上一周期总结评估的代表性成果，以专栏列出。存在问题按组织能力、技术管理、设计开发三个体系维度归纳，技术层面的问题用技术架构多维统计数据支撑（如短板关键技术族、对外依赖程度高的技术、投入结构失衡），每个问题都要能对应到后续章节的任务。上级及公司要求按国家行业、集团、公司三个层级提炼。行业技术趋势从上位规划、公司战略文件和各单位科技需求中的相关论述归纳。章末用一段话归纳本周期科技工作的总体着力点，作为总体要求的输入。" />
+          <b2g:property name="步骤描述" value="综合发展基础、外部形势、战略要求和技术趋势，分析现有能力与发展目标之间的主要差距，识别本周期需要重点解决的问题，为目标设定和任务布局提供依据。" />
           <b2g:property name="输入" value="上一周期发展基础与问题清单" />
           <b2g:property name="输入" value="科技规划需求基线" />
           <b2g:property name="输入" value="科技规划大纲基线" />
@@ -483,7 +483,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="编写第二章总体要求。指导思想承接上位规划的表述并落到公司中心任务。基本原则从规划需求研判中提炼（如战略牵引、需求牵引、分层协同、平台复用、开放协同与自主可控、价值导向），每条原则都应在后续任务中有所体现。发展目标先写期末总体目标，再按技术供给、产品开发、研发与工程转化、数智与服务、创新体系效能等能力维度分述，并与第一章提出的问题对应。" />
+          <b2g:property name="步骤描述" value="依据战略要求和形势研判结果，明确规划的指导思想、基本原则与总体目标，分解形成相互支撑的发展目标，确保目标与主要问题及能力建设需求相对应。" />
           <b2g:property name="输入" value="规划第一章《发展基础与形势要求》稿" />
           <b2g:property name="输入" value="《规划需求研判报告》" />
           <b2g:property name="输入" value="科技规划大纲基线" />
@@ -498,7 +498,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="从上位规划的考核指标和公司发展目标中选取科技主要指标（如科技奖励、发明专利、海外专利、标准、研发投入强度、基础研究投入占比、研发人员占比、成果转化收入、高质量数据集、碳足迹核算）。每个指标以上一周期实际值和增长趋势为基础测算期末目标，区分“五年累计”与“期末值”，并测算各年度应达值，供年度评估对照。与人力资源、财务、知识产权等职能部门逐项确认统计口径和数据来源，形成主要指标表，口径说明写入专栏。指标口径同时作为实施评估的数据采集口径。" />
+          <b2g:property name="步骤描述" value="围绕规划目标选取主要指标，结合历史基础、发展趋势和资源条件测算目标水平，明确统计口径、数据来源及阶段要求，形成可用于实施跟踪和评估的指标体系。" />
           <b2g:property name="输入" value="规划第二章《总体要求》稿" />
           <b2g:property name="输入" value="《规划实施评估报告》" />
           <b2g:property name="输入" value="集团战略与科技规划文件集" />
@@ -526,7 +526,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="按“分层”原则编写技术布局章节。根技术按公司技术架构的系统集成、复杂结构、能源动力、控制算法组织，侧重长期积累，写研究重点和要积累的方法、模型与验证能力。研究重点参照技术架构多维统计数据确定：质量问题多而研究投入少的关键技术族列为重点，委外以技术研究和计算仿真为主的技术加强自主研究，委外以检测试验为主的技术纳入试验验证能力建设，投入过度集中或长期空白的方向说明取舍理由。下一代关键技术侧重任务突破，每项写研究目标、验证场景和产品承接要求，并注明涉及的关键技术族。全寿命周期技术（造修一体、状态修、延寿评估）以重点任务专栏列出。战新及未来产业技术储备说明与主业的协同关系，按成熟度分阶段投入。判断一项技术放在哪一层的依据：是否跨产品共性、是否有明确的产品承接对象、成熟度高低。" />
+          <b2g:property name="步骤描述" value="结合技术架构、能力差距和发展需求，统筹基础共性技术、关键技术攻关及前沿技术储备，明确重点研究方向、能力建设目标和应用衔接要求，形成分层推进的技术布局。" />
           <b2g:property name="输入" value="规划第二章《总体要求》稿" />
           <b2g:property name="输入" value="科技规划大纲基线" />
           <b2g:property name="输入" value="科技规划需求基线" />
@@ -544,7 +544,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="按车辆产品（机车、城轨、动车组、磁浮）、“产品+”与数智产业产品、战新及未来产业产品三类编写产品开发章节。每类先写期末产品谱系目标，再以专栏列出重点产品及方向，每个产品写清面向的市场、核心技术和要达到的能力。筛选重点产品的依据：有无明确市场需求、能否支撑主业升级或服务转型、能否复用技术平台成果。战新产业突出产品定义和场景验证，未来产业按原理样机、典型场景、商业可行性分阶段验证。数智产品可按年份写出分阶段推进安排。" />
+          <b2g:property name="步骤描述" value="面向市场需求和产业发展方向，确定重点产品布局与能力提升目标，明确关键技术支撑、成果承接和阶段推进要求，形成与技术布局协同的产品开发规划。" />
           <b2g:property name="输入" value="规划第二章《总体要求》稿" />
           <b2g:property name="输入" value="科技规划大纲基线" />
           <b2g:property name="输入" value="业务单位与市场用户科技需求汇总表" />
@@ -559,7 +559,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="编写科技创新体系章节，任务直接对应第一章提出的体系问题。内容包括：科技治理与研发组织（技术委员会、研发分工、多地资源统筹、立项与规划贯通），正向研发与成果转化（需求与构型管理、分层研发、技术平台管理、成熟度评价、转化路径），开放协同与知识产权标准认证，工艺与质量体系，工艺材料与试验验证。每项任务写明要建立的机制或能力，涉及权限和机构设置的写为“按公司制度落实”。" />
+          <b2g:property name="步骤描述" value="针对科技创新体系中的主要问题，提出治理协同、研发管理、成果转化和支撑能力建设等方面的任务，明确需要完善的机制与能力，增强创新体系运行效能。" />
           <b2g:property name="输入" value="规划第一章《发展基础与形势要求》稿" />
           <b2g:property name="输入" value="规划第二章《总体要求》稿" />
           <b2g:property name="输入" value="科技规划大纲基线" />
@@ -574,7 +574,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="编写实施保障章节，包括科技人才、科技投入、研发基础条件、规划实施与评估。实施安排分三个阶段（如夯基整合、突破示范、固化收官），每个阶段写明重点任务和阶段成果。明确年度调度机制（年初定目标、季度跟踪、半年度专题评估、年度报告）、年度评估、中期评估和总结评估的时点与内容，风险清单（技术路线、供应、知识产权、标准认证、数据网络安全、进度、成果转化）和滚动修编的触发条件，并规定规划任务通过年度科研指南落地。" />
+          <b2g:property name="步骤描述" value="围绕规划落实需要，提出人才、投入、基础条件和协同机制等保障措施，明确阶段实施安排、跟踪评估、风险应对及滚动调整要求，形成与重点任务相匹配的实施保障体系。" />
           <b2g:property name="输入" value="规划第二章《总体要求》稿" />
           <b2g:property name="输入" value="主要指标表及口径说明" />
           <b2g:property name="输入" value="公司科研管理制度" />
@@ -601,7 +601,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="汇总第三至五章的专栏和重点任务，形成规划重点任务清单。每项任务写明任务编号、依据（对应的大纲条目）、牵头和协同单位、阶段节点、资源需求、预期成果和验收要求。检查任务与发展目标、主要指标是否对应，避免出现没有任务支撑的目标或没有目标指向的任务。该清单是年度分解、科研指南编制和实施评估的直接依据。" />
+          <b2g:property name="步骤描述" value="汇总规划中的重点任务，明确目标依据、阶段安排、资源需求和成果要求，核查任务与发展目标、主要指标之间的对应关系，形成支撑年度分解、指南编制和实施评估的任务清单。" />
           <b2g:property name="输入" value="规划第三章《关键技术布局》稿" />
           <b2g:property name="输入" value="规划第四章《重点产品开发》稿" />
           <b2g:property name="输入" value="规划第五章《科技创新体系建设》稿" />
@@ -618,7 +618,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="统稿人合并各章并编写摘要，统一术语、数据和表述风格。做一致性检查：问题与任务对应、目标与指标对应、任务与保障对应，各章引用的产品和技术名称一致，指标数值与口径说明一致。删除与规划层级不符的过细内容（如具体项目），形成规划初稿。" />
+          <b2g:property name="步骤描述" value="整合各部分编制成果，统一术语、数据口径和表达风格，检查目标、任务与保障措施之间的一致性，协调交叉内容和衔接问题，形成完整的规划初稿。" />
           <b2g:property name="输入" value="规划第一章《发展基础与形势要求》稿" />
           <b2g:property name="输入" value="规划第二章《总体要求》稿" />
           <b2g:property name="输入" value="规划第三章《关键技术布局》稿" />
@@ -638,7 +638,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="用规划文本模板建立“03-科技规划文本”模块（前缀TPDT）并导入初稿，章节为标题对象，正文按“一个对象一个要点”拆分，专栏表格每行一个对象。重点任务对象填写“任务编号”“牵头单位”“计划节点”属性，供年度分解和实施评估使用。导入后核对对象层级与章节是否一致。" />
+          <b2g:property name="步骤描述" value="按照统一规范将规划初稿导入DOORS，保持章节结构和内容完整性，完善重点任务等必要信息，形成用于修订、追溯和后续实施管理的规划数据。" />
           <b2g:property name="输入" value="科技发展规划初稿" />
           <b2g:property name="输入" value="规划重点任务清单" />
           <b2g:property name="输入" value="DOORS模块模板与链接模块" />
@@ -654,7 +654,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="按大纲与规划章节对应表，从规划对象向大纲对象创建“承接”链接，一个规划对象可以链接多个大纲条目。摘要和过渡性段落的“条目类型”设为说明，可以不建链。" />
+          <b2g:property name="步骤描述" value="建立规划内容与大纲条目之间的承接关系，明确规划目标和任务的大纲依据，形成需求、大纲与规划相互贯通的追溯链路。" />
           <b2g:property name="输入" value="科技发展规划DOORS模块" />
           <b2g:property name="输入" value="科技规划大纲基线" />
           <b2g:property name="输入" value="大纲与规划章节对应表" />
@@ -680,7 +680,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="在DOORS中用覆盖缺口视图检查：大纲模块中没有任何规划入链的要点（大纲要点未被承接），以及规划模块中没有出链的要点（规划新增内容）。对未承接的大纲要点提出处理建议（补充规划内容或说明不承接理由），对规划新增内容确认其合理性。再用分析向导生成“需求—大纲—规划”两级追溯视图，检查关键需求是否最终落到规划要点上。最后对照技术架构多维统计数据，检查统计显示的短板关键技术族是否都有规划内容。" />
+          <b2g:property name="步骤描述" value="检查规划对大纲要点和关键需求的承接情况，分析新增内容的合理性及重点技术方向的覆盖程度，识别承接缺口，形成完善规划内容与追溯关系的建议。" />
           <b2g:property name="输入" value="规划至大纲追溯链接" />
           <b2g:property name="输入" value="大纲至需求追溯链接" />
           <b2g:property name="输入" value="关键需求清单" />
@@ -697,7 +697,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="判定标准：大纲要点全部有规划入链或已记录经确认的不承接理由，关键需求经两级链接都能追溯到规划要点，规划新增的实质性内容均已确认，统计显示的短板关键技术族都有规划内容或经确认的暂不布局理由。" />
+          <b2g:property name="步骤描述" value="检查大纲要点和关键需求是否在规划中得到承接，未承接内容及新增内容是否具有经确认的依据。满足要求后进入征求意见阶段，否则补充调整。" />
           <b2g:property name="责任主体" value="规划编制工作组" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -709,7 +709,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="根据大纲承接性分析报告，在DOORS规划模块中补充或修改规划内容并补建链接，对不承接的大纲要点在其“处理说明”中记录理由。调整后重新开展承接性分析。" />
+          <b2g:property name="步骤描述" value="依据承接性分析结果，补充或调整规划内容，完善与大纲和需求的关联关系，对暂不承接的内容说明理由，并重新核查调整后的完整性与一致性。" />
           <b2g:property name="输入" value="《大纲承接性分析报告》" />
           <b2g:property name="输出" value="科技发展规划DOORS模块" />
           <b2g:property name="输出" value="规划至大纲追溯链接" />
@@ -724,7 +724,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划制定" />
-          <b2g:property name="步骤描述" value="用基线集对需求、大纲、规划三类模块同时建立基线，规划模块为0.1（后缀“征求意见稿”），并从基线导出征求意见稿文本。此后的修订都在当前版本上进行，可以随时与该基线比较，得到修订对照。" />
+          <b2g:property name="步骤描述" value="对需求、大纲和规划的阶段成果建立协调一致的基线，形成可用于征求意见的规划版本，为后续修订比较和意见处理提供稳定依据。" />
           <b2g:property name="输入" value="科技发展规划DOORS模块" />
           <b2g:property name="输入" value="《大纲承接性分析报告》" />
           <b2g:property name="输出" value="科技发展规划征求意见稿基线" />
@@ -740,7 +740,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="工作组通过OA发出征求意见通知并附征求意见稿，向公司各部门、分子公司和外部专家征求意见。意见表包含对象标识（征求意见稿导出时保留）、原文、修改建议和理由，要求每条意见对应到具体对象，便于导入DOORS逐条处理。" />
+          <b2g:property name="步骤描述" value="围绕规划征求意见稿开展意见征集，明确反馈范围、重点内容和时间要求，引导意见对应具体条目或主题，形成可供研究处理的修订意见。" />
           <b2g:property name="输入" value="科技发展规划征求意见稿" />
           <b2g:property name="输出" value="修订意见征集通知" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -754,7 +754,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="各单位和专家按意见表格式反馈修订意见并说明理由。涉及指标调整的提供测算依据，涉及新增任务的说明所依据的需求或问题。" />
+          <b2g:property name="步骤描述" value="结合发展需求和实际情况，对规划目标、重点方向、任务安排及保障措施提出修改建议，说明问题依据和调整理由，为规划完善提供参考。" />
           <b2g:property name="输入" value="修订意见征集通知" />
           <b2g:property name="输入" value="科技发展规划征求意见稿" />
           <b2g:property name="输出" value="科技发展规划修订意见" />
@@ -784,7 +784,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="把征求意见、各级评审意见、审议意见和规划修编需求导入“07-修订意见”模块，每条意见一个对象，填写“意见来源”“提出单位”“意见轮次”属性，并按意见表中的对象标识建立指向规划对象的“针对”链接。不能对应到具体对象的总体性意见，链接到相应章节标题。" />
+          <b2g:property name="步骤描述" value="将征求意见、评审审议意见及修编需求纳入DOORS统一管理，记录必要的来源和阶段信息，建立意见与相关规划内容的对应关系，支持逐项处理和过程追溯。" />
           <b2g:property name="输入" value="科技发展规划修订意见" />
           <b2g:property name="输入" value="一级评审意见" />
           <b2g:property name="输入" value="二级评审意见" />
@@ -804,7 +804,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="工作组逐条讨论意见，在“处理结论”属性中填写采纳、部分采纳或不采纳，在“处理说明”中写明修改方式或不采纳理由。涉及目标、指标或重点方向调整的意见，提交分管领导确定。从DOORS导出意见视图作为修订意见处理表，用于修订和后续评审的说明材料。" />
+          <b2g:property name="步骤描述" value="对修订意见逐条分析论证，形成采纳、部分采纳或不采纳的处理结论并说明理由。涉及重大调整的履行必要的确认程序，形成修订意见处理成果。" />
           <b2g:property name="输入" value="修订意见DOORS模块" />
           <b2g:property name="输入" value="意见至规划追溯链接" />
           <b2g:property name="输出" value="修订意见处理表" />
@@ -819,7 +819,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="按修订意见处理表直接在DOORS规划模块中修改对象，新增对象按规范设置属性，删除采用软删除并保留历史。改动较大的章节可以在DOORS外修改后对照更新，保证DOORS模块始终是规划文本的唯一权威版本。修订后与上一基线比较，导出修订对照表。" />
+          <b2g:property name="步骤描述" value="依据确认的意见处理结论修订规划内容，同步更新DOORS中的相关数据，保留必要的变更记录，形成内容一致、过程可追溯的规划修订稿。" />
           <b2g:property name="输入" value="修订意见处理表" />
           <b2g:property name="输入" value="科技发展规划DOORS模块" />
           <b2g:property name="输出" value="科技发展规划DOORS模块" />
@@ -835,7 +835,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="规划或大纲对象修改后，相关链接会被标为疑似链接。逐条查看疑似链接，确认链接关系是否仍然成立：成立的清除疑似标记，不成立的删除或改建。为新增对象补建“承接”链接，必要时重新开展大纲承接性分析。修订涉及大纲调整的，同步更新大纲模块并建立大纲1.1基线。" />
+          <b2g:property name="步骤描述" value="评估规划内容变更对需求、大纲及相关成果的影响，复核存在疑问的追溯关系，补充或调整关联内容，必要时同步修订大纲，确保追溯链路准确有效。" />
           <b2g:property name="输入" value="科技发展规划DOORS模块" />
           <b2g:property name="输入" value="规划修订对照表" />
           <b2g:property name="输出" value="规划至大纲追溯链接" />
@@ -851,7 +851,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="工作组组织专家组（内部专家，必要时邀请外部专家）评审规划修订稿。评审重点：形势判断是否准确、目标指标是否合理可达、技术和产品方向是否正确、任务能否落地、与上位规划和公司发展规划是否衔接。评审材料包括规划修订稿、修订意见处理表和追溯关系复核记录。形成一级评审意见。" />
+          <b2g:property name="步骤描述" value="对规划修订稿开展专业评审，重点评价形势判断、目标指标、技术与产品方向及任务安排的合理性和可行性，结合意见处理情况形成一级评审结论。" />
           <b2g:property name="输入" value="科技发展规划DOORS模块" />
           <b2g:property name="输入" value="修订意见处理表" />
           <b2g:property name="输入" value="追溯关系复核记录" />
@@ -867,7 +867,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="判定标准：专家组结论为“通过”的进入二级评审。结论为“修改后通过”且只有文字性意见的，由工作组确认修改到位后视为通过。结论为“不通过”或存在方向性意见的，评审意见导入DOORS逐条处理，修订后重新评审。" />
+          <b2g:property name="步骤描述" value="依据一级评审结论判断是否进入二级评审。评审通过或一般修改已确认落实的，继续后续流程；存在影响规划质量的实质性问题时，退回修订并重新评审。" />
           <b2g:property name="责任主体" value="专家组" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -879,7 +879,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="工作组提请公司技术委员会评审，发挥其对科技战略、技术路线和重大事项的决策支撑作用。评审重点：规划与公司战略的一致性、重大方向和资源投入的合理性、主要指标的可行性、跨部门任务的责任分工。形成二级评审意见。" />
+          <b2g:property name="步骤描述" value="在专业评审基础上，对规划的战略一致性、重大方向、资源配置和实施可行性进行综合评审，形成二级评审意见及后续完善要求。" />
           <b2g:property name="输入" value="科技发展规划DOORS模块" />
           <b2g:property name="输入" value="一级评审意见" />
           <b2g:property name="输入" value="修订意见处理表" />
@@ -895,7 +895,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="判定标准：技术委员会结论为“通过”的进入上会准备。提出修改意见的，评审意见导入DOORS逐条处理，修订后视修改程度决定是否重新经过一级评审。" />
+          <b2g:property name="步骤描述" value="依据二级评审结论判断是否进入审议准备。评审通过的继续后续流程；需要调整的退回修订，并根据调整影响确定复评范围。" />
           <b2g:property name="责任主体" value="技术委员会" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -907,7 +907,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="二级评审通过后，用基线集对需求、大纲、规划和修订意见模块同时建立基线，规划模块为0.2（后缀“送审稿”，审议后再次修订的依次为0.3、0.4），保证提交审议的版本及其意见处理过程可追溯。从基线导出送审稿文本用于上会。" />
+          <b2g:property name="步骤描述" value="对评审确认的规划及相关依据、意见处理成果建立送审基线，保证提交审议的内容和形成过程可追溯，形成正式送审材料。" />
           <b2g:property name="输入" value="科技发展规划DOORS模块" />
           <b2g:property name="输入" value="二级评审意见" />
           <b2g:property name="输出" value="科技发展规划送审稿基线" />
@@ -923,7 +923,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划修订评审" />
-          <b2g:property name="步骤描述" value="按公司议案格式编写上会议案，内容包括编制背景和依据、编制过程（需求收集范围、征求意见和评审情况）、规划主要内容（目标、指标、重点任务）、需要会议决策的事项（如重大投入、组织调整）以及意见处理情况。" />
+          <b2g:property name="步骤描述" value="围绕规划编制背景、主要内容、论证过程和意见处理情况，梳理需要决策的重点事项，形成内容完整、依据充分的审议议案。" />
           <b2g:property name="输入" value="科技发展规划送审稿" />
           <b2g:property name="输入" value="修订意见处理表" />
           <b2g:property name="输入" value="一级评审意见" />
@@ -939,7 +939,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划审议发布" />
-          <b2g:property name="步骤描述" value="按“三重一大”决策程序，工作组把规划上会议案提交公司党委会前置研究，重点把关规划的方向和与公司战略的一致性，形成前置研究意见。" />
+          <b2g:property name="步骤描述" value="按照重大事项决策要求开展规划前置研究，重点把握总体方向、战略一致性和重大事项，形成是否提交后续审议的研究意见。" />
           <b2g:property name="输入" value="科技发展规划上会议案" />
           <b2g:property name="输入" value="科技发展规划送审稿" />
           <b2g:property name="输出" value="党委会前置研究意见" />
@@ -954,7 +954,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划审议发布" />
-          <b2g:property name="步骤描述" value="判定标准：前置研究意见为同意提交审议的，进入总经理办公会审议。提出修改要求的，退回修订评审子流程逐条处理，修订后按修改程度决定是否重新评审。" />
+          <b2g:property name="步骤描述" value="依据前置研究意见判断是否进入后续审议。同意提交的继续流程；提出修改要求的退回处理，并根据修改影响履行必要的复核程序。" />
           <b2g:property name="责任主体" value="公司党委会" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -966,7 +966,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划审议发布" />
-          <b2g:property name="步骤描述" value="工作组把规划上会议案提交总经理办公会审议，重点审议目标指标、重点任务、资源投入和责任分工，形成审议决定或会议纪要。" />
+          <b2g:property name="步骤描述" value="按照规定程序对规划目标、重点任务、资源安排和实施要求进行审议，形成审议决定及相关落实要求。" />
           <b2g:property name="输入" value="科技发展规划上会议案" />
           <b2g:property name="输入" value="党委会前置研究意见" />
           <b2g:property name="输出" value="总经理办公会审议意见" />
@@ -981,7 +981,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划审议发布" />
-          <b2g:property name="步骤描述" value="判定标准：审议通过或只有文字性修改要求的，进入印发。提出实质性修改要求的，退回修订评审子流程逐条处理。" />
+          <b2g:property name="步骤描述" value="依据审议结论判断是否具备正式发布条件。审议通过且一般修改已落实的进入印发；存在实质性调整要求的，退回修订并按程序再次确认。" />
           <b2g:property name="责任主体" value="总经理办公会" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -993,7 +993,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划审议发布" />
-          <b2g:property name="步骤描述" value="根据审议意见完成最后的文字修改（如有，同步更新DOORS模块），按公司公文程序通过OA正式印发规划。" />
+          <b2g:property name="步骤描述" value="落实审议要求，完成规划文本及相关数据的最终核对，按照规定程序正式印发，形成对后续科技工作具有指导作用的规划文件。" />
           <b2g:property name="输入" value="总经理办公会审议意见" />
           <b2g:property name="输入" value="科技发展规划送审稿" />
           <b2g:property name="输出" value="科技发展规划正式印发文件" />
@@ -1008,7 +1008,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划审议发布" />
-          <b2g:property name="步骤描述" value="用基线集对需求、大纲、规划和修订意见模块同时建立正式基线，规划模块为1.0（滚动修编后为2.0，勘误为1.1），内容与印发文本一致。正式基线是年度科研指南建链和实施评估的唯一依据，规划模块随即转为只读，此后对规划的任何修改都须走滚动修编程序。" />
+          <b2g:property name="步骤描述" value="对正式发布的规划及相关依据和意见处理成果建立受控基线，保证基线内容与发布文本一致，作为年度指南编制和实施评估的统一依据。后续变更按规定程序管理。" />
           <b2g:property name="输入" value="科技发展规划正式印发文件" />
           <b2g:property name="输入" value="科技发展规划DOORS模块" />
           <b2g:property name="输出" value="科技发展规划正式基线" />
@@ -1023,7 +1023,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技发展规划审议发布" />
-          <b2g:property name="步骤描述" value="面向各部门、分子公司和研发人员开展规划宣贯。把规划重点任务清单分解到年度，按三阶段安排明确每年应启动和应完成的任务、牵头单位、协同单位和成果节点，形成规划任务分解表，纳入公司规划实施体系和年度调度。技术类任务在分解表中注明涉及的技术架构节点。任务分解表同时是实施评估中“规划任务完成情况”的对照基准。" />
+          <b2g:property name="步骤描述" value="开展规划宣贯，明确总体目标、重点任务和实施要求，将规划任务分解为年度安排与阶段成果，形成支撑年度科研指南编制和实施跟踪的任务分解成果。" />
           <b2g:property name="输入" value="科技发展规划正式基线" />
           <b2g:property name="输入" value="规划重点任务清单" />
           <b2g:property name="输出" value="规划任务分解表" />
@@ -1049,7 +1049,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="每年按科研计划工作安排（一般在上一年第四季度）启动下一年度科研指南编制，通过OA发出编制通知，明确指南年度、编制节点和项目需求申报要求。首年依据新发布的规划启动，以后各年同时依据上年度规划实施评估结论。" />
+          <b2g:property name="步骤描述" value="按照年度科研工作安排启动指南编制，明确编制范围、进度和成果要求，以正式规划为依据，并结合已有实施评估结论确定本轮编制的关注重点。" />
           <b2g:property name="输入" value="规划任务分解表" />
           <b2g:property name="输入" value="公司科研管理制度" />
           <b2g:property name="输出" value="年度科研指南编制通知" />
@@ -1074,7 +1074,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="依据规划任务分解表和实施阶段安排，结合实施评估反映的任务进展和在研项目情况，确定本年度应通过科研项目启动或延续的规划任务，形成规划年度任务清单。已完成或已决定退出的任务不再安排，基础和前沿研究按三至五年稳定支持的原则安排延续，工程开发任务按产品节点安排。" />
+          <b2g:property name="步骤描述" value="结合规划实施安排、任务进展和在研项目情况，识别本年度需要启动、延续或调整的科研任务，统筹长期研究与阶段性应用需求，形成规划年度任务清单。" />
           <b2g:property name="输入" value="规划任务分解表" />
           <b2g:property name="输入" value="科技发展规划正式基线" />
           <b2g:property name="输入" value="《规划实施评估报告》" />
@@ -1090,7 +1090,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="各单位按通知申报年度科研项目需求，说明需求来源（规划任务、产品开发、现场问题、用户需求）、研究内容、预期成果和资源需求，使自上而下的规划部署与现场需求反馈相结合。" />
+          <b2g:property name="步骤描述" value="围绕规划部署和实际应用需求，收集年度科研项目建议，梳理需求来源、研究目标、预期成果和资源条件，形成与年度任务相衔接的科研需求汇总成果。" />
           <b2g:property name="输入" value="年度科研指南编制通知" />
           <b2g:property name="输入" value="业务单位科技需求反馈" />
           <b2g:property name="输出" value="年度科研项目需求汇总表" />
@@ -1115,7 +1115,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="综合规划年度任务清单、年度项目需求和实施评估提出的调整建议，确定本年度指南支持方向，并按基础研究、共性技术、工程开发、成果转化分类，各类采用不同的支持方式和评价要求。参照技术架构多维统计数据判断各方向的优先级：规划重点方向和短板关键技术族加强支持，投入集中且成果稳定的方向维持，连续多年无项目响应或无成果的方向调整支持方式。结合年度科技投入预算确定各方向规模，检查投入在各根技术上的结构与规划导向一致，保证基础研究及应用基础研究投入占比满足规划指标。" />
+          <b2g:property name="步骤描述" value="综合年度任务、项目需求、技术能力短板和实施评估建议，确定指南重点支持方向及项目分类，统筹支持强度、资源配置和评价要求，形成与规划导向一致的年度布局。" />
           <b2g:property name="输入" value="规划年度任务清单" />
           <b2g:property name="输入" value="年度科研项目需求汇总表" />
           <b2g:property name="输入" value="规划实施评估调整建议" />
@@ -1134,7 +1134,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="按方向编写指南条目，每个条目包括研究目标、已有成果、研究增量、建议承接主体、资源需求、预期成果与验收要求（含技术成熟度要求）、依据的规划对象标识以及关联的技术架构节点。“已有成果”可从该技术架构节点下的历年项目、委外合同和专利统计中归纳，研究增量相对已有成果提出。条目要同步明确工程承接与应用场景，避免低水平重复投入。" />
+          <b2g:property name="步骤描述" value="围绕年度支持方向编制指南条目，明确研究目标、主要内容、已有基础、预期增量及成果评价要求，说明规划依据和应用衔接，形成目标清晰、边界明确的指南草稿。" />
           <b2g:property name="输入" value="年度指南方向及项目分类表" />
           <b2g:property name="输入" value="科技发展规划正式基线" />
           <b2g:property name="输入" value="在研项目清单" />
@@ -1152,7 +1152,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="用指南模板在“04-科研项目指南”下建立当年度模块并导入，研究方向为标题对象，指南条目为要点对象，填写“研究方向”“项目类别”“成熟度要求”“建议承接主体”“指南年度”“技术架构节点”属性，规划依据标识暂存在“依据标识”属性中。“技术架构节点”取值与技术地图中的节点一致，导入后用过滤视图检查有无空值或技术地图中不存在的节点。" />
+          <b2g:property name="步骤描述" value="按照统一规范将年度指南导入DOORS，维护研究方向、项目分类和相关技术信息，保证内容层次完整、基础信息准确，支持后续追溯分析和实施管理。" />
           <b2g:property name="输入" value="科研项目指南初稿" />
           <b2g:property name="输入" value="DOORS模块模板与链接模块" />
           <b2g:property name="输出" value="科研项目指南DOORS模块" />
@@ -1167,7 +1167,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="按“依据标识”从指南对象向规划正式基线中的对象创建“落实”链接，核对后清空“依据标识”属性。" />
+          <b2g:property name="步骤描述" value="建立指南条目与正式规划相关内容的落实关系，核查依据的准确性，确保年度科研安排能够追溯到规划目标与任务。" />
           <b2g:property name="输入" value="科研项目指南DOORS模块" />
           <b2g:property name="输入" value="科技发展规划正式基线" />
           <b2g:property name="输出" value="指南至规划追溯链接" />
@@ -1192,7 +1192,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="在DOORS中检查四项内容。一是指南条目是否都有规划依据，没有依据的须在“处理说明”中写明来源（如现场紧急问题）。二是规划年度任务清单中本年应启动的任务是否都被指南覆盖，可在规划模块的追溯视图中统计各重点任务被历年指南落实的情况。三是与在研项目和历年指南模块对比，排除重复立项，同一技术架构节点下已有在研项目的，条目须说明与在研项目的区别。四是按“技术架构节点”属性统计本年度指南条目在各根技术和关键技术族上的分布，与规划技术布局和统计显示的短板对照，检查有无重点方向缺位或过度集中。" />
+          <b2g:property name="步骤描述" value="检查指南对规划年度任务和重点技术方向的承接情况，核实条目依据，结合历年指南及在研项目分析研究边界和新增价值，识别遗漏、重复和布局失衡问题。" />
           <b2g:property name="输入" value="指南至规划追溯链接" />
           <b2g:property name="输入" value="规划年度任务清单" />
           <b2g:property name="输入" value="在研项目清单" />
@@ -1210,7 +1210,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="判定标准：指南条目都有规划依据或经认可的来源说明，都已关联技术架构节点，本年应启动的规划任务都已覆盖或有推迟理由，与在研项目和历年指南无重复，规划重点方向和短板关键技术族都有条目或有说明理由。" />
+          <b2g:property name="步骤描述" value="检查指南条目的依据、年度任务承接和技术方向覆盖是否充分，是否存在重复安排或缺乏合理说明的内容。满足要求后进入征求意见，否则调整完善。" />
           <b2g:property name="责任主体" value="规划编制工作组" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -1222,7 +1222,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="补充、修改或删除指南条目并补建链接，对推迟的规划任务记录理由并在下一年度优先考虑。调整后重新开展承接与重复性分析。" />
+          <b2g:property name="步骤描述" value="依据分析结果补充、整合或调整指南条目，完善规划关联关系，对暂缓安排的任务说明理由，形成依据充分、布局协调的指南内容。" />
           <b2g:property name="输入" value="《指南规划承接与重复性分析报告》" />
           <b2g:property name="输出" value="科研项目指南DOORS模块" />
           <b2g:property name="输出" value="指南至规划追溯链接" />
@@ -1237,7 +1237,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="对当年度指南模块建立基线0.1（后缀“征求意见稿”），并导出保留对象标识的指南征求意见稿。" />
+          <b2g:property name="步骤描述" value="对拟征求意见的年度指南建立阶段基线，固定本轮反馈所依据的内容，形成便于意见对应和后续修订比较的征求意见稿。" />
           <b2g:property name="输入" value="科研项目指南DOORS模块" />
           <b2g:property name="输出" value="科研项目指南征求意见稿基线" />
           <b2g:property name="输出" value="科研项目指南征求意见稿" />
@@ -1252,7 +1252,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="通过OA向各单位和专家发出指南征求意见通知并附征求意见稿，意见表包含对象标识、修改建议和理由。" />
+          <b2g:property name="步骤描述" value="围绕指南征求意见稿收集相关意见，明确反馈重点与时限要求，使意见能够对应具体方向或条目，为指南完善提供依据。" />
           <b2g:property name="输入" value="科研项目指南征求意见稿" />
           <b2g:property name="输出" value="科研指南意见征集通知" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -1266,7 +1266,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="各单位和专家对指南方向、条目内容、承接主体和验收要求提出意见并说明理由。" />
+          <b2g:property name="步骤描述" value="对指南方向、研究内容、成果要求和实施可行性提出修订建议，说明依据和理由，促进指南与规划需求及应用条件相适应。" />
           <b2g:property name="输入" value="科研指南意见征集通知" />
           <b2g:property name="输入" value="科研项目指南征求意见稿" />
           <b2g:property name="输出" value="科研指南修订意见" />
@@ -1291,7 +1291,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="把征集意见和评审意见导入“07-修订意见”模块，建立指向指南对象的“针对”链接，逐条填写处理结论（采纳、部分采纳、不采纳）和处理说明，导出指南意见处理表。" />
+          <b2g:property name="步骤描述" value="将指南征求意见及评审意见纳入DOORS统一管理，关联相应条目，逐项形成处理结论和理由，形成可追溯的指南意见处理成果。" />
           <b2g:property name="输入" value="科研指南修订意见" />
           <b2g:property name="输入" value="科研指南评审意见" />
           <b2g:property name="输出" value="修订意见DOORS模块" />
@@ -1307,7 +1307,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="按指南意见处理表在DOORS指南模块中修订条目，处理疑似链接，复核规划承接关系。" />
+          <b2g:property name="步骤描述" value="依据确认的意见处理结论修订指南条目，同步更新DOORS数据和相关追溯关系，核查修订后的规划一致性，形成指南修订稿。" />
           <b2g:property name="输入" value="指南意见处理表" />
           <b2g:property name="输入" value="科研项目指南DOORS模块" />
           <b2g:property name="输出" value="科研项目指南DOORS模块" />
@@ -1322,7 +1322,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="工作组提请技术委员会评审，重点评审指南方向与规划的一致性、项目分类和资源安排的合理性、条目目标和验收要求是否明确。" />
+          <b2g:property name="步骤描述" value="对指南方向、项目布局、资源安排和成果评价要求开展评审，重点判断其与规划目标的一致性及实施可行性，形成评审意见。" />
           <b2g:property name="输入" value="科研项目指南DOORS模块" />
           <b2g:property name="输入" value="指南意见处理表" />
           <b2g:property name="输入" value="《指南规划承接与重复性分析报告》" />
@@ -1338,7 +1338,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="判定标准：技术委员会结论为通过的进入发布。提出修改意见的，退回修订后重新评审，只有文字性意见的由工作组确认修改到位后视为通过。" />
+          <b2g:property name="步骤描述" value="依据评审结论判断指南是否具备发布条件。评审通过或一般修改已确认落实的进入发布；存在实质性问题的退回修订并重新评审。" />
           <b2g:property name="责任主体" value="技术委员会" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -1350,7 +1350,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="按公司程序审批后通过OA发布年度科研项目指南，作为当年科研项目申报和立项评审的依据。" />
+          <b2g:property name="步骤描述" value="完成必要的审批确认，按照规定程序发布年度科研项目指南，作为当年度项目申报、遴选和立项评审的依据。" />
           <b2g:property name="输入" value="科研指南评审意见" />
           <b2g:property name="输入" value="科研项目指南DOORS模块" />
           <b2g:property name="输出" value="科研项目指南正式发布文件" />
@@ -1365,7 +1365,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科研项目指南编制" />
-          <b2g:property name="步骤描述" value="对当年度指南模块建立基线1.0（后缀“正式版”），内容与发布文本一致，模块转为只读。当年立项的科研项目进入“05-科研项目台账”后链接到指南条目，并沿用指南条目的技术架构节点，供实施评估按研究方向和技术架构统计立项和完成情况。" />
+          <b2g:property name="步骤描述" value="对正式发布的年度指南建立受控基线，保证与发布内容一致，并将后续科研项目与指南条目及相关技术方向关联，为实施跟踪和评估提供依据。" />
           <b2g:property name="输入" value="科研项目指南正式发布文件" />
           <b2g:property name="输入" value="科研项目指南DOORS模块" />
           <b2g:property name="输出" value="科研项目指南正式基线" />
@@ -1380,7 +1380,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="在每个指南年度结束时启动实施评估，按所处年份确定评估类型：年度评估（每年末）、中期评估（规划期第三年末，同时包含当年年度评估内容）、总结评估（规划期最后一年末）。年度评估重点看任务进度、指南落地和指标年度应达值，中期评估增加目标和重点方向适应性评价并提出是否修编的建议，总结评估评价规划目标完成度和产业贡献，并为下一周期提供发展基础和问题。评估方案明确评估范围、数据项、统计口径（与主要指标口径一致）、数据截止日期、提供单位和时间节点。" />
+          <b2g:property name="步骤描述" value="根据规划实施阶段确定年度、中期或总结评估的重点，明确评估范围、方法、数据口径和进度安排，形成能够评价实施成效并支撑后续决策的评估方案。" />
           <b2g:property name="输入" value="科技发展规划正式基线" />
           <b2g:property name="输入" value="规划任务分解表" />
           <b2g:property name="输入" value="主要指标表及口径说明" />
@@ -1396,7 +1396,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="通过OA下发评估通知和统一的数据采集模板，模板按八类信息分表，每张表列明数据项、口径说明、数据来源和填报单位，并预填规划任务编号和指南条目标识，涉及技术的数据表设“技术架构节点”列并附技术地图节点清单，保证填报数据能对应到DOORS中的规划对象、指南对象和技术架构节点。" />
+          <b2g:property name="步骤描述" value="依据评估方案发布工作要求和统一的数据采集模板，明确资料范围、统计口径和报送时限，保证采集信息能够与规划任务、指南和科研项目对应。" />
           <b2g:property name="输入" value="《规划实施评估工作方案》" />
           <b2g:property name="输入" value="公司技术架构" />
           <b2g:property name="输出" value="规划实施评估数据采集模板" />
@@ -1429,7 +1429,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="按规划任务分解表逐项收集：任务编号、牵头单位、本期计划节点、实际进展、完成状态（未启动、进行中、已完成、延期、调整、退出）、阶段成果、偏差原因和下一步安排。由各任务牵头单位自评填报，附成果证明材料。" />
+          <b2g:property name="步骤描述" value="对照规划任务与阶段安排，收集实施进展、阶段成果、主要偏差及后续计划，形成有事实依据的任务完成情况资料。" />
           <b2g:property name="输入" value="规划任务分解表" />
           <b2g:property name="输入" value="规划实施评估数据采集模板" />
           <b2g:property name="输出" value="规划任务完成情况表" />
@@ -1444,7 +1444,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="按指南研究方向和指南条目收集：指南条目数、申报项目数、立项项目数及立项率、在研项目数、结题验收项目数、延期和终止项目数、验收结论，以及每个项目的项目编号、项目类别、承担单位、起止时间、对应的指南条目标识和技术架构节点。数据取自科研项目管理台账，不是由指南立项的项目也要填写技术架构节点。" />
+          <b2g:property name="步骤描述" value="围绕年度指南及研究方向，汇总科研项目的申报立项、实施进展和结题验收情况，梳理项目与指南及技术方向的对应关系，反映科研任务的组织实施成效。" />
           <b2g:property name="输入" value="科研项目指南正式基线" />
           <b2g:property name="输入" value="科研项目管理台账" />
           <b2g:property name="输入" value="规划实施评估数据采集模板" />
@@ -1460,7 +1460,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="收集科研项目产出并沉淀为技术组件的成果（模型、算法、软件、设计规范、工艺方法、试验方法等）：组件名称、来源项目、技术架构节点、技术成熟度、在工程化项目（新产品研制、订单项目、改造项目）中的应用项目名称和次数、应用效果，以及科技成果许可转让收入。" />
+          <b2g:property name="步骤描述" value="收集科研成果向工程应用转化的情况，梳理成果基础、应用范围、成熟程度及实际效益，反映技术成果对产品和业务发展的支撑作用。" />
           <b2g:property name="输入" value="科研项目验收资料" />
           <b2g:property name="输入" value="工程化项目技术资料" />
           <b2g:property name="输入" value="规划实施评估数据采集模板" />
@@ -1476,7 +1476,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="收集产品平台和核心模块的建设与运用情况：产品平台数量及覆盖的产品型号、核心模块目录条目数及本期新增数、模块在新产品中的复用率、配置基线数量，以及复用带来的研制周期和成本变化。" />
+          <b2g:property name="步骤描述" value="收集产品平台与核心模块的建设、应用和复用情况，分析其对研发效率、开发周期和成本改善的作用，形成平台化模块化建设成效资料。" />
           <b2g:property name="输入" value="产品平台与核心模块目录" />
           <b2g:property name="输入" value="规划实施评估数据采集模板" />
           <b2g:property name="输出" value="平台化模块化成果运用情况表" />
@@ -1491,7 +1491,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="收集领军人才、核心骨干和青年后备人才数量及变化，国家级、省部级、中车级专家入库人数，研发人员数量及占比，承担重大科研任务的青年人才数，设计与工艺人员交流轮岗人次。" />
+          <b2g:property name="步骤描述" value="收集科技人才队伍的结构变化、梯队培养和能力提升情况，反映关键人才储备、科研参与及队伍发展对规划实施的支撑程度。" />
           <b2g:property name="输入" value="人力资源统计数据" />
           <b2g:property name="输入" value="规划实施评估数据采集模板" />
           <b2g:property name="输出" value="科技人才梯队建设情况表" />
@@ -1506,7 +1506,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="收集本期重大科技成果，包括但不限于：重要新产品（首台套、型号定型、示范应用）、行政许可与认证（车辆型号合格证、生产许可、国际认证）、主持和参与的国际、国家、行业标准、省部级以上科技奖励、新增有效发明专利、海外专利和高价值专利、高质量数据集、典型产品碳足迹核算报告。每项成果注明对应的规划任务编号或指南条目标识，以及技术架构节点。" />
+          <b2g:property name="步骤描述" value="汇总规划实施期间形成的代表性创新成果及其应用价值，梳理与规划任务、科研项目和技术方向的关联，形成重大科技成果资料。" />
           <b2g:property name="输入" value="知识产权标准奖励及认证台账" />
           <b2g:property name="输入" value="规划实施评估数据采集模板" />
           <b2g:property name="输出" value="重大科技成果情况表" />
@@ -1522,7 +1522,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="按研究方向和项目类别（基础研究、共性技术、工程开发、成果转化）统计预算与实际支出，计算研发投入强度、基础研究及应用基础研究投入占比，并统计国家级、集团级项目等外部资金。科研委外合同逐份收集合同编号、合同类型（技术研究、计算仿真、检测试验）、对方单位、承办部门、金额、签订日期和技术架构节点。" />
+          <b2g:property name="步骤描述" value="汇总科研投入的计划与执行情况，分析不同研究方向和项目类别的投入结构，梳理外部资金与科研合作投入，形成评价资源配置及使用效益的基础数据。" />
           <b2g:property name="输入" value="科研经费财务统计数据" />
           <b2g:property name="输入" value="科研委外合同台账" />
           <b2g:property name="输入" value="规划实施评估数据采集模板" />
@@ -1538,7 +1538,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="收集本期质量攻关项目：攻关合同编号、质量问题、攻关项目名称、负责单位、结题时间、技术架构节点，以及问题是否已通过科研项目或技术改进从设计源头解决。用于判断研究投入是否针对质量短板，以及源头质量问题在各技术节点上的变化趋势。" />
+          <b2g:property name="步骤描述" value="收集质量问题及相关攻关工作的进展、成果和改进效果，分析科研投入与质量短板的对应关系，反映技术改进对源头问题解决的贡献。" />
           <b2g:property name="输入" value="质量攻关项目台账" />
           <b2g:property name="输入" value="规划实施评估数据采集模板" />
           <b2g:property name="输出" value="质量攻关问题情况表" />
@@ -1580,7 +1580,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="对八类数据做交叉核验：项目台账与经费数据对应，专利、标准、奖励数据与主要指标口径一致，成果和项目都能对应到规划任务编号或指南条目标识，填写的技术架构节点在技术地图中存在，与上年度数据可比。记录缺失、口径不一致和无法对应的数据。" />
+          <b2g:property name="步骤描述" value="对各类评估资料开展完整性、一致性和可追溯性核验，统一统计口径，检查数据之间及不同评估周期之间的可比性，形成数据核验结果和问题清单。" />
           <b2g:property name="输入" value="规划任务完成情况表" />
           <b2g:property name="输入" value="科研项目立项与完成情况表" />
           <b2g:property name="输入" value="科技成果工程化应用情况表" />
@@ -1603,7 +1603,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="判定标准：八类数据均已按模板填报，口径与主要指标表一致，关键数据（任务状态、立项与验收、主要指标）无缺失，成果和项目都能对应到规划对象或指南对象，涉及技术的数据都已关联有效的技术架构节点。不满足的退回补充核实。" />
+          <b2g:property name="步骤描述" value="检查关键评估资料是否完整、来源是否可靠、统计口径是否一致，相关成果是否能够对应规划任务和科研活动。满足要求后进入评估分析，否则补充核实。" />
           <b2g:property name="责任主体" value="规划编制工作组" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -1615,7 +1615,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="按核验记录向数据提供单位逐项核实和补充，必要时调取原始台账，修正后重新核验。" />
+          <b2g:property name="步骤描述" value="依据核验发现的问题，补充缺失资料、核实数据来源并修正不一致内容，完善必要的证明依据，形成满足分析要求的评估数据。" />
           <b2g:property name="输入" value="评估数据核验记录" />
           <b2g:property name="输出" value="核验后评估数据集" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -1630,7 +1630,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="把当年立项项目导入“05-科研项目台账”模块，填写“技术架构节点”属性，更新已有项目的“项目状态”，建立项目指向指南条目的“实施”链接。在“06-规划实施评估”模块中为每个规划重点任务建立当期评估对象，填写“评估年度”“评估类型”“实施状态”“完成度”“偏差说明”属性，建立指向规划任务对象的“评估”链接。" />
+          <b2g:property name="步骤描述" value="将科研项目和规划实施评估数据纳入DOORS，更新任务与项目状态，建立与规划、指南及相关成果的关联关系，形成可用于实施统计和历史比较的评估记录。" />
           <b2g:property name="输入" value="核验后评估数据集" />
           <b2g:property name="输入" value="科技发展规划正式基线" />
           <b2g:property name="输入" value="科研项目指南正式基线" />
@@ -1649,7 +1649,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="沿“规划任务—指南条目—科研项目”链路统计每项规划任务被多少指南条目落实、立项和验收了多少项目，找出没有指南落实的任务、有指南但无项目响应的方向和立项后未按期完成的项目。主要指标按“实际值/目标值”与时间进度（如五年规划第二年末为40%）对比，判断超前、正常或滞后。同时分析成果工程化应用、平台模块复用、人才梯队和经费结构是否符合规划导向。再按技术架构节点汇总投入（项目经费、委外金额）、成果、研究情况和质量问题，与技术架构多维统计数据中的上年度和规划期初数据对比，判断规划重点方向对应的关键技术族投入和成果是否达到预期、短板节点的质量问题是否减少、自主研究比例是否提高、指南方向有无连续多年无项目响应的节点。" />
+          <b2g:property name="步骤描述" value="沿规划任务、指南和科研项目之间的追溯关系，分析任务落实、目标达成和成果产出情况，结合阶段进度与技术架构判断资源投入、能力提升及重点方向的实施效果，识别偏差和薄弱环节。" />
           <b2g:property name="输入" value="规划实施评估DOORS模块" />
           <b2g:property name="输入" value="项目至指南追溯链接" />
           <b2g:property name="输入" value="评估至规划追溯链接" />
@@ -1669,7 +1669,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="对滞后的任务和指标从技术、资源和组织三方面分析原因。按规划确定的规则提出建议：调整技术路径、加强协同或资源投入、实施退出（长期无法验证、缺乏应用主体或偏离方向的任务），以及下一年度指南需要加强、新增或退出的方向，方向建议注明涉及的技术架构节点。中期评估还要判断规划目标和重点方向是否需要修编。" />
+          <b2g:property name="步骤描述" value="针对任务进度、指标达成和能力建设中的偏差，分析技术路径、资源条件及协同机制等方面的原因，提出改进措施和年度指南调整建议，必要时提出规划修编建议。" />
           <b2g:property name="输入" value="规划实施完成度分析表" />
           <b2g:property name="输入" value="核验后评估数据集" />
           <b2g:property name="输出" value="规划实施评估调整建议" />
@@ -1683,7 +1683,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="按评估类型编写报告：年度评估报告写年度目标、任务、里程碑和成果完成情况及调整建议，中期评估报告增加目标适应性评价和修编建议，总结评估报告写规划目标完成度、代表性成果、体系问题和产业贡献，作为下一周期规划的发展基础和问题来源。各类报告都设技术体系专章，按根技术和关键技术族说明投入、成果、研究情况和质量问题的分布与变化。" />
+          <b2g:property name="步骤描述" value="综合任务进展、目标达成、代表性成果及主要问题，形成与评估阶段相适应的实施评估报告，提出改进和调整建议，为年度安排、滚动修编及下一周期规划提供依据。" />
           <b2g:property name="输入" value="规划实施完成度分析表" />
           <b2g:property name="输入" value="规划实施评估调整建议" />
           <b2g:property name="输入" value="《规划实施评估工作方案》" />
@@ -1698,7 +1698,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="年度评估报告经工作组审核后报分管领导审定，中期评估和总结评估报告提请技术委员会审议。审定后的结论与年度任务、预算、平台、人才和考核衔接。" />
+          <b2g:property name="步骤描述" value="对评估依据、分析结论和调整建议进行审核确认，形成经审定的评估成果，明确其在任务安排、资源配置和后续规划管理中的应用要求。" />
           <b2g:property name="输入" value="《规划实施评估报告》" />
           <b2g:property name="输出" value="评估报告审定意见" />
           <b2g:property name="责任主体" value="规划编制工作组" />
@@ -1712,7 +1712,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="用基线集对“05-科研项目台账”和“06-规划实施评估”模块同时建立基线，后缀写明评估年度和类型（如“2027年度评估”“中期评估”），保留各期评估的历史快照。" />
+          <b2g:property name="步骤描述" value="对评估记录及相关项目数据建立协调一致的基线，保留各期评估所依据的实施状态与分析成果，支持历史追溯、趋势比较和后续复核。" />
           <b2g:property name="输入" value="规划实施评估DOORS模块" />
           <b2g:property name="输入" value="科研项目台账DOORS模块" />
           <b2g:property name="输入" value="评估报告审定意见" />
@@ -1728,7 +1728,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="判定标准：本次评估类型为总结评估（规划期最后一年）的，本规划周期收官。年度评估和中期评估进入修编判断。" />
+          <b2g:property name="步骤描述" value="根据评估阶段判断后续路径。属于规划期总结评估的，进入本周期收官；属于年度或中期评估的，继续判断是否需要滚动修编。" />
           <b2g:property name="责任主体" value="规划编制工作组" />
         </b2g:properties>
       </bpmn2:extensionElements>
@@ -1740,7 +1740,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="判定标准：上位部署、市场或公司发展规划发生重大变化，或中期评估认为目标、重点方向需要调整时，启动滚动修编，形成规划修编需求，进入修订评审子流程，修编后的正式版基线为2.0。只涉及个别任务调整的，通过下一年度指南调整处理，不修编规划。" />
+          <b2g:property name="步骤描述" value="结合外部环境、发展要求和评估结论，判断规划目标、重点方向或重大任务是否需要实质性调整。需要调整的启动滚动修编；一般实施偏差通过后续年度任务和指南安排优化处理。" />
           <b2g:property name="输出" value="规划修编需求" />
           <b2g:property name="责任主体" value="规划编制工作组" />
           <b2g:property name="责任主体" value="技术委员会" />
@@ -1754,7 +1754,7 @@
       <bpmn2:extensionElements>
         <b2g:properties>
           <b2g:property name="来源流程" value="科技规划实施评估" />
-          <b2g:property name="步骤描述" value="本周期规划的总结评估已完成，需求、大纲、规划、指南、项目和评估之间的追溯链完整保存在DOORS中。总结评估报告作为下一周期“提取上一周期规划总结评估结论”步骤的输入。" />
+          <b2g:property name="步骤描述" value="本周期规划总结评估已完成，需求、规划、指南、项目及评估成果的追溯关系和历史版本已完整保留，总结结论可作为下一周期规划编制的基础输入。" />
           <b2g:property name="责任主体" value="规划编制工作组" />
         </b2g:properties>
       </bpmn2:extensionElements>

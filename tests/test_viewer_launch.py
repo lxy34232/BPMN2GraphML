@@ -15,7 +15,7 @@ def test_viewer_assets_local():
     html = (VIEWER / "index.html").read_text(encoding="utf-8")
     refs = _refs(html)
     assert any(r.endswith("bpmn-navigated-viewer.production.min.js") for r in refs)
-    assert {"properties.js", "print.js", "app.js", "app.css"} <= set(refs)
+    assert {"properties.js", "print.js", "swimlanes.js", "app.js", "app.css"} <= set(refs)
     for ref in refs:
         if ref.startswith("data:"):
             continue
@@ -68,7 +68,7 @@ def test_launch_page_assets_absolute(tmp_path):
     from conftest import FIX
     text = make_launch_page(FIX / "科技创新平台策划.bpmn", tmp_path).read_text(encoding="utf-8")
     refs = [r for r in _refs(text) if not r.startswith("data:")]
-    assert len(refs) == 7
+    assert len(refs) == 8
     for ref in refs:
         assert ref.startswith("file:///"), ref
         assert Path(url2pathname(urlparse(ref).path)).is_file(), ref

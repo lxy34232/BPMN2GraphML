@@ -51,6 +51,28 @@ test("rejects non-SVG and empty diagrams before generating a print page", () => 
   }
 });
 
+test("excludes the temporary connection selection while retaining filter markers", () => {
+  const image = P.prepareSVG('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100">' +
+    '<g class="djs-element djs-connection b2g-dim b2g-edge-selected"><path d="M0 0 H200"/></g>' +
+    '<g class="djs-element b2g-hl b2g-edge-selected"><text>连线文字</text></g></svg>');
+  assert.ok(!image.svg.includes("b2g-edge-selected"));
+  const doc = new DOMParser().parseFromString(image.svg, "image/svg+xml");
+  assert.match(doc.getElementsByTagName("g")[0].getAttribute("class"), /b2g-dim/);
+  assert.match(doc.getElementsByTagName("g")[1].getAttribute("class"), /b2g-hl/);
+  assert.equal(doc.getElementsByTagName("text")[0].textContent, "连线文字");
+});
+
+test("excludes interactive lane controls while preserving lane titles and backgrounds", () => {
+  const image = P.prepareSVG('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 500">' +
+    '<g class="b2g-lane"><rect width="240" height="500"/><text>来源流程</text>' +
+    '<g class="b2g-lane-controls"><g role="button"><rect width="24" height="26"/><text>▶</text></g></g></g></svg>');
+  const doc = new DOMParser().parseFromString(image.svg, "image/svg+xml");
+  assert.equal(doc.getElementsByTagName("rect").length, 1);
+  assert.equal(doc.getElementsByTagName("text")[0].textContent, "来源流程");
+  assert.ok(!image.svg.includes("b2g-lane-controls"));
+  assert.ok(!image.svg.includes('role="button"'));
+});
+
 test("print document safely embeds names and SVG as an inert image without remote assets", () => {
   const image = { svg: '<svg><text>中文</text><script>alert(1)</script></svg>', width: 800, height: 400 };
   const { html, layout } = P.buildDocument(image, '审批</title><script>bad()</script>.bpmn', {

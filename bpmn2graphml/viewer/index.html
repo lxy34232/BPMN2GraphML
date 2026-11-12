@@ -11,24 +11,45 @@
 </head>
 <body>
   <header class="toolbar">
-    <label class="btn primary" title="打开一个 BPMN 文件（也可以直接拖进页面）">
-      打开 BPMN<input id="file-input" type="file" accept=".bpmn,.xml" hidden>
-    </label>
-    <span id="file-name" class="file-name">未打开文件</span>
-    <span class="sep"></span>
-    <label class="field">按
-      <select id="attr-select" disabled></select>
-    </label>
+    <div class="toolbar-main">
+      <div class="toolbar-file">
+        <label class="btn primary" title="打开一个 BPMN 文件（也可以直接拖进页面）">
+          打开 BPMN<input id="file-input" type="file" accept=".bpmn,.xml" hidden>
+        </label>
+        <span id="file-name" class="file-name">未打开文件</span>
+      </div>
+      <div class="toolbar-filter" role="group" aria-label="筛选条件">
+        <label class="field">筛选类别
+          <select id="attr-select" disabled></select>
+        </label>
+        <button id="clear-btn" class="btn" type="button" disabled>清除筛选</button>
+      </div>
+      <div class="toolbar-lanes" role="group" aria-label="泳道视图设置">
+        <label class="field">泳道分类
+          <select id="lane-attr" disabled><option value="">原始布局</option></select>
+        </label>
+        <button id="lane-reset" class="btn" type="button" disabled>恢复原布局</button>
+      </div>
+      <div class="toolbar-actions" role="group" aria-label="视图和导出">
+        <button id="theme-btn" class="btn" type="button" aria-pressed="false" title="切换到深色模式">深色模式</button>
+        <button id="fit-btn" class="btn" type="button" disabled>适应窗口</button>
+        <button id="export-svg-btn" class="btn" type="button" disabled title="下载完整矢量流程图，适合长流程图和放大查看">导出 SVG</button>
+        <button id="export-png-btn" class="btn" type="button" disabled title="下载完整流程图的高清 PNG 图片">导出 PNG</button>
+        <button id="print-btn" class="btn" type="button" disabled title="打印完整流程图，或另存为 PDF">打印 / PDF</button>
+      </div>
+    </div>
     <div id="chips" class="chips" aria-label="属性取值"></div>
-    <span class="spacer"></span>
-    <button id="clear-btn" class="btn" type="button" disabled>清除筛选</button>
-    <button id="fit-btn" class="btn" type="button" disabled>适应窗口</button>
-    <button id="export-svg-btn" class="btn" type="button" disabled title="下载完整矢量流程图，适合长流程图和放大查看">导出 SVG</button>
-    <button id="export-png-btn" class="btn" type="button" disabled title="下载完整流程图的高清 PNG 图片">导出 PNG</button>
-    <button id="print-btn" class="btn" type="button" disabled title="打印完整流程图，或另存为 PDF">打印 / PDF</button>
   </header>
   <main id="stage" class="stage">
     <div id="canvas" class="canvas"></div>
+    <svg id="lane-header" class="lane-frozen-header" role="group" aria-label="泳道标题与顺序调整" hidden></svg>
+    <div id="scroll-x" class="diagram-scrollbar scroll-x" tabindex="0" role="region" aria-label="流程图横向滚动条">
+      <div id="scroll-x-size" class="scroll-x-size"></div>
+    </div>
+    <div id="scroll-y" class="diagram-scrollbar scroll-y" tabindex="0" role="region" aria-label="流程图纵向滚动条">
+      <div id="scroll-y-size" class="scroll-y-size"></div>
+    </div>
+    <div class="scroll-corner" aria-hidden="true"></div>
     <div id="message" class="message">打开或拖入一个 BPMN 文件</div>
     <aside id="card" class="card" hidden></aside>
     <div id="drop-hint" class="drop-hint" hidden>松开鼠标以打开文件</div>
@@ -61,6 +82,7 @@
   <script src="vendor/bpmn-js/bpmn-navigated-viewer.production.min.js"></script>
   <script src="properties.js"></script>
   <script src="print.js"></script>
+  <script src="swimlanes.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
